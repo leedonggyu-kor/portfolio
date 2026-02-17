@@ -67,9 +67,15 @@
         background: rgba(18, 18, 20, 0.6);
         border: 1px solid var(--border);
         border-radius: 24px;
-        padding: 2.5rem;
+        padding: 1.5rem;
         position: relative;
         overflow: hidden;
+      }
+
+      @media (min-width: 768px) {
+        .base-card {
+          padding: 2.5rem;
+        }
       }
 
       .section-label {
@@ -202,6 +208,29 @@
         transition: clip-path 0.15s ease-out;
       }
 
+      @media (hover: none), (pointer: coarse) {
+        body {
+          cursor: auto;
+        }
+
+        #cursor {
+          display: none;
+        }
+
+        .social-base {
+          display: none;
+        }
+
+        .social-overlay {
+          position: relative;
+          height: auto;
+          clip-path: none !important;
+          pointer-events: auto;
+          transition: none;
+          padding: 1.5rem;
+        }
+      }
+
       ::-webkit-scrollbar {
         width: 4px;
       }
@@ -219,9 +248,11 @@
   <body class="antialiased">
     <div id="cursor"></div>
 
-    <main class="max-w-[1400px] mx-auto px-6 py-24 relative z-10">
+    <main
+      class="max-w-[1400px] mx-auto px-4 sm:px-6 py-14 sm:py-24 relative z-10"
+    >
       <header
-        class="mb-40 pl-4 border-l-2 border-white/10"
+        class="mb-24 sm:mb-40 pl-3 sm:pl-4 border-l-2 border-white/10"
         data-aos="fade-right"
       >
         <div class="mb-8">
@@ -232,7 +263,7 @@
         </div>
 
         <h1
-          class="text-7xl md:text-9xl font-black tracking-tighter leading-none mb-10 text-white"
+          class="text-4xl sm:text-6xl md:text-9xl font-black tracking-tighter leading-[0.95] mb-8 sm:mb-10 text-white break-words"
           id="scramble-title"
         >
           LEE DONGGYU
@@ -249,15 +280,15 @@
           <p><strong class="text-white">대일외국어고등학교</strong> 졸업</p>
         </div>
 
-        <div class="flex gap-6 mt-12">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 mt-10 sm:mt-12">
           <a
             href="mailto:crock1234@naver.com"
-            class="interactive-target text-sm font-bold text-slate-500 hover:text-blue-400 transition-colors"
+            class="interactive-target text-sm font-bold text-slate-500 hover:text-blue-400 transition-colors break-all"
             >Email. crock1234@naver.com</a
           >
           <a
             href="#"
-            class="interactive-target text-sm font-bold text-slate-500 hover:text-yellow-400 transition-colors"
+            class="interactive-target text-sm font-bold text-slate-500 hover:text-yellow-400 transition-colors break-all"
             >Kakao. leedonggyu.u</a
           >
         </div>
@@ -277,7 +308,7 @@
             >Leadership</span
           >
           <h2
-            class="text-5xl font-black mb-12 parallax-layer relative z-10"
+            class="text-3xl sm:text-4xl md:text-5xl font-black mb-8 sm:mb-12 parallax-layer relative z-10 leading-tight break-words"
             data-speed="1.5"
           >
             대일외국어고등학교<br />
@@ -458,34 +489,36 @@
           <div class="cyber-scan-line"></div>
 
           <div class="relative z-10">
-            <span class="section-label text-blue-400">Political Career</span>
+            <span class="section-label text-blue-400"
+              >Public Policy & Civic Engagement</span
+            >
             <div class="space-y-8 mt-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <span
                     class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2"
-                    >제20대 대통령 선거</span
+                    >전국 단위 공공참여 프로젝트</span
                   >
                   <h4 class="text-lg font-black text-white mb-3">
-                    대통령 후보 선거캠프
+                    청년 정책참여 네트워크
                   </h4>
                   <ul class="text-xs text-slate-300 space-y-2">
-                    <li>• 생애첫투표위원회 총괄상황실장</li>
-                    <li>• 양성평등가족위원회 공동위원장</li>
-                    <li>• 청소년위원회 홍보소통본부원</li>
+                    <li>• 청년 참여 프로젝트 총괄 운영</li>
+                    <li>• 성평등·가족 의제 공동 기획</li>
+                    <li>• 청소년 아젠다 홍보·소통 담당</li>
                   </ul>
                 </div>
                 <div>
                   <span
                     class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2"
-                    >제8회 지방선거</span
+                    >지역 단위 정책참여 프로젝트</span
                   >
                   <h4 class="text-lg font-black text-white mb-3">
-                    경기도지사 캠프
+                    지역 정책참여 협의체
                   </h4>
                   <ul class="text-xs text-slate-300 space-y-2">
-                    <li>• 성평등위원회 부위원장</li>
-                    <li>• 청소년특보</li>
+                    <li>• 성평등 의제 운영 부위원장</li>
+                    <li>• 청소년 정책 자문 역할</li>
                   </ul>
                 </div>
               </div>
@@ -494,7 +527,7 @@
               >
                 <div>
                   <h5 class="text-sm font-bold text-white mb-1">
-                    더불어청소년 정책본부장
+                    청소년 정책 네트워크 정책본부장
                   </h5>
                   <p class="text-xs text-slate-400">
                     청소년 관련 공약 개발 및 정책 수립 지원
@@ -502,10 +535,10 @@
                 </div>
                 <div>
                   <h5 class="text-sm font-bold text-blue-400 mb-1">
-                    더불어청소년 청소년정치개혁특별위원장
+                    청소년 정책 네트워크 청소년정치
                   </h5>
                   <p class="text-xs text-slate-400">
-                    청소년 참정권 확대 및 정치 참여 정책 기획
+                    청소년 참여권 확대 및 제도개선 정책 기획
                   </p>
                 </div>
                 <div class="sm:col-span-2">
@@ -521,7 +554,7 @@
 
         <div class="md:col-span-12 lg:col-span-5 base-card flex flex-col">
           <span class="section-label text-yellow-500">Awards & Honors</span>
-          <div class="space-y-5 flex-1 overflow-y-auto pr-2 max-h-[500px]">
+          <div class="space-y-5">
             <div
               class="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-yellow-500/10 to-transparent border border-yellow-500/20"
             >
@@ -600,13 +633,15 @@
             class="base-card social-container p-0 border-none overflow-hidden h-full relative"
             id="social-card"
           >
-            <div class="bg-white text-black p-10 h-full w-full">
+            <div
+              class="social-base bg-white text-black p-6 sm:p-10 h-full w-full"
+            >
               <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <div>
                   <span class="section-label" style="color: #000"
                     >Social Participation</span
                   >
-                  <h3 class="text-5xl font-black mb-6 leading-none">
+                  <h3 class="text-3xl sm:text-5xl font-black mb-6 leading-none">
                     Logic in<br />Movement.
                   </h3>
                   <p class="text-sm font-medium opacity-70">
@@ -627,7 +662,9 @@
                   <span class="section-label text-white"
                     >Social Participation</span
                   >
-                  <h3 class="text-5xl font-black mb-6 leading-none text-white">
+                  <h3
+                    class="text-3xl sm:text-5xl font-black mb-6 leading-none text-white"
+                  >
                     Logic in<br />Movement.
                   </h3>
                   <p class="text-sm font-medium text-slate-400">
@@ -713,23 +750,23 @@
               </p>
             </div>
             <div
-              class="inline-flex bg-white/5 border border-white/10 rounded-xl p-1"
+              class="flex flex-wrap w-full sm:w-auto bg-white/5 border border-white/10 rounded-xl p-1 gap-1"
             >
               <button
                 id="board-tab-newsroom"
                 type="button"
-                class="board-tab-btn px-4 py-2 rounded-lg text-sm font-bold"
+                class="board-tab-btn flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-bold text-center"
                 data-board="newsroom"
               >
-                My Newsroom
+                Newsroom
               </button>
               <button
                 id="board-tab-opinion"
                 type="button"
-                class="board-tab-btn px-4 py-2 rounded-lg text-sm font-bold"
+                class="board-tab-btn flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-bold text-center"
                 data-board="opinion"
               >
-                My Opinion
+                Opinion
               </button>
             </div>
           </div>
@@ -753,16 +790,16 @@
             >The Roadmap</span
           >
           <h3
-            class="text-4xl md:text-7xl font-black text-white mb-12 leading-tight"
+            class="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-8 sm:mb-12 leading-tight"
           >
-            논리로 도시를 설계하고,<br />
-            <span class="text-slate-500">진심으로 사회를 움직입니다.</span>
+            사회를 움직입니다,<br />
+            <span class="text-slate-500">더 나은 내일을 위해.</span>
           </h3>
           <p
             class="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed mb-16"
           >
-            중앙대학교 도시계획부동산학과에서의 학업을 통해
-            <strong>지속 가능한 공간</strong>을 구상하고, 지난 10년간 이어온
+            도시, 사회, 언론, 정치에서의 다양한 활동으로
+            <strong>지속 가능한 사회</strong> 구상하고, 지난 10년간 이어온
             사회 참여 활동의 동력으로 <strong>모두를 위한 정책</strong>을
             실현하는 전문가가 되겠습니다.
           </p>
@@ -773,7 +810,7 @@
       </div>
 
       <footer
-        class="border-t border-white/10 pt-16 pb-12 flex justify-between items-center text-xs text-slate-500 font-mono uppercase"
+        class="border-t border-white/10 pt-12 sm:pt-16 pb-12 flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center text-xs text-slate-500 font-mono uppercase text-center sm:text-left"
       >
         <span>© 2026 Lee Donggyu</span>
         <span>Official Portfolio</span>
@@ -1004,12 +1041,12 @@
                     ? `${post.content.slice(0, 160)}...`
                     : post.content;
                 return `
-                  <article class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+                  <article class="rounded-xl border border-white/10 bg-white/[0.03] p-4 sm:p-5">
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
-                      <h4 class="text-lg font-bold text-white">${post.title}</h4>
+                      <h4 class="text-base sm:text-lg font-bold text-white break-words">${post.title}</h4>
                       <span class="text-xs text-slate-500">${formatDate(post.createdAt)}</span>
                     </div>
-                    <p class="text-sm text-slate-300 leading-relaxed">${preview}</p>
+                    <p class="text-sm text-slate-300 leading-relaxed break-words">${preview}</p>
                   </article>
                 `;
               })
