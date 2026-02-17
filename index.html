@@ -341,17 +341,20 @@
           <div class="space-y-12 mt-12 flashlight-content">
             <div class="relative pl-6 border-l border-white/20">
               <span class="text-xs font-bold text-blue-500 block mb-2"
-                >2025 — PRESENT</span>
+                >2025 — PRESENT</span
+              >
               <h3 class="text-2xl font-bold text-white mb-2">
                 이건호 대일수학<br />연구팀
               </h3>
               <p class="text-sm text-slate-300">
-                공통 과목 및 확률과 통계 문항 제작 / 소수 질의응답·학습관리 클리닉 담당
+                공통 과목 및 확률과 통계 문항 제작 / 소수 질의응답·학습관리
+                클리닉 담당
               </p>
             </div>
             <div class="relative pl-6 border-l border-white/20">
               <span class="text-xs font-bold text-blue-500 block mb-2"
-                >2025 — PRESENT</span>
+                >2025 — PRESENT</span
+              >
               <h3 class="text-2xl font-bold text-white mb-2">
                 유현빈 수학 연구소
               </h3>
@@ -498,6 +501,7 @@
                   <h5 class="text-sm font-bold text-white mb-1">
                     KIYP 한국청소년정책연구소 운영부위원장
                   </h5>
+                  <p class="text-xs text-slate-400">청소년 정책 연구</p>
                   <p class="text-xs text-slate-400">
                     청소년 정책 연구
                   </p>
@@ -676,6 +680,58 @@
             </div>
           </div>
         </div>
+
+        <section
+          class="md:col-span-12 base-card"
+          id="board-section"
+          data-aos="fade-up"
+        >
+          <div
+            class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8"
+          >
+            <div>
+              <span class="section-label text-cyan-400">Board</span>
+              <h3 class="text-3xl md:text-4xl font-black text-white">
+                기록 보드
+              </h3>
+              <p class="text-sm text-slate-400 mt-3">
+                Newsroom과 Opinion을 전환해 최신 글을 확인할 수 있습니다.
+              </p>
+            </div>
+            <div
+              class="inline-flex bg-white/5 border border-white/10 rounded-xl p-1"
+            >
+              <button
+                id="board-tab-newsroom"
+                type="button"
+                class="board-tab-btn px-4 py-2 rounded-lg text-sm font-bold"
+                data-board="newsroom"
+              >
+                My Newsroom
+              </button>
+              <button
+                id="board-tab-opinion"
+                type="button"
+                class="board-tab-btn px-4 py-2 rounded-lg text-sm font-bold"
+                data-board="opinion"
+              >
+                My Opinion
+              </button>
+            </div>
+          </div>
+
+          <div id="board-list" class="space-y-4"></div>
+
+          <div class="mt-8 text-center">
+            <button
+              id="board-load-more"
+              type="button"
+              class="hidden px-5 py-2 rounded-lg border border-white/20 text-sm font-bold text-slate-200 hover:bg-white/10 transition-colors"
+            >
+              더보기
+            </button>
+          </div>
+        </section>
 
         <div class="md:col-span-12 py-32 text-center" data-aos="fade-up">
           <span
@@ -872,6 +928,122 @@
             overlay.style.clipPath = "circle(0px at 50% 50%)";
           });
         }
+
+        const boardStorageKey = "portfolioBoards";
+        const boardState = {
+          activeBoard: "newsroom",
+          visibleCount: 5,
+          step: 5,
+          data: { newsroom: [], opinion: [] },
+        };
+
+        const getBoardData = () => {
+          try {
+            const parsed = JSON.parse(
+              localStorage.getItem(boardStorageKey) || "{}",
+            );
+            return {
+              newsroom: Array.isArray(parsed.newsroom) ? parsed.newsroom : [],
+              opinion: Array.isArray(parsed.opinion) ? parsed.opinion : [],
+            };
+          } catch (error) {
+            return { newsroom: [], opinion: [] };
+          }
+        };
+
+        const formatDate = (iso) => {
+          if (!iso) {
+            return "";
+          }
+          const date = new Date(iso);
+          if (Number.isNaN(date.getTime())) {
+            return "";
+          }
+          return date.toLocaleDateString("ko-KR", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          });
+        };
+
+        const renderBoardPosts = () => {
+          const boardList = document.getElementById("board-list");
+          const loadMoreButton = document.getElementById("board-load-more");
+          if (!boardList || !loadMoreButton) {
+            return;
+          }
+
+          const currentPosts = boardState.data[boardState.activeBoard] || [];
+          const sorted = [...currentPosts].sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+          );
+          const visiblePosts = sorted.slice(0, boardState.visibleCount);
+
+          if (visiblePosts.length === 0) {
+            boardList.innerHTML =
+              '<p class="text-sm text-slate-500 border border-dashed border-white/20 rounded-xl p-6">아직 등록된 글이 없습니다.</p>';
+          } else {
+            boardList.innerHTML = visiblePosts
+              .map((post) => {
+                const preview =
+                  post.content.length > 160
+                    ? `${post.content.slice(0, 160)}...`
+                    : post.content;
+                return `
+                  <article class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+                      <h4 class="text-lg font-bold text-white">${post.title}</h4>
+                      <span class="text-xs text-slate-500">${formatDate(post.createdAt)}</span>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed">${preview}</p>
+                  </article>
+                `;
+              })
+              .join("");
+          }
+
+          loadMoreButton.classList.toggle(
+            "hidden",
+            boardState.visibleCount >= sorted.length,
+          );
+        };
+
+        const syncBoardTabs = () => {
+          const tabs = document.querySelectorAll(".board-tab-btn");
+          tabs.forEach((tab) => {
+            const isActive = tab.dataset.board === boardState.activeBoard;
+            tab.classList.toggle("bg-blue-500", isActive);
+            tab.classList.toggle("text-white", isActive);
+            tab.classList.toggle("text-slate-300", !isActive);
+          });
+        };
+
+        const initBoardSection = () => {
+          boardState.data = getBoardData();
+          boardState.visibleCount = 5;
+          syncBoardTabs();
+          renderBoardPosts();
+
+          const tabs = document.querySelectorAll(".board-tab-btn");
+          tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+              boardState.activeBoard = tab.dataset.board;
+              boardState.visibleCount = 5;
+              syncBoardTabs();
+              renderBoardPosts();
+            });
+          });
+
+          const loadMoreButton = document.getElementById("board-load-more");
+          if (loadMoreButton) {
+            loadMoreButton.addEventListener("click", () => {
+              boardState.visibleCount += boardState.step;
+              renderBoardPosts();
+            });
+          }
+        };
+
+        initBoardSection();
 
         if (window.AOS) {
           window.AOS.init({ duration: 1000, once: true });
