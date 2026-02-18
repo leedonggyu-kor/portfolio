@@ -24,13 +24,29 @@
     <style>
       :root {
         --bg: #050505;
-        --border: rgba(255, 255, 255, 0.1);
-        --accent: #3b82f6;
+        --border: rgba(255, 255, 255, 0.12);
+        --accent: #60a5fa;
       }
 
       body {
         font-family: "Pretendard", sans-serif;
         background-color: var(--bg);
+        background-image:
+          radial-gradient(
+            circle at 10% 10%,
+            rgba(59, 130, 246, 0.18),
+            transparent 42%
+          ),
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(139, 92, 246, 0.16),
+            transparent 36%
+          ),
+          radial-gradient(
+            circle at 50% 110%,
+            rgba(6, 182, 212, 0.14),
+            transparent 38%
+          );
         color: #ffffff;
         letter-spacing: -0.02em;
         overflow-x: hidden;
@@ -64,12 +80,33 @@
       }
 
       .base-card {
-        background: rgba(18, 18, 20, 0.6);
+        background: linear-gradient(
+          145deg,
+          rgba(16, 18, 28, 0.8),
+          rgba(7, 9, 14, 0.72)
+        );
         border: 1px solid var(--border);
         border-radius: 24px;
         padding: 1.5rem;
         position: relative;
         overflow: hidden;
+        backdrop-filter: blur(18px);
+        box-shadow:
+          0 14px 38px rgba(2, 6, 23, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        transition:
+          transform 0.35s ease,
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .base-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(96, 165, 250, 0.35);
+        box-shadow:
+          0 20px 46px rgba(2, 6, 23, 0.62),
+          0 0 0 1px rgba(96, 165, 250, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
       }
 
       @media (min-width: 768px) {
@@ -83,9 +120,38 @@
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 0.2em;
-        color: #64748b;
+        color: #93c5fd;
         margin-bottom: 2rem;
         display: block;
+      }
+
+      .hero-badge {
+        border: 1px solid rgba(148, 163, 184, 0.24);
+        background: rgba(15, 23, 42, 0.5);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+
+      .ambient-line {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(96, 165, 250, 0.65),
+          transparent
+        );
+        height: 1px;
+        width: 100%;
+      }
+
+      .mag-item {
+        transition:
+          transform 0.25s ease,
+          background-color 0.25s ease,
+          border-color 0.25s ease;
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .mag-item:hover {
+        border-color: rgba(96, 165, 250, 0.4);
       }
 
       .flashlight-card {
@@ -209,6 +275,10 @@
       }
 
       @media (hover: none), (pointer: coarse) {
+        .base-card:hover {
+          transform: none;
+        }
+
         body {
           cursor: auto;
         }
@@ -257,7 +327,7 @@
       >
         <div class="mb-8">
           <span
-            class="px-3 py-1 bg-white/10 text-slate-300 text-xs font-bold rounded-full"
+            class="hero-badge px-3 py-1 text-slate-200 text-xs font-bold rounded-full"
             >PORTFOLIO 2026</span
           >
         </div>
@@ -292,6 +362,8 @@
             >Kakao. leedonggyu.u</a
           >
         </div>
+
+        <div class="ambient-line mt-10 sm:mt-12"></div>
       </header>
 
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -497,28 +569,28 @@
                 <div>
                   <span
                     class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2"
-                    >전국 단위 공공참여 프로젝트</span
+                    >대통령 선거캠프</span
                   >
                   <h4 class="text-lg font-black text-white mb-3">
-                    청년 정책참여 네트워크
+                    청소년 정책참여 네트워크
                   </h4>
                   <ul class="text-xs text-slate-300 space-y-2">
-                    <li>• 청년 참여 프로젝트 총괄 운영</li>
-                    <li>• 성평등·가족 의제 공동 기획</li>
-                    <li>• 청소년 아젠다 홍보·소통 담당</li>
+                    <li>• 청소년 참여 프로젝트 총괄 운영</li>
+                    <li>• 양성평등위원회 공동위원장</li>
+                    <li>• 청소년위원회 홍보소통팀원</li>
                   </ul>
                 </div>
                 <div>
                   <span
                     class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2"
-                    >지역 단위 정책참여 프로젝트</span
+                    >광역자치단체장 선거캠프</span
                   >
                   <h4 class="text-lg font-black text-white mb-3">
-                    지역 정책참여 협의체
+                    청소년 정책참여 네트워크
                   </h4>
                   <ul class="text-xs text-slate-300 space-y-2">
-                    <li>• 성평등 의제 운영 부위원장</li>
-                    <li>• 청소년 정책 자문 역할</li>
+                    <li>• 성평등위원회 부위원장</li>
+                    <li>• 청소년특보</li>
                   </ul>
                 </div>
               </div>
@@ -535,10 +607,10 @@
                 </div>
                 <div>
                   <h5 class="text-sm font-bold text-blue-400 mb-1">
-                    청소년 정책 네트워크 청소년정치
+                    청소년 정책 네트워크 정치개혁특별위원장
                   </h5>
                   <p class="text-xs text-slate-400">
-                    청소년 참여권 확대 및 제도개선 정책 기획
+                    청소년 참여권 확대 및 정치개혁 정책 기획
                   </p>
                 </div>
                 <div class="sm:col-span-2">
@@ -758,7 +830,7 @@
                 class="board-tab-btn flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-bold text-center"
                 data-board="newsroom"
               >
-                Newsroom
+                My Newsroom
               </button>
               <button
                 id="board-tab-opinion"
@@ -766,7 +838,7 @@
                 class="board-tab-btn flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-bold text-center"
                 data-board="opinion"
               >
-                Opinion
+                My Opinion
               </button>
             </div>
           </div>
@@ -792,14 +864,14 @@
           <h3
             class="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-8 sm:mb-12 leading-tight"
           >
-            사회를 움직입니다,<br />
-            <span class="text-slate-500">더 나은 내일을 위해.</span>
+            논리로 도시를 설계하고,<br />
+            <span class="text-slate-500">진심으로 사회를 움직입니다.</span>
           </h3>
           <p
             class="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed mb-16"
           >
-            도시, 사회, 언론, 정치에서의 다양한 활동으로
-            <strong>지속 가능한 사회</strong> 구상하고, 지난 10년간 이어온
+            중앙대학교 도시계획부동산학과에서의 학업을 통해
+            <strong>지속 가능한 공간</strong>을 구상하고, 지난 10년간 이어온
             사회 참여 활동의 동력으로 <strong>모두를 위한 정책</strong>을
             실현하는 전문가가 되겠습니다.
           </p>
