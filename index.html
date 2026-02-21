@@ -131,6 +131,122 @@
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
       }
 
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      @media (min-width: 640px) {
+        .contact-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      .contact-pill {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.75rem 0.9rem;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        background: linear-gradient(
+          135deg,
+          rgba(15, 23, 42, 0.72),
+          rgba(30, 41, 59, 0.35)
+        );
+        color: #cbd5e1;
+        font-size: 0.8rem;
+        font-weight: 700;
+        transition:
+          transform 0.22s ease,
+          border-color 0.22s ease,
+          color 0.22s ease,
+          box-shadow 0.22s ease;
+      }
+
+      .contact-pill i {
+        width: 1.25rem;
+        text-align: center;
+        color: #60a5fa;
+      }
+
+      .contact-pill:hover {
+        transform: translateY(-3px);
+        border-color: rgba(96, 165, 250, 0.55);
+        color: #ffffff;
+        box-shadow: 0 10px 30px rgba(59, 130, 246, 0.24);
+      }
+
+      .progress-rail {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        z-index: 10000;
+        background: rgba(148, 163, 184, 0.2);
+      }
+
+      .progress-fill {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #22d3ee, #3b82f6, #8b5cf6);
+        box-shadow: 0 0 18px rgba(59, 130, 246, 0.7);
+      }
+
+      .floating-visual {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .floating-orb {
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(36px);
+        opacity: 0.35;
+        animation: drift 16s ease-in-out infinite;
+      }
+
+      .floating-orb.one {
+        width: 280px;
+        height: 280px;
+        left: -80px;
+        top: 22%;
+        background: rgba(14, 165, 233, 0.35);
+      }
+
+      .floating-orb.two {
+        width: 220px;
+        height: 220px;
+        right: -60px;
+        top: 35%;
+        background: rgba(99, 102, 241, 0.35);
+        animation-delay: -5s;
+      }
+
+      .floating-orb.three {
+        width: 180px;
+        height: 180px;
+        right: 28%;
+        bottom: -60px;
+        background: rgba(6, 182, 212, 0.28);
+        animation-delay: -9s;
+      }
+
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        50% {
+          transform: translateY(-24px) translateX(20px);
+        }
+      }
+
       .ambient-line {
         background: linear-gradient(
           90deg,
@@ -316,6 +432,14 @@
     </style>
   </head>
   <body class="antialiased">
+    <div class="progress-rail">
+      <div id="scroll-progress" class="progress-fill"></div>
+    </div>
+    <div class="floating-visual" aria-hidden="true">
+      <span class="floating-orb one"></span>
+      <span class="floating-orb two"></span>
+      <span class="floating-orb three"></span>
+    </div>
     <div id="cursor"></div>
 
     <main
@@ -350,17 +474,35 @@
           <p><strong class="text-white">대일외국어고등학교</strong> 졸업</p>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 mt-10 sm:mt-12">
+        <div class="contact-grid mt-10 sm:mt-12">
           <a
             href="mailto:crock1234@naver.com"
-            class="interactive-target text-sm font-bold text-slate-500 hover:text-blue-400 transition-colors break-all"
-            >Email. crock1234@naver.com</a
+            class="interactive-target contact-pill"
+            aria-label="Email 연락처"
           >
+            <i class="fa-solid fa-envelope"></i>
+            <span>Email · crock1234@naver.com</span>
+          </a>
           <a
-            href="#"
-            class="interactive-target text-sm font-bold text-slate-500 hover:text-yellow-400 transition-colors break-all"
-            >Kakao. leedonggyu.u</a
+            href="https://open.kakao.com/o/sleedonggyu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="interactive-target contact-pill"
+            aria-label="KakaoTalk 연락처"
           >
+            <i class="fa-solid fa-comment-dots"></i>
+            <span>KakaoTalk · @leedonggyu.u</span>
+          </a>
+          <a
+            href="https://www.instagram.com/ldg.lab"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="interactive-target contact-pill"
+            aria-label="Instagram 계정"
+          >
+            <i class="fa-brands fa-instagram"></i>
+            <span>Instagram · @ldg.lab</span>
+          </a>
         </div>
 
         <div class="ambient-line mt-10 sm:mt-12"></div>
@@ -1167,6 +1309,34 @@
         };
 
         initBoardSection();
+
+        const progressFill = document.getElementById("scroll-progress");
+        if (progressFill) {
+          const updateScrollProgress = () => {
+            const doc = document.documentElement;
+            const scrollable = doc.scrollHeight - window.innerHeight;
+            const progress =
+              scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+            progressFill.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+          };
+          updateScrollProgress();
+          window.addEventListener("scroll", updateScrollProgress, {
+            passive: true,
+          });
+          window.addEventListener("resize", updateScrollProgress);
+        }
+
+        const floatingOrbs = document.querySelectorAll(".floating-orb");
+        if (floatingOrbs.length > 0) {
+          document.addEventListener("mousemove", (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 18;
+            const y = (e.clientY / window.innerHeight - 0.5) * 18;
+            floatingOrbs.forEach((orb, index) => {
+              const factor = (index + 1) * 0.45;
+              orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+            });
+          });
+        }
 
         if (window.AOS) {
           window.AOS.init({ duration: 1000, once: true });
