@@ -1,0 +1,1353 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LEE DONGGYU | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <style>
+      :root {
+        --bg: #050505;
+        --border: rgba(255, 255, 255, 0.12);
+        --accent: #60a5fa;
+      }
+
+      body {
+        font-family: "Pretendard", sans-serif;
+        background-color: var(--bg);
+        background-image:
+          radial-gradient(
+            circle at 10% 10%,
+            rgba(59, 130, 246, 0.18),
+            transparent 42%
+          ),
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(139, 92, 246, 0.16),
+            transparent 36%
+          ),
+          radial-gradient(
+            circle at 50% 110%,
+            rgba(6, 182, 212, 0.14),
+            transparent 38%
+          );
+        color: #ffffff;
+        letter-spacing: -0.02em;
+        overflow-x: hidden;
+        font-style: normal !important;
+        cursor: none;
+      }
+
+      #cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        background: #3b82f6;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+          height 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+          background 0.3s;
+        mix-blend-mode: exclusion;
+      }
+
+      #cursor.hovered {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 1);
+        mix-blend-mode: difference;
+      }
+
+      .base-card {
+        background: linear-gradient(
+          145deg,
+          rgba(16, 18, 28, 0.8),
+          rgba(7, 9, 14, 0.72)
+        );
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(18px);
+        box-shadow:
+          0 14px 38px rgba(2, 6, 23, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        transition:
+          transform 0.35s ease,
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .base-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(96, 165, 250, 0.35);
+        box-shadow:
+          0 20px 46px rgba(2, 6, 23, 0.62),
+          0 0 0 1px rgba(96, 165, 250, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+
+      @media (min-width: 768px) {
+        .base-card {
+          padding: 2.5rem;
+        }
+      }
+
+      .section-label {
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #93c5fd;
+        margin-bottom: 2rem;
+        display: block;
+      }
+
+      .hero-badge {
+        border: 1px solid rgba(148, 163, 184, 0.24);
+        background: rgba(15, 23, 42, 0.5);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      @media (min-width: 640px) {
+        .contact-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      .contact-pill {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.75rem 0.9rem;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        background: linear-gradient(
+          135deg,
+          rgba(15, 23, 42, 0.72),
+          rgba(30, 41, 59, 0.35)
+        );
+        color: #cbd5e1;
+        font-size: 0.8rem;
+        font-weight: 700;
+        transition:
+          transform 0.22s ease,
+          border-color 0.22s ease,
+          color 0.22s ease,
+          box-shadow 0.22s ease;
+      }
+
+      .contact-pill i {
+        width: 1.25rem;
+        text-align: center;
+        color: #60a5fa;
+      }
+
+      .contact-pill:hover {
+        transform: translateY(-3px);
+        border-color: rgba(96, 165, 250, 0.55);
+        color: #ffffff;
+        box-shadow: 0 10px 30px rgba(59, 130, 246, 0.24);
+      }
+
+      .progress-rail {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        z-index: 10000;
+        background: rgba(148, 163, 184, 0.2);
+      }
+
+      .progress-fill {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #22d3ee, #3b82f6, #8b5cf6);
+        box-shadow: 0 0 18px rgba(59, 130, 246, 0.7);
+      }
+
+      .floating-visual {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .floating-orb {
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(36px);
+        opacity: 0.35;
+        animation: drift 16s ease-in-out infinite;
+      }
+
+      .floating-orb.one {
+        width: 280px;
+        height: 280px;
+        left: -80px;
+        top: 22%;
+        background: rgba(14, 165, 233, 0.35);
+      }
+
+      .floating-orb.two {
+        width: 220px;
+        height: 220px;
+        right: -60px;
+        top: 35%;
+        background: rgba(99, 102, 241, 0.35);
+        animation-delay: -5s;
+      }
+
+      .floating-orb.three {
+        width: 180px;
+        height: 180px;
+        right: 28%;
+        bottom: -60px;
+        background: rgba(6, 182, 212, 0.28);
+        animation-delay: -9s;
+      }
+
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        50% {
+          transform: translateY(-24px) translateX(20px);
+        }
+      }
+
+      .ambient-line {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(96, 165, 250, 0.65),
+          transparent
+        );
+        height: 1px;
+        width: 100%;
+      }
+
+      .mag-item {
+        transition:
+          transform 0.25s ease,
+          background-color 0.25s ease,
+          border-color 0.25s ease;
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .mag-item:hover {
+        border-color: rgba(96, 165, 250, 0.4);
+      }
+
+      .flashlight-card {
+        --light-x: 50%;
+        --light-y: 50%;
+        background: #000;
+        color: rgba(255, 255, 255, 0.25);
+      }
+
+      .flashlight-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle 250px at var(--light-x) var(--light-y),
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+        pointer-events: none;
+      }
+
+      .flashlight-content {
+        transition: color 0.1s;
+      }
+
+      .flashlight-card:hover .flashlight-content {
+        color: rgba(255, 255, 255, 1);
+      }
+
+      .parallax-card {
+        overflow: hidden;
+      }
+
+      .parallax-layer {
+        transition: transform 0.1s ease-out;
+        will-change: transform;
+      }
+
+      .cyber-card {
+        background: #0a0a0a;
+        position: relative;
+      }
+
+      .cyber-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0;
+        transition: opacity 0.5s;
+        pointer-events: none;
+      }
+
+      .cyber-card:hover .cyber-grid {
+        opacity: 1;
+      }
+
+      .cyber-scan-line {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 2px;
+        background: #3b82f6;
+        box-shadow: 0 0 10px #3b82f6;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .cyber-card:hover .cyber-scan-line {
+        opacity: 1;
+        animation: scanDown 2s linear infinite;
+      }
+
+      @keyframes scanDown {
+        0% {
+          top: -10%;
+          opacity: 0;
+        }
+
+        10% {
+          opacity: 1;
+        }
+
+        90% {
+          opacity: 1;
+        }
+
+        100% {
+          top: 110%;
+          opacity: 0;
+        }
+      }
+
+      .social-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        border-radius: 24px;
+        background: #ffffff;
+        color: #000000;
+        overflow: hidden;
+      }
+
+      .social-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        padding: 2.5rem;
+        pointer-events: none;
+        clip-path: circle(0px at 0 0);
+        transition: clip-path 0.15s ease-out;
+      }
+
+      @media (hover: none), (pointer: coarse) {
+        .base-card:hover {
+          transform: none;
+        }
+
+        body {
+          cursor: auto;
+        }
+
+        #cursor {
+          display: none;
+        }
+
+        .social-base {
+          display: none;
+        }
+
+        .social-overlay {
+          position: relative;
+          height: auto;
+          clip-path: none !important;
+          pointer-events: auto;
+          transition: none;
+          padding: 1.5rem;
+        }
+      }
+
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <div class="progress-rail">
+      <div id="scroll-progress" class="progress-fill"></div>
+    </div>
+    <div class="floating-visual" aria-hidden="true">
+      <span class="floating-orb one"></span>
+      <span class="floating-orb two"></span>
+      <span class="floating-orb three"></span>
+    </div>
+    <div id="cursor"></div>
+
+    <main
+      class="max-w-[1400px] mx-auto px-4 sm:px-6 py-14 sm:py-24 relative z-10"
+    >
+      <header
+        class="mb-24 sm:mb-40 pl-3 sm:pl-4 border-l-2 border-white/10"
+        data-aos="fade-right"
+      >
+        <div class="mb-8">
+          <span
+            class="hero-badge px-3 py-1 text-slate-200 text-xs font-bold rounded-full"
+            >PORTFOLIO 2026</span
+          >
+        </div>
+
+        <h1
+          class="text-4xl sm:text-6xl md:text-9xl font-black tracking-tighter leading-[0.95] mb-8 sm:mb-10 text-white break-words"
+          id="scramble-title"
+        >
+          LEE DONGGYU
+        </h1>
+
+        <div
+          class="flex flex-col md:flex-row gap-8 text-slate-400 text-lg font-light"
+        >
+          <p>
+            <strong class="text-white">중앙대학교</strong> 도시계획부동산학과
+            재학
+          </p>
+          <span class="hidden md:block text-white/20">/</span>
+          <p><strong class="text-white">대일외국어고등학교</strong> 졸업</p>
+        </div>
+
+        <div class="contact-grid mt-10 sm:mt-12">
+          <a
+            href="mailto:crock1234@naver.com"
+            class="interactive-target contact-pill"
+            aria-label="Email 연락처"
+          >
+            <i class="fa-solid fa-envelope"></i>
+            <span>Email · crock1234@naver.com</span>
+          </a>
+          <a
+            href="https://open.kakao.com/o/sleedonggyu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="interactive-target contact-pill"
+            aria-label="KakaoTalk 연락처"
+          >
+            <i class="fa-solid fa-comment-dots"></i>
+            <span>KakaoTalk · @leedonggyu.u</span>
+          </a>
+          <a
+            href="https://www.instagram.com/ldg.lab"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="interactive-target contact-pill"
+            aria-label="Instagram 계정"
+          >
+            <i class="fa-brands fa-instagram"></i>
+            <span>Instagram · @ldg.lab</span>
+          </a>
+        </div>
+
+        <div class="ambient-line mt-10 sm:mt-12"></div>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div
+          class="md:col-span-12 lg:col-span-8 base-card parallax-card"
+          id="card-leadership"
+        >
+          <div
+            class="absolute -right-20 -top-20 w-96 h-96 bg-indigo-900/40 rounded-full blur-[100px] parallax-layer"
+            data-speed="2"
+          ></div>
+
+          <span class="section-label parallax-layer" data-speed="1"
+            >Leadership</span
+          >
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-black mb-8 sm:mb-12 parallax-layer relative z-10 leading-tight break-words"
+            data-speed="1.5"
+          >
+            대일외국어고등학교<br />
+            <span class="text-indigo-400">제40대 학생회장</span>
+          </h2>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-10 parallax-layer relative z-10"
+            data-speed="1"
+          >
+            <div class="space-y-8">
+              <div>
+                <span class="text-xs font-bold text-indigo-400 block mb-1"
+                  >2024 - 2025</span
+                >
+                <p class="font-bold text-lg text-white">
+                  대일외국어고등학교 제40대 학생회장
+                </p>
+                <p class="text-sm text-slate-400 mt-1">
+                  학생 자치 기구 총괄 및 학생 권익 증진 활동 주도
+                </p>
+              </div>
+              <div>
+                <p class="font-bold text-base text-white">
+                  학생회 안전관리부 부장
+                </p>
+                <p class="text-sm text-slate-400 mt-1">
+                  학생대의원회의 진행 및 학생 안전 정책 수립 담당
+                </p>
+              </div>
+              <div>
+                <p class="font-bold text-base text-white">
+                  학생회 안전관리부 차장
+                </p>
+                <p class="text-sm text-slate-400 mt-1">
+                  학생대의원회의 진행 및 학생 안전 정책 수립 담당
+                </p>
+              </div>
+            </div>
+            <div class="space-y-8">
+              <div>
+                <span class="text-xs font-bold text-indigo-400 block mb-1"
+                  >2021 - 2022</span
+                >
+                <p class="font-bold text-lg text-white">
+                  고명중학교 학생회 생활교육부장
+                </p>
+                <p class="text-sm text-slate-400 mt-1">
+                  학생 생활 지도 및 건전한 학교 문화 조성 활동
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="md:col-span-12 lg:col-span-4 base-card flashlight-card"
+          id="card-academic"
+        >
+          <span class="section-label">Academic / TA</span>
+          <div class="space-y-12 mt-12 flashlight-content">
+            <div class="relative pl-6 border-l border-white/20">
+              <span class="text-xs font-bold text-blue-500 block mb-2"
+                >2025 — PRESENT</span
+              >
+              <h3 class="text-2xl font-bold text-white mb-2">
+                이건호 대일수학<br />연구팀
+              </h3>
+              <p class="text-sm text-slate-300">
+                공통 과목 및 확률과 통계 문항 제작 / 소수 질의응답·학습관리
+                클리닉 담당
+              </p>
+            </div>
+            <div
+              class="relative pl-6 border-l border-white/20 hidden"
+              aria-hidden="true"
+            >
+              <span class="text-xs font-bold text-blue-500 block mb-2"
+                >2025 — PRESENT</span
+              >
+              <h3 class="text-2xl font-bold text-white mb-2">
+                유현빈 수학 연구소
+              </h3>
+              <p class="text-sm text-slate-300">
+                현장강의 행정 / 질의응답·학습관리 클리닉 담당
+              </p>
+            </div>
+            <div class="relative pl-6 border-l border-white/20">
+              <span class="text-xs font-bold text-slate-500 block mb-2"
+                >2025 — 2026</span
+              >
+              <h3 class="text-2xl font-bold text-white mb-2">성북학림학원</h3>
+              <p class="text-sm text-slate-300">
+                대일외고 윈터스쿨 수학 질의응답·학습관리 클리닉 담당
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-12 base-card bg-[#0a0a0a]">
+          <div
+            class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4"
+          >
+            <div>
+              <span class="section-label text-orange-500">Journalism</span>
+              <h3 class="text-4xl font-black text-white">청라온 선임기자</h3>
+              <p class="text-sm text-slate-500 mt-2">
+                사회 이슈 및 정책 분석 기사 100여 건 집필 (2020-2024)
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="grid grid-cols-2 md:grid-cols-4 gap-4"
+            id="journalism-grid"
+          >
+            <div
+              class="mag-item p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors"
+            >
+              <p class="font-bold text-white mb-1">통일부</p>
+              <p class="text-xs text-slate-400">제8기 어린이 기자</p>
+              <p class="text-[11px] text-slate-500 mt-1">2019-2020</p>
+            </div>
+            <div
+              class="mag-item p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors"
+            >
+              <p class="font-bold text-white mb-1">금융소비자연맹</p>
+              <p class="text-xs text-slate-400">청소년소비자기자</p>
+              <p class="text-[11px] text-slate-500 mt-1">2022</p>
+            </div>
+            <div
+              class="mag-item p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors"
+            >
+              <p class="font-bold text-white mb-1">수완뉴스</p>
+              <p class="text-xs text-slate-400">청소년 기자</p>
+              <p class="text-[11px] text-slate-500 mt-1">2020-2022</p>
+            </div>
+            <div
+              class="mag-item p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors"
+            >
+              <p class="font-bold text-white mb-1">에듀뉴스</p>
+              <p class="text-xs text-slate-400">학생기자</p>
+              <p class="text-[11px] text-slate-500 mt-1">2022-2024</p>
+            </div>
+            <div
+              class="mag-item p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors"
+            >
+              <p class="font-bold text-white mb-1">STEMATIX</p>
+              <p class="text-xs text-slate-400">한국지부 저널리스트</p>
+              <p class="text-[11px] text-slate-500 mt-1">2021</p>
+            </div>
+            <div
+              class="mag-item p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors"
+            >
+              <p class="font-bold text-white mb-1">글로밥상</p>
+              <p class="text-xs text-slate-400">매거진 필진</p>
+              <p class="text-[11px] text-slate-500 mt-1">2020-2022</p>
+            </div>
+            <div
+              class="mag-item p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors"
+            >
+              <p class="font-bold text-white mb-1">주니어 생글생글</p>
+              <p class="text-xs text-slate-400">한국경제신문 기자</p>
+              <p class="text-[11px] text-slate-500 mt-1">2022-2024</p>
+            </div>
+            <div
+              class="mag-item p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors"
+            >
+              <p class="font-bold text-white mb-1">내친구서울</p>
+              <p class="text-xs text-slate-400">서울특별시 어린이 기자</p>
+              <p class="text-[11px] text-slate-500 mt-1">2016-2017</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-12 lg:col-span-7 base-card cyber-card">
+          <div class="cyber-grid"></div>
+          <div class="cyber-scan-line"></div>
+
+          <div class="relative z-10">
+            <span class="section-label text-blue-400"
+              >Public Policy & Civic Engagement</span
+            >
+            <div class="space-y-8 mt-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <span
+                    class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2"
+                    >대통령 선거캠프</span
+                  >
+                  <h4 class="text-lg font-black text-white mb-3">
+                    청소년 정책참여 네트워크
+                  </h4>
+                  <ul class="text-xs text-slate-300 space-y-2">
+                    <li>• 청소년 참여 프로젝트 총괄 운영</li>
+                    <li>• 양성평등위원회 공동위원장</li>
+                    <li>• 청소년위원회 홍보소통팀원</li>
+                  </ul>
+                </div>
+                <div>
+                  <span
+                    class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2"
+                    >광역자치단체장 선거캠프</span
+                  >
+                  <h4 class="text-lg font-black text-white mb-3">
+                    청소년 정책참여 네트워크
+                  </h4>
+                  <ul class="text-xs text-slate-300 space-y-2">
+                    <li>• 성평등위원회 부위원장</li>
+                    <li>• 청소년특보</li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/10 pt-6"
+              >
+                <div>
+                  <h5 class="text-sm font-bold text-white mb-1">
+                    청소년 정책 네트워크 정책본부장
+                  </h5>
+                  <p class="text-xs text-slate-400">
+                    청소년 관련 공약 개발 및 정책 수립 지원
+                  </p>
+                </div>
+                <div>
+                  <h5 class="text-sm font-bold text-blue-400 mb-1">
+                    청소년 정책 네트워크 정치개혁특별위원장
+                  </h5>
+                  <p class="text-xs text-slate-400">
+                    청소년 참여권 확대 및 정치개혁 정책 기획
+                  </p>
+                </div>
+                <div class="sm:col-span-2">
+                  <h5 class="text-sm font-bold text-white mb-1">
+                    KIYP 한국청소년정책연구소 운영부위원장
+                  </h5>
+                  <p class="text-xs text-slate-400">청소년 정책 연구</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-12 lg:col-span-5 base-card flex flex-col">
+          <span class="section-label text-yellow-500">Awards & Honors</span>
+          <div class="space-y-5">
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-yellow-500/10 to-transparent border border-yellow-500/20"
+            >
+              <span class="text-2xl">🏆</span>
+              <div>
+                <span class="text-[10px] font-bold text-yellow-500 uppercase"
+                  >Grand Prize</span
+                >
+                <p class="font-bold text-sm text-white">통일부장관상 (대상)</p>
+                <p class="text-[10px] text-slate-400">
+                  제19회 전국장애인과 함께하는 문예글짓기 대회
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5"
+            >
+              <span class="text-2xl">🥇</span>
+              <div>
+                <span class="text-[10px] font-bold text-blue-400 uppercase"
+                  >Gold Prize</span
+                >
+                <p class="font-bold text-sm text-white">
+                  서울지방국세청장상 (금상)
+                </p>
+                <p class="text-[10px] text-slate-400">
+                  2022 청소년 세금작품공모전 글짓기 부문
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5"
+            >
+              <span class="text-2xl">🥈</span>
+              <div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase"
+                  >1st Prize</span
+                >
+                <p class="font-bold text-sm text-white">
+                  아동권리보장원장상 (최우수상)
+                </p>
+                <p class="text-[10px] text-slate-400">
+                  아동정책영향평가 공모전 슬로건 부문
+                </p>
+              </div>
+            </div>
+            <div class="p-3 border-l-2 border-slate-700 pl-4">
+              <p class="font-bold text-xs text-white">
+                금융소비자연맹회장상 (장려상)
+              </p>
+              <p class="text-[10px] text-slate-500">
+                2022 청소년 소비자 기사·포스터 공모전
+              </p>
+            </div>
+            <div class="p-3 border-l-2 border-slate-700 pl-4">
+              <p class="font-bold text-xs text-white">
+                초록우산 어린이재단회장상 (장려상)
+              </p>
+              <p class="text-[10px] text-slate-500">
+                제7회 전국 감사편지 공모전
+              </p>
+            </div>
+            <div class="p-3 border-l-2 border-slate-700 pl-4">
+              <p class="font-bold text-xs text-white">
+                극지해양미래포럼이사장상 (입선)
+              </p>
+              <p class="text-[10px] text-slate-500">
+                제8회 극지·해양 도서 독후감 공모전
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-12" style="height: auto">
+          <div
+            class="base-card social-container p-0 border-none overflow-hidden h-full relative"
+            id="social-card"
+          >
+            <div
+              class="social-base bg-white text-black p-6 sm:p-10 h-full w-full"
+            >
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div>
+                  <span class="section-label" style="color: #000"
+                    >Social Participation</span
+                  >
+                  <h3 class="text-3xl sm:text-5xl font-black mb-6 leading-none">
+                    Logic in<br />Movement.
+                  </h3>
+                  <p class="text-sm font-medium opacity-70">
+                    단순한 참여를 넘어 정책을 제안하고 사회적 담론을 형성합니다.
+                  </p>
+                </div>
+                <div
+                  class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 opacity-30 blur-[2px]"
+                >
+                  <p>Hover to reveal details...</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-overlay">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 h-full">
+                <div>
+                  <span class="section-label text-white"
+                    >Social Participation</span
+                  >
+                  <h3
+                    class="text-3xl sm:text-5xl font-black mb-6 leading-none text-white"
+                  >
+                    Logic in<br />Movement.
+                  </h3>
+                  <p class="text-sm font-medium text-slate-400">
+                    단순한 참여를 넘어 정책을 제안하고 사회적 담론을 형성합니다.
+                    공공기관부터 시민단체까지, 청소년의 목소리를 제도권에
+                    전달해왔습니다.
+                  </p>
+                </div>
+                <div
+                  class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm"
+                >
+                  <div>
+                    <p class="text-xs text-blue-400 font-bold mb-1">
+                      Education
+                    </p>
+                    <p class="font-bold text-white">
+                      서울특별시교육청 제11·12·13기 학생참여단
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2022-2025</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-blue-400 font-bold mb-1">
+                      Government
+                    </p>
+                    <p class="font-bold text-white">
+                      여성가족부 제16회 청소년특별회의 선발직 위원
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2020-2021</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-blue-400 font-bold mb-1">
+                      Non-Profit
+                    </p>
+                    <p class="font-bold text-white">
+                      청소년 단체 '유니엄' 대표이사
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2020-2023</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-blue-400 font-bold mb-1">Climate</p>
+                    <p class="font-bold text-white">
+                      청소년기후행동 기후정치크루
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2021-현재</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-blue-400 font-bold mb-1">Panel</p>
+                    <p class="font-bold text-white">
+                      국민권익위원회 국민생각함 국민패널
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2022-2025</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-blue-400 font-bold mb-1">
+                      Diplomacy
+                    </p>
+                    <p class="font-bold text-white">
+                      반크 청년공공외교대사 9기
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section
+          class="md:col-span-12 base-card"
+          id="board-section"
+          data-aos="fade-up"
+        >
+          <div
+            class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8"
+          >
+            <div>
+              <span class="section-label text-cyan-400">Board</span>
+              <h3 class="text-3xl md:text-4xl font-black text-white">
+                기록 보드
+              </h3>
+              <p class="text-sm text-slate-400 mt-3">
+                Newsroom과 Opinion을 전환해 최신 글을 확인할 수 있습니다.
+              </p>
+            </div>
+            <div
+              class="flex flex-wrap w-full sm:w-auto bg-white/5 border border-white/10 rounded-xl p-1 gap-1"
+            >
+              <button
+                id="board-tab-newsroom"
+                type="button"
+                class="board-tab-btn flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-bold text-center"
+                data-board="newsroom"
+              >
+                My Newsroom
+              </button>
+              <button
+                id="board-tab-opinion"
+                type="button"
+                class="board-tab-btn flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-bold text-center"
+                data-board="opinion"
+              >
+                My Opinion
+              </button>
+            </div>
+          </div>
+
+          <div id="board-list" class="space-y-4"></div>
+
+          <div class="mt-8 text-center">
+            <button
+              id="board-load-more"
+              type="button"
+              class="hidden px-5 py-2 rounded-lg border border-white/20 text-sm font-bold text-slate-200 hover:bg-white/10 transition-colors"
+            >
+              더보기
+            </button>
+          </div>
+        </section>
+
+        <div class="md:col-span-12 py-32 text-center" data-aos="fade-up">
+          <span
+            class="text-xs font-bold text-blue-500 tracking-[0.5em] uppercase mb-8 block"
+            >The Roadmap</span
+          >
+          <h3
+            class="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-8 sm:mb-12 leading-tight"
+          >
+            논리로 도시를 설계하고,<br />
+            <span class="text-slate-500">진심으로 사회를 움직입니다.</span>
+          </h3>
+          <p
+            class="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed mb-16"
+          >
+            중앙대학교 도시계획부동산학과에서의 학업을 통해
+            <strong>지속 가능한 공간</strong>을 구상하고, 지난 10년간 이어온
+            사회 참여 활동의 동력으로 <strong>모두를 위한 정책</strong>을
+            실현하는 전문가가 되겠습니다.
+          </p>
+          <div
+            class="w-px h-24 bg-gradient-to-b from-blue-500 to-transparent mx-auto"
+          ></div>
+        </div>
+      </div>
+
+      <footer
+        class="border-t border-white/10 pt-12 sm:pt-16 pb-12 flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center text-xs text-slate-500 font-mono uppercase text-center sm:text-left"
+      >
+        <span>© 2026 Lee Donggyu</span>
+        <span>Official Portfolio</span>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      const initPortfolioAnimations = () => {
+        const cursor = document.getElementById("cursor");
+        const interactiveTargets = document.querySelectorAll(
+          ".interactive-target",
+        );
+
+        if (cursor) {
+          document.addEventListener("mousemove", (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+          });
+
+          interactiveTargets.forEach((el) => {
+            el.addEventListener("mouseenter", () =>
+              cursor.classList.add("hovered"),
+            );
+            el.addEventListener("mouseleave", () =>
+              cursor.classList.remove("hovered"),
+            );
+          });
+        }
+
+        class TextScramble {
+          constructor(el) {
+            this.el = el;
+            this.chars = "!<>-_\\/[]{}—=+*^?#________";
+            this.update = this.update.bind(this);
+          }
+
+          setText(newText) {
+            const oldText = this.el.innerText;
+            const length = Math.max(oldText.length, newText.length);
+            const promise = new Promise((resolve) => {
+              this.resolve = resolve;
+            });
+            this.queue = [];
+
+            for (let i = 0; i < length; i += 1) {
+              const from = oldText[i] || "";
+              const to = newText[i] || "";
+              const start = Math.floor(Math.random() * 40);
+              const end = start + Math.floor(Math.random() * 40);
+              this.queue.push({ from, to, start, end });
+            }
+
+            cancelAnimationFrame(this.frameRequest);
+            this.frame = 0;
+            this.update();
+            return promise;
+          }
+
+          update() {
+            let output = "";
+            let complete = 0;
+
+            for (let i = 0, n = this.queue.length; i < n; i += 1) {
+              let { from, to, start, end, char } = this.queue[i];
+
+              if (this.frame >= end) {
+                complete += 1;
+                output += to;
+              } else if (this.frame >= start) {
+                if (!char || Math.random() < 0.28) {
+                  char = this.randomChar();
+                  this.queue[i].char = char;
+                }
+                output += `<span class="text-blue-500">${char}</span>`;
+              } else {
+                output += from;
+              }
+            }
+
+            this.el.innerHTML = output;
+
+            if (complete === this.queue.length) {
+              this.resolve();
+            } else {
+              this.frameRequest = requestAnimationFrame(this.update);
+              this.frame += 1;
+            }
+          }
+
+          randomChar() {
+            return this.chars[Math.floor(Math.random() * this.chars.length)];
+          }
+        }
+
+        const titleElement = document.getElementById("scramble-title");
+        if (titleElement) {
+          const scramble = new TextScramble(titleElement);
+          setTimeout(() => {
+            scramble.setText("LEE DONGGYU");
+          }, 500);
+        }
+
+        const leadershipCard = document.getElementById("card-leadership");
+        if (leadershipCard) {
+          leadershipCard.addEventListener("mousemove", (e) => {
+            const layers = leadershipCard.querySelectorAll(".parallax-layer");
+            const rect = leadershipCard.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            layers.forEach((layer) => {
+              const speed = Number(layer.getAttribute("data-speed"));
+              layer.style.transform = `translate(${x * 20 * speed}px, ${y * 20 * speed}px)`;
+            });
+          });
+
+          leadershipCard.addEventListener("mouseleave", () => {
+            const layers = leadershipCard.querySelectorAll(".parallax-layer");
+            layers.forEach((layer) => {
+              layer.style.transform = "translate(0, 0)";
+            });
+          });
+        }
+
+        const academicCard = document.getElementById("card-academic");
+        if (academicCard) {
+          academicCard.addEventListener("mousemove", (e) => {
+            const rect = academicCard.getBoundingClientRect();
+            academicCard.style.setProperty(
+              "--light-x",
+              `${e.clientX - rect.left}px`,
+            );
+            academicCard.style.setProperty(
+              "--light-y",
+              `${e.clientY - rect.top}px`,
+            );
+          });
+        }
+
+        const magItems = document.querySelectorAll(".mag-item");
+        magItems.forEach((item) => {
+          item.addEventListener("mousemove", (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            item.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+          });
+
+          item.addEventListener("mouseleave", () => {
+            item.style.transform = "translate(0, 0)";
+          });
+        });
+
+        const socialCard = document.getElementById("social-card");
+        const overlay = document.querySelector(".social-overlay");
+        if (socialCard && overlay) {
+          socialCard.addEventListener("mousemove", (e) => {
+            const rect = socialCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            overlay.style.clipPath = `circle(300px at ${x}px ${y}px)`;
+          });
+
+          socialCard.addEventListener("mouseleave", () => {
+            overlay.style.clipPath = "circle(0px at 50% 50%)";
+          });
+        }
+
+        const boardStorageKey = "portfolioBoards";
+        const boardState = {
+          activeBoard: "newsroom",
+          visibleCount: 5,
+          step: 5,
+          data: { newsroom: [], opinion: [] },
+        };
+
+        const getBoardData = () => {
+          try {
+            const parsed = JSON.parse(
+              localStorage.getItem(boardStorageKey) || "{}",
+            );
+            return {
+              newsroom: Array.isArray(parsed.newsroom) ? parsed.newsroom : [],
+              opinion: Array.isArray(parsed.opinion) ? parsed.opinion : [],
+            };
+          } catch (error) {
+            return { newsroom: [], opinion: [] };
+          }
+        };
+
+        const formatDate = (iso) => {
+          if (!iso) {
+            return "";
+          }
+          const date = new Date(iso);
+          if (Number.isNaN(date.getTime())) {
+            return "";
+          }
+          return date.toLocaleDateString("ko-KR", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          });
+        };
+
+        const renderBoardPosts = () => {
+          const boardList = document.getElementById("board-list");
+          const loadMoreButton = document.getElementById("board-load-more");
+          if (!boardList || !loadMoreButton) {
+            return;
+          }
+
+          const currentPosts = boardState.data[boardState.activeBoard] || [];
+          const sorted = [...currentPosts].sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+          );
+          const visiblePosts = sorted.slice(0, boardState.visibleCount);
+
+          if (visiblePosts.length === 0) {
+            boardList.innerHTML =
+              '<p class="text-sm text-slate-500 border border-dashed border-white/20 rounded-xl p-6">아직 등록된 글이 없습니다.</p>';
+          } else {
+            boardList.innerHTML = visiblePosts
+              .map((post) => {
+                const preview =
+                  post.content.length > 160
+                    ? `${post.content.slice(0, 160)}...`
+                    : post.content;
+                return `
+                  <article class="rounded-xl border border-white/10 bg-white/[0.03] p-4 sm:p-5">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+                      <h4 class="text-base sm:text-lg font-bold text-white break-words">${post.title}</h4>
+                      <span class="text-xs text-slate-500">${formatDate(post.createdAt)}</span>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed break-words">${preview}</p>
+                  </article>
+                `;
+              })
+              .join("");
+          }
+
+          loadMoreButton.classList.toggle(
+            "hidden",
+            boardState.visibleCount >= sorted.length,
+          );
+        };
+
+        const syncBoardTabs = () => {
+          const tabs = document.querySelectorAll(".board-tab-btn");
+          tabs.forEach((tab) => {
+            const isActive = tab.dataset.board === boardState.activeBoard;
+            tab.classList.toggle("bg-blue-500", isActive);
+            tab.classList.toggle("text-white", isActive);
+            tab.classList.toggle("text-slate-300", !isActive);
+          });
+        };
+
+        const initBoardSection = () => {
+          boardState.data = getBoardData();
+          boardState.visibleCount = 5;
+          syncBoardTabs();
+          renderBoardPosts();
+
+          const tabs = document.querySelectorAll(".board-tab-btn");
+          tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+              boardState.activeBoard = tab.dataset.board;
+              boardState.visibleCount = 5;
+              syncBoardTabs();
+              renderBoardPosts();
+            });
+          });
+
+          const loadMoreButton = document.getElementById("board-load-more");
+          if (loadMoreButton) {
+            loadMoreButton.addEventListener("click", () => {
+              boardState.visibleCount += boardState.step;
+              renderBoardPosts();
+            });
+          }
+        };
+
+        initBoardSection();
+
+        const progressFill = document.getElementById("scroll-progress");
+        if (progressFill) {
+          const updateScrollProgress = () => {
+            const doc = document.documentElement;
+            const scrollable = doc.scrollHeight - window.innerHeight;
+            const progress =
+              scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+            progressFill.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+          };
+          updateScrollProgress();
+          window.addEventListener("scroll", updateScrollProgress, {
+            passive: true,
+          });
+          window.addEventListener("resize", updateScrollProgress);
+        }
+
+        const floatingOrbs = document.querySelectorAll(".floating-orb");
+        if (floatingOrbs.length > 0) {
+          document.addEventListener("mousemove", (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 18;
+            const y = (e.clientY / window.innerHeight - 0.5) * 18;
+            floatingOrbs.forEach((orb, index) => {
+              const factor = (index + 1) * 0.45;
+              orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+            });
+          });
+        }
+
+        if (window.AOS) {
+          window.AOS.init({ duration: 1000, once: true });
+        }
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initPortfolioAnimations);
+      } else {
+        initPortfolioAnimations();
+      }
+    </script>
+  </body>
+</html>
