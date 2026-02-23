@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build",
+    "postexport": "node -e \"require('fs').writeFileSync('out/.nojekyll','')\""
   },
   "dependencies": {
     "gsap": "^3.12.5",
