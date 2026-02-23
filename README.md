@@ -38,3 +38,19 @@ NEXT_PUBLIC_BASE_PATH=/<repo> npm run export
 ```bash
 npm run export
 ```
+
+
+## "예전 페이지가 보이는" 문제 해결 체크리스트
+
+`https://<user>.github.io/<repo>/`에서 예전 `index.html`이 보이는 가장 흔한 원인은 **Pages 소스가 main/root로 설정**되어 있고, Next export 결과물(`out/`)은 배포되지 않았기 때문입니다.
+
+이 저장소는 `.github/workflows/deploy-pages.yml`로 배포하도록 구성했습니다.
+
+1. GitHub 저장소 **Settings → Pages → Build and deployment**에서 Source를 **GitHub Actions**로 설정
+2. `main` 브랜치에 push
+3. **Actions 탭에서 `Deploy Next.js static export to GitHub Pages` 워크플로 성공 확인**
+4. 배포 URL 재접속 (강력 새로고침 권장)
+
+참고:
+- Project Pages는 자동으로 `NEXT_PUBLIC_BASE_PATH=/<repo>`를 사용해 빌드합니다.
+- 아직도 예전 화면이면 브라우저 캐시 또는 이전 gh-pages artifact가 남았는지 확인하세요.
