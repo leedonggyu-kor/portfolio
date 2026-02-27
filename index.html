@@ -309,6 +309,8 @@
       .cyber-card {
         background: #0a0a0a;
         position: relative;
+        opacity: 0.88;
+        border-color: rgba(148, 163, 184, 0.22);
       }
 
       .cyber-grid {
@@ -324,7 +326,7 @@
       }
 
       .cyber-card:hover .cyber-grid {
-        opacity: 1;
+        opacity: 0.45;
       }
 
       .cyber-scan-line {
@@ -340,8 +342,54 @@
       }
 
       .cyber-card:hover .cyber-scan-line {
-        opacity: 1;
-        animation: scanDown 2s linear infinite;
+        opacity: 0.55;
+        animation: scanDown 2.8s linear infinite;
+      }
+
+      .social-spotlight {
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+          0 20px 60px rgba(15, 23, 42, 0.45);
+      }
+
+      .social-spotlight::before {
+        content: "";
+        position: absolute;
+        inset: -20% auto auto -15%;
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.25),
+          rgba(59, 130, 246, 0)
+        );
+        pointer-events: none;
+      }
+
+      .social-item {
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        background: linear-gradient(
+          145deg,
+          rgba(15, 23, 42, 0.5),
+          rgba(2, 6, 23, 0.75)
+        );
+        border-radius: 14px;
+        padding: 0.9rem;
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .social-item:hover {
+        transform: translateY(-4px);
+        border-color: rgba(96, 165, 250, 0.55);
+        box-shadow: 0 12px 30px rgba(14, 116, 144, 0.2);
+      }
+
+      .policy-muted {
+        filter: saturate(0.75);
       }
 
       @keyframes scanDown {
@@ -597,17 +645,6 @@
               </p>
             </div>
             <div class="relative pl-6 border-l border-white/20">
-              <span class="text-xs font-bold text-blue-500 block mb-2"
-                >2025 — PRESENT</span
-              >
-              <h3 class="text-2xl font-bold text-white mb-2">
-                유현빈 수학 연구소
-              </h3>
-              <p class="text-sm text-slate-300">
-                현장강의 행정 / 질의응답·학습관리 클리닉 담당
-              </p>
-            </div>
-            <div class="relative pl-6 border-l border-white/20">
               <span class="text-xs font-bold text-slate-500 block mb-2"
                 >2025 — 2026</span
               >
@@ -705,68 +742,104 @@
           </div>
         </div>
 
-        <div class="md:col-span-12 lg:col-span-7 base-card cyber-card">
-          <div class="cyber-grid"></div>
-          <div class="cyber-scan-line"></div>
-
-          <div class="relative z-10">
-            <span class="section-label text-blue-400"
-              >Public Policy & Civic Engagement</span
+        <div class="md:col-span-12" style="height: auto">
+          <div
+            class="base-card social-container social-spotlight p-0 border-none overflow-hidden h-full relative"
+            id="social-card"
+          >
+            <div
+              class="social-base bg-white text-black p-6 sm:p-10 h-full w-full"
             >
-            <div class="space-y-8 mt-4">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <div>
-                  <span
-                    class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2"
-                    >대통령 선거캠프</span
+                  <span class="section-label" style="color: #000"
+                    >Social Participation</span
                   >
-                  <h4 class="text-lg font-black text-white mb-3">
-                    청소년 정책참여 네트워크
-                  </h4>
-                  <ul class="text-xs text-slate-300 space-y-2">
-                    <li>• 청소년 참여 프로젝트 총괄 운영</li>
-                    <li>• 양성평등위원회 공동위원장</li>
-                    <li>• 청소년위원회 홍보소통팀원</li>
-                  </ul>
+                  <h3 class="text-3xl sm:text-5xl font-black mb-6 leading-none">
+                    Logic in<br />Movement.
+                  </h3>
+                  <p class="text-sm font-medium opacity-70">
+                    단순한 참여를 넘어 정책을 제안하고 사회적 담론을 형성합니다.
+                  </p>
                 </div>
-                <div>
-                  <span
-                    class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2"
-                    >광역자치단체장 선거캠프</span
-                  >
-                  <h4 class="text-lg font-black text-white mb-3">
-                    청소년 정책참여 네트워크
-                  </h4>
-                  <ul class="text-xs text-slate-300 space-y-2">
-                    <li>• 성평등위원회 부위원장</li>
-                    <li>• 청소년특보</li>
-                  </ul>
+                <div
+                  class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 opacity-30 blur-[2px]"
+                >
+                  <p>Hover to reveal details...</p>
                 </div>
               </div>
-              <div
-                class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/10 pt-6"
-              >
+            </div>
+
+            <div class="social-overlay" data-aos="zoom-in" data-aos-delay="80">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 h-full">
                 <div>
-                  <h5 class="text-sm font-bold text-white mb-1">
-                    청소년 정책 네트워크 정책본부장
-                  </h5>
-                  <p class="text-xs text-slate-400">
-                    청소년 관련 공약 개발 및 정책 수립 지원
+                  <span class="section-label text-white"
+                    >Social Participation</span
+                  >
+                  <h3
+                    class="text-3xl sm:text-5xl font-black mb-6 leading-none text-white"
+                  >
+                    Logic in<br />Movement.
+                  </h3>
+                  <p class="text-sm font-medium text-slate-400">
+                    단순한 참여를 넘어 정책을 제안하고 사회적 담론을 형성합니다.
+                    공공기관부터 시민단체까지, 청소년의 목소리를 제도권에
+                    전달해왔습니다.
                   </p>
                 </div>
-                <div>
-                  <h5 class="text-sm font-bold text-blue-400 mb-1">
-                    청소년 정책 네트워크 정치개혁특별위원장
-                  </h5>
-                  <p class="text-xs text-slate-400">
-                    청소년 참여권 확대 및 정치개혁 정책 기획
-                  </p>
-                </div>
-                <div class="sm:col-span-2">
-                  <h5 class="text-sm font-bold text-white mb-1">
-                    KIYP 한국청소년정책연구소 운영부위원장
-                  </h5>
-                  <p class="text-xs text-slate-400">청소년 정책 연구</p>
+                <div
+                  class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm"
+                >
+                  <div class="social-item">
+                    <p class="text-xs text-blue-300 font-bold mb-1">
+                      Education
+                    </p>
+                    <p class="font-bold text-white">
+                      서울특별시교육청 제11·12·13기 학생참여단
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2022-2025</p>
+                  </div>
+                  <div class="social-item">
+                    <p class="text-xs text-blue-300 font-bold mb-1">
+                      Government
+                    </p>
+                    <p class="font-bold text-white">
+                      여성가족부 제16회 청소년특별회의 선발직 위원
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2020-2021</p>
+                  </div>
+                  <div class="social-item">
+                    <p class="text-xs text-blue-300 font-bold mb-1">
+                      Non-Profit
+                    </p>
+                    <p class="font-bold text-white">
+                      청소년 단체 '유니엄' 대표이사
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2020-2023</p>
+                  </div>
+                  <div class="social-item">
+                    <p class="text-xs text-blue-300 font-bold mb-1">Climate</p>
+                    <p class="font-bold text-white">
+                      청소년기후행동 기후정치크루
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2021-현재</p>
+                  </div>
+                  <div class="social-item">
+                    <p class="text-xs text-blue-300 font-bold mb-1">Panel</p>
+                    <p class="font-bold text-white">
+                      국민권익위원회 국민생각함 국민패널
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2022-2025</p>
+                  </div>
+                  <div class="social-item">
+                    <p class="text-xs text-blue-300 font-bold mb-1">
+                      Diplomacy
+                    </p>
+                    <p class="font-bold text-white">
+                      반크 청년공공외교대사 9기
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">2022</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -849,104 +922,70 @@
           </div>
         </div>
 
-        <div class="md:col-span-12" style="height: auto">
-          <div
-            class="base-card social-container p-0 border-none overflow-hidden h-full relative"
-            id="social-card"
-          >
-            <div
-              class="social-base bg-white text-black p-6 sm:p-10 h-full w-full"
+        <div
+          class="md:col-span-12 lg:col-span-7 base-card cyber-card policy-muted"
+        >
+          <div class="cyber-grid"></div>
+          <div class="cyber-scan-line"></div>
+
+          <div class="relative z-10">
+            <span class="section-label text-slate-400"
+              >Public Policy & Civic Engagement</span
             >
-              <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="space-y-8 mt-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <span class="section-label" style="color: #000"
-                    >Social Participation</span
+                  <span
+                    class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2"
+                    >대통령 선거캠프</span
                   >
-                  <h3 class="text-3xl sm:text-5xl font-black mb-6 leading-none">
-                    Logic in<br />Movement.
-                  </h3>
-                  <p class="text-sm font-medium opacity-70">
-                    단순한 참여를 넘어 정책을 제안하고 사회적 담론을 형성합니다.
-                  </p>
+                  <h4 class="text-lg font-black text-white mb-3">
+                    청소년 정책참여 네트워크
+                  </h4>
+                  <ul class="text-xs text-slate-300 space-y-2">
+                    <li>• 청소년 참여 프로젝트 총괄 운영</li>
+                    <li>• 양성평등위원회 공동위원장</li>
+                    <li>• 청소년위원회 홍보소통팀원</li>
+                  </ul>
                 </div>
-                <div
-                  class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 opacity-30 blur-[2px]"
-                >
-                  <p>Hover to reveal details...</p>
+                <div>
+                  <span
+                    class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2"
+                    >광역자치단체장 선거캠프</span
+                  >
+                  <h4 class="text-lg font-black text-white mb-3">
+                    청소년 정책참여 네트워크
+                  </h4>
+                  <ul class="text-xs text-slate-300 space-y-2">
+                    <li>• 성평등위원회 부위원장</li>
+                    <li>• 청소년특보</li>
+                  </ul>
                 </div>
               </div>
-            </div>
-
-            <div class="social-overlay">
-              <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 h-full">
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/10 pt-6"
+              >
                 <div>
-                  <span class="section-label text-white"
-                    >Social Participation</span
-                  >
-                  <h3
-                    class="text-3xl sm:text-5xl font-black mb-6 leading-none text-white"
-                  >
-                    Logic in<br />Movement.
-                  </h3>
-                  <p class="text-sm font-medium text-slate-400">
-                    단순한 참여를 넘어 정책을 제안하고 사회적 담론을 형성합니다.
-                    공공기관부터 시민단체까지, 청소년의 목소리를 제도권에
-                    전달해왔습니다.
+                  <h5 class="text-sm font-bold text-white mb-1">
+                    청소년 정책 네트워크 정책본부장
+                  </h5>
+                  <p class="text-xs text-slate-400">
+                    청소년 관련 공약 개발 및 정책 수립 지원
                   </p>
                 </div>
-                <div
-                  class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm"
-                >
-                  <div>
-                    <p class="text-xs text-blue-400 font-bold mb-1">
-                      Education
-                    </p>
-                    <p class="font-bold text-white">
-                      서울특별시교육청 제11·12·13기 학생참여단
-                    </p>
-                    <p class="text-xs text-slate-500 mt-1">2022-2025</p>
-                  </div>
-                  <div>
-                    <p class="text-xs text-blue-400 font-bold mb-1">
-                      Government
-                    </p>
-                    <p class="font-bold text-white">
-                      여성가족부 제16회 청소년특별회의 선발직 위원
-                    </p>
-                    <p class="text-xs text-slate-500 mt-1">2020-2021</p>
-                  </div>
-                  <div>
-                    <p class="text-xs text-blue-400 font-bold mb-1">
-                      Non-Profit
-                    </p>
-                    <p class="font-bold text-white">
-                      청소년 단체 '유니엄' 대표이사
-                    </p>
-                    <p class="text-xs text-slate-500 mt-1">2020-2023</p>
-                  </div>
-                  <div>
-                    <p class="text-xs text-blue-400 font-bold mb-1">Climate</p>
-                    <p class="font-bold text-white">
-                      청소년기후행동 기후정치크루
-                    </p>
-                    <p class="text-xs text-slate-500 mt-1">2021-현재</p>
-                  </div>
-                  <div>
-                    <p class="text-xs text-blue-400 font-bold mb-1">Panel</p>
-                    <p class="font-bold text-white">
-                      국민권익위원회 국민생각함 국민패널
-                    </p>
-                    <p class="text-xs text-slate-500 mt-1">2022-2025</p>
-                  </div>
-                  <div>
-                    <p class="text-xs text-blue-400 font-bold mb-1">
-                      Diplomacy
-                    </p>
-                    <p class="font-bold text-white">
-                      반크 청년공공외교대사 9기
-                    </p>
-                    <p class="text-xs text-slate-500 mt-1">2022</p>
-                  </div>
+                <div>
+                  <h5 class="text-sm font-bold text-blue-400 mb-1">
+                    청소년 정책 네트워크 정치개혁특별위원장
+                  </h5>
+                  <p class="text-xs text-slate-400">
+                    청소년 참여권 확대 및 정치개혁 정책 기획
+                  </p>
+                </div>
+                <div class="sm:col-span-2">
+                  <h5 class="text-sm font-bold text-white mb-1">
+                    KIYP 한국청소년정책연구소 운영부위원장
+                  </h5>
+                  <p class="text-xs text-slate-400">청소년 정책 연구</p>
                 </div>
               </div>
             </div>
