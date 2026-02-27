@@ -499,9 +499,13 @@
         display: flex;
         flex-direction: column;
         padding: 2.5rem;
-        pointer-events: none;
+        pointer-events: auto;
         clip-path: circle(0px at 0 0);
         transition: clip-path 0.15s ease-out;
+      }
+
+      .social-container.is-expanded .social-overlay {
+        clip-path: inset(0 round 24px) !important;
       }
 
       @media (hover: none), (pointer: coarse) {
@@ -1388,15 +1392,26 @@
           moreParticipationToggle.addEventListener("click", () => {
             const isExpanded =
               moreParticipationToggle.getAttribute("aria-expanded") === "true";
+            const nextExpanded = !isExpanded;
+
             moreParticipationToggle.setAttribute(
               "aria-expanded",
-              String(!isExpanded),
+              String(nextExpanded),
             );
             moreParticipationList.classList.toggle("hidden", isExpanded);
             moreParticipationList.setAttribute(
               "aria-hidden",
               String(isExpanded),
             );
+
+            if (socialCard && overlay) {
+              socialCard.classList.toggle("is-expanded", nextExpanded);
+              if (nextExpanded) {
+                overlay.style.clipPath = "inset(0 round 24px)";
+              } else {
+                overlay.style.clipPath = "circle(0px at 50% 50%)";
+              }
+            }
           });
         }
 
