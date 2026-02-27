@@ -392,6 +392,72 @@
         filter: saturate(0.75);
       }
 
+      .more-participation-wrap {
+        margin-top: 0.25rem;
+        border-top: 1px dashed rgba(148, 163, 184, 0.35);
+        padding-top: 1rem;
+      }
+
+      .more-toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #93c5fd;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid rgba(147, 197, 253, 0.35);
+        border-radius: 9999px;
+        background: rgba(15, 23, 42, 0.45);
+        transition: all 0.2s ease;
+      }
+
+      .more-toggle-btn:hover {
+        color: #dbeafe;
+        border-color: rgba(147, 197, 253, 0.7);
+        transform: translateY(-1px);
+      }
+
+      .more-toggle-btn .chevron {
+        display: inline-block;
+        transition: transform 0.2s ease;
+      }
+
+      .more-toggle-btn[aria-expanded="true"] .chevron {
+        transform: rotate(180deg);
+      }
+
+      .more-participation-list {
+        margin-top: 0.9rem;
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 0.45rem;
+      }
+
+      @media (min-width: 768px) {
+        .more-participation-list {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      .more-participation-item {
+        font-size: 0.78rem;
+        color: #cbd5e1;
+        background: rgba(2, 6, 23, 0.45);
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        border-radius: 10px;
+        padding: 0.6rem 0.7rem;
+        line-height: 1.35;
+      }
+
+      .more-participation-item .year {
+        color: #60a5fa;
+        font-weight: 700;
+        margin-right: 0.35rem;
+      }
+
       @keyframes scanDown {
         0% {
           top: -10%;
@@ -841,6 +907,78 @@
                     <p class="text-xs text-slate-500 mt-1">2022</p>
                   </div>
                 </div>
+
+                <div class="lg:col-span-3 more-participation-wrap">
+                  <button
+                    type="button"
+                    id="more-participation-toggle"
+                    class="more-toggle-btn interactive-target"
+                    aria-expanded="false"
+                    aria-controls="more-participation-list"
+                  >
+                    More Participation
+                    <span class="chevron">⌄</span>
+                  </button>
+                  <div
+                    id="more-participation-list"
+                    class="more-participation-list hidden"
+                    aria-hidden="true"
+                  >
+                    <div class="more-participation-item">
+                      <span class="year">2018-2019</span>키자니아 서울 제9대
+                      어린이 의원
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2018</span>한국청소년상담복지개발원
+                      솔리언 또래상담 프로그램 수료
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2020-2021</span
+                      >한국미래청년청소년정책연구회 대외소통국장
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2021</span>성북구 혁신교육 추진단원
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2021</span>청소년 인권 단체 아수나로
+                      회원
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2021</span>대통령 직속 국가교육회의
+                      국민참여단
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2021</span>청소년사회교육혁명포럼
+                      청춘희망소 창립준비위원회 홍보소통팀장
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2021-현재</span>청소년기후행동
+                      924글로벌기후파업 참여
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2022</span>그린피스 자원봉사자
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2022-2023</span>청년너울 청소년위원회
+                      위원
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2022</span>전국학생협회 새싹
+                      대외협력실장
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2022</span>전국학생협회 새싹 인사위원장
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2023-2024</span>서울특별시교육청 제12기
+                      학생참여단
+                    </div>
+                    <div class="more-participation-item">
+                      <span class="year">2024-2025</span>서울특별시교육청 제13기
+                      학생참여단
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1237,6 +1375,28 @@
 
           socialCard.addEventListener("mouseleave", () => {
             overlay.style.clipPath = "circle(0px at 50% 50%)";
+          });
+        }
+
+        const moreParticipationToggle = document.getElementById(
+          "more-participation-toggle",
+        );
+        const moreParticipationList = document.getElementById(
+          "more-participation-list",
+        );
+        if (moreParticipationToggle && moreParticipationList) {
+          moreParticipationToggle.addEventListener("click", () => {
+            const isExpanded =
+              moreParticipationToggle.getAttribute("aria-expanded") === "true";
+            moreParticipationToggle.setAttribute(
+              "aria-expanded",
+              String(!isExpanded),
+            );
+            moreParticipationList.classList.toggle("hidden", isExpanded);
+            moreParticipationList.setAttribute(
+              "aria-hidden",
+              String(isExpanded),
+            );
           });
         }
 
