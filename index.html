@@ -1,1271 +1,1066 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LEE DONGGYU | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이동규 포트폴리오</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#f0eef8;
+      --text:#18181b;
+      --text2:#52525b;
+      --text3:#a1a1aa;
+      --a:#4f46e5;
+      --a-rgb:79,70,229;
+      --a-soft:rgba(79,70,229,.08);
+      --a-mid:rgba(79,70,229,.18);
+      --glass:rgba(255,255,255,.68);
+      --glass-strong:rgba(255,255,255,.9);
+      --gb:rgba(255,255,255,.88);
+      --shadow:0 4px 24px rgba(0,0,0,.07);
+      --shadow-lg:0 12px 48px rgba(0,0,0,.1);
+      --r:18px;--rs:12px;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Noto Sans KR','Plus Jakarta Sans',sans-serif;
+      background:var(--bg);color:var(--text);
+      min-height:100vh;overflow-x:hidden;
+    }
+    /* Background blobs */
+    body::before{
+      content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+      background:
+        radial-gradient(ellipse 65% 55% at 5% 10%, rgba(196,181,253,.45) 0%,transparent 60%),
+        radial-gradient(ellipse 55% 60% at 95% 85%, rgba(221,214,254,.4) 0%,transparent 60%),
+        radial-gradient(ellipse 50% 45% at 55% 45%, rgba(224,242,254,.35) 0%,transparent 60%),
+        radial-gradient(ellipse 40% 35% at 15% 80%, rgba(253,230,138,.2) 0%,transparent 55%);
+    }
 
-    <style>
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── scrollbar ── */
+    ::-webkit-scrollbar{width:4px;height:4px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:rgba(79,70,229,.25);border-radius:99px}
 
-      :root {
-        --gold: #f5c842;
-        --gold-dim: rgba(245,200,66,0.18);
-        --cyan: #00e5ff;
-        --cyan-dim: rgba(0,229,255,0.15);
-        --purple: #b06cff;
-        --purple-dim: rgba(176,108,255,0.16);
-        --pink: #ff6b9d;
-        --pink-dim: rgba(255,107,157,0.15);
-        --green: #00f5a0;
-        --green-dim: rgba(0,245,160,0.14);
-        --orange: #ff8c42;
-        --orange-dim: rgba(255,140,66,0.15);
-        --bg: #040509;
-        --bg2: #070b12;
-        --surface: rgba(255,255,255,0.04);
-        --surface2: rgba(255,255,255,0.07);
-        --border: rgba(255,255,255,0.1);
-        --border2: rgba(255,255,255,0.18);
-        --text: #f0f4ff;
-        --text-muted: rgba(200,210,230,0.6);
-        --text-dim: rgba(150,165,190,0.4);
-      }
+    /* ── NAV ── */
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      background:rgba(240,238,248,.82);
+      backdrop-filter:blur(28px) saturate(1.6);
+      -webkit-backdrop-filter:blur(28px) saturate(1.6);
+      border-bottom:1px solid rgba(255,255,255,.6);
+    }
+    .nav-inner{
+      max-width:1180px;margin:0 auto;
+      padding:0 1.5rem;
+      display:flex;align-items:stretch;
+    }
+    .nav-logo{
+      font-family:'Plus Jakarta Sans';font-weight:900;font-size:.95rem;
+      letter-spacing:-.01em;color:var(--text);
+      display:flex;align-items:center;
+      padding-right:1.5rem;margin-right:1.5rem;
+      border-right:1px solid rgba(0,0,0,.08);
+      flex-shrink:0;white-space:nowrap;
+    }
+    .nav-tabs{
+      display:flex;overflow-x:auto;scrollbar-width:none;flex:1;
+    }
+    .nav-tabs::-webkit-scrollbar{display:none}
+    .nav-tab{
+      display:flex;align-items:center;gap:.35rem;
+      padding:.95rem .85rem;
+      font-size:.75rem;font-weight:600;letter-spacing:.01em;
+      color:var(--text3);cursor:pointer;
+      border-bottom:2px solid transparent;
+      transition:color .18s,border-color .18s;
+      background:none;border-top:none;border-left:none;border-right:none;
+      font-family:inherit;white-space:nowrap;flex-shrink:0;
+    }
+    .nav-tab:hover{color:var(--text)}
+    .nav-tab.active{color:var(--a);border-bottom-color:var(--a)}
+    .tn{
+      font-size:.6rem;font-weight:800;padding:.1rem .3rem;
+      border-radius:99px;background:rgba(0,0,0,.06);color:var(--text3);
+      transition:background .18s,color .18s;
+    }
+    .nav-tab.active .tn{background:var(--a);color:#fff}
 
-      html { scroll-behavior: smooth; }
+    /* ── MAIN ── */
+    main{
+      max-width:1180px;margin:0 auto;
+      padding:calc(52px + 2.5rem) 1.5rem 5rem;
+      position:relative;z-index:1;
+    }
 
-      body {
-        font-family: 'Noto Sans KR', 'Outfit', sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        overflow-x: hidden;
-        cursor: none;
-        line-height: 1.6;
-      }
+    /* ── PAGE / TABS ── */
+    .page{display:none}
+    .page.active{display:block;animation:fadeUp .35s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
-      /* ── CURSOR ── */
-      #cursor-dot {
-        position: fixed; top: 0; left: 0; width: 8px; height: 8px;
-        background: #fff; border-radius: 50%; pointer-events: none; z-index: 9999;
-        transform: translate(-50%,-50%);
-        transition: width .2s, height .2s, background .2s;
-        mix-blend-mode: difference;
-      }
-      #cursor-ring {
-        position: fixed; top: 0; left: 0; width: 36px; height: 36px;
-        border: 1.5px solid rgba(255,255,255,0.5); border-radius: 50%;
-        pointer-events: none; z-index: 9998; transform: translate(-50%,-50%);
-        transition: width .35s cubic-bezier(.2,.8,.2,1), height .35s cubic-bezier(.2,.8,.2,1),
-                    border-color .35s, top .06s linear, left .06s linear;
-      }
-      #cursor-ring.expanded { width: 72px; height: 72px; border-color: rgba(245,200,66,0.7); }
-      @media (hover:none),(pointer:coarse) { #cursor-dot,#cursor-ring { display:none; } body { cursor:auto; } }
+    /* ── GRID ── */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .c12{grid-column:span 12}
+    .c8{grid-column:span 12}
+    .c4{grid-column:span 12}
+    .c7{grid-column:span 12}
+    .c5{grid-column:span 12}
+    .c6{grid-column:span 12}
+    @media(min-width:860px){
+      .c8{grid-column:span 8}
+      .c4{grid-column:span 4}
+      .c7{grid-column:span 7}
+      .c5{grid-column:span 5}
+      .c6{grid-column:span 6}
+    }
 
-      /* ── SCROLLBAR ── */
-      ::-webkit-scrollbar { width: 3px; }
-      ::-webkit-scrollbar-track { background: #000; }
-      ::-webkit-scrollbar-thumb { background: linear-gradient(180deg,var(--cyan),var(--purple)); border-radius: 2px; }
+    /* ── GLASS CARD ── */
+    .card{
+      background:var(--glass);
+      backdrop-filter:blur(22px) saturate(1.7);
+      -webkit-backdrop-filter:blur(22px) saturate(1.7);
+      border:1px solid rgba(255,255,255,.85);
+      box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.9);
+      border-radius:var(--r);
+      padding:1.75rem;
+    }
+    @media(min-width:768px){.card{padding:2rem}}
+    .card-hover{transition:box-shadow .25s,transform .25s}
+    .card-hover:hover{box-shadow:var(--shadow-lg),inset 0 1px 0 rgba(255,255,255,.9);transform:translateY(-3px)}
 
-      /* ── PROGRESS BAR ── */
-      #progress-bar {
-        position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 10000;
-        background: linear-gradient(90deg, var(--cyan), var(--purple), var(--gold));
-        box-shadow: 0 0 12px var(--cyan);
-        transition: width .1s linear;
-      }
+    /* ── TYPOGRAPHY ── */
+    .chip{
+      display:inline-flex;align-items:center;gap:.4rem;
+      font-size:.63rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+      color:var(--a);padding:.25rem .7rem;border-radius:99px;
+      background:var(--a-soft);border:1px solid var(--a-mid);
+      margin-bottom:.9rem;
+    }
+    .h1{
+      font-family:'Plus Jakarta Sans';font-weight:900;
+      font-size:clamp(3rem,8vw,7.5rem);line-height:.92;
+      letter-spacing:-.04em;color:var(--text);
+    }
+    .h1 .kr{
+      display:block;font-family:'Noto Sans KR';
+      font-size:.27em;color:var(--text3);
+      letter-spacing:.16em;margin-top:.5em;font-weight:500;
+    }
+    .h2{
+      font-family:'Plus Jakarta Sans';font-weight:900;
+      font-size:clamp(1.5rem,3vw,2.4rem);letter-spacing:-.03em;
+      color:var(--text);line-height:1.1;margin-bottom:.5rem;
+    }
+    .sub{font-size:.88rem;color:var(--text2);line-height:1.75}
+    .mono{font-family:'Space Mono';font-size:.7rem;color:var(--text3)}
 
-      /* ── NAV ── */
-      nav {
-        position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-        padding: .9rem 2rem;
-        display: flex; align-items: center; justify-content: space-between;
-        background: rgba(4,5,9,0.75);
-        backdrop-filter: blur(24px) saturate(1.3);
-        border-bottom: 1px solid rgba(255,255,255,0.06);
-        transition: background .3s;
-      }
-      .nav-logo {
-        font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.1rem;
-        letter-spacing: .08em; color: #fff;
-      }
-      .nav-logo span { color: var(--gold); }
-      .nav-links { display: flex; gap: 2rem; }
-      .nav-links a {
-        font-size: .78rem; font-weight: 600; letter-spacing: .12em;
-        text-transform: uppercase; color: var(--text-muted);
-        text-decoration: none; transition: color .2s;
-      }
-      .nav-links a:hover { color: #fff; }
-      @media (max-width: 768px) { .nav-links { display: none; } }
+    /* ── HERO ── */
+    .accent-bar{
+      display:flex;align-items:center;gap:.75rem;margin-top:.75rem;
+    }
+    .accent-bar::before{content:'';width:28px;height:2px;background:var(--a);border-radius:99px;flex-shrink:0}
+    .accent-bar span{font-size:.82rem;font-weight:600;color:var(--text2)}
 
-      /* ── BACKGROUND MESH ── */
-      .bg-mesh {
-        position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
-      }
-      .mesh-orb {
-        position: absolute; border-radius: 50%; filter: blur(80px); opacity: .35;
-        animation: floatOrb 20s ease-in-out infinite;
-      }
-      .mesh-orb.a { width: 600px; height: 600px; left: -200px; top: -100px; background: radial-gradient(circle, rgba(0,229,255,.4), transparent 70%); animation-delay: 0s; }
-      .mesh-orb.b { width: 500px; height: 500px; right: -150px; top: 20%; background: radial-gradient(circle, rgba(176,108,255,.35), transparent 70%); animation-delay: -7s; }
-      .mesh-orb.c { width: 400px; height: 400px; left: 30%; bottom: -100px; background: radial-gradient(circle, rgba(245,200,66,.25), transparent 70%); animation-delay: -13s; }
-      .mesh-orb.d { width: 350px; height: 350px; right: 20%; bottom: 20%; background: radial-gradient(circle, rgba(255,107,157,.2), transparent 70%); animation-delay: -4s; }
-      @keyframes floatOrb {
-        0%,100% { transform: translate(0,0) scale(1); }
-        33% { transform: translate(30px,-40px) scale(1.05); }
-        66% { transform: translate(-20px,30px) scale(.95); }
-      }
+    .contacts{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.25rem}
+    .clink{
+      display:flex;align-items:center;gap:.5rem;
+      padding:.5rem .95rem;border-radius:99px;
+      font-size:.78rem;font-weight:600;
+      background:var(--glass-strong);border:1px solid rgba(0,0,0,.09);
+      color:var(--text2);text-decoration:none;
+      transition:all .2s;
+    }
+    .clink i{font-size:.8rem;color:var(--a)}
+    .clink:hover{background:var(--a);color:#fff;border-color:var(--a);transform:translateY(-2px)}
+    .clink:hover i{color:#fff}
 
-      /* ── STARS ── */
-      .stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    /* stat strip */
+    .stat-strip{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;margin-top:1.5rem;
+    }
+    @media(max-width:600px){.stat-strip{grid-template-columns:repeat(2,1fr)}}
+    .stat-box{
+      padding:1.1rem .85rem;border-radius:var(--rs);text-align:center;
+      background:var(--glass-strong);border:1px solid rgba(255,255,255,.88);
+      box-shadow:0 2px 10px rgba(0,0,0,.05);
+    }
+    .stat-n{
+      font-family:'Plus Jakarta Sans';font-weight:900;
+      font-size:1.8rem;line-height:1;color:var(--a);display:block;
+    }
+    .stat-l{font-size:.68rem;color:var(--text3);margin-top:.25rem;display:block}
 
-      /* ── LAYOUT ── */
-      main { position: relative; z-index: 10; max-width: 1440px; margin: 0 auto; padding: 0 1.5rem 6rem; }
+    /* featured list */
+    .feat-list{
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:.65rem;margin-top:1rem;
+    }
+    .feat-item{
+      padding:1rem 1.1rem;border-radius:var(--rs);
+      background:var(--a-soft);border:1px solid var(--a-mid);
+      transition:all .2s;cursor:default;
+    }
+    .feat-item:hover{background:rgba(79,70,229,.13);transform:translateX(3px)}
+    .feat-tag{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--a);margin-bottom:.3rem}
+    .feat-title{font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.1rem}
+    .feat-note{font-size:.76rem;color:var(--text2)}
 
-      /* ── SECTION LABEL ── */
-      .sec-chip {
-        display: inline-flex; align-items: center; gap: .45rem;
-        padding: .3rem .85rem; border-radius: 999px;
-        font-size: .65rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
-        border: 1px solid; margin-bottom: 1.25rem;
-      }
-      .sec-chip.cyan { color: var(--cyan); border-color: rgba(0,229,255,.4); background: rgba(0,229,255,.07); }
-      .sec-chip.gold { color: var(--gold); border-color: rgba(245,200,66,.4); background: rgba(245,200,66,.07); }
-      .sec-chip.purple { color: var(--purple); border-color: rgba(176,108,255,.4); background: rgba(176,108,255,.07); }
-      .sec-chip.pink { color: var(--pink); border-color: rgba(255,107,157,.4); background: rgba(255,107,157,.07); }
-      .sec-chip.green { color: var(--green); border-color: rgba(0,245,160,.4); background: rgba(0,245,160,.07); }
-      .sec-chip.orange { color: var(--orange); border-color: rgba(255,140,66,.4); background: rgba(255,140,66,.07); }
-      .sec-chip.white { color: #fff; border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.06); }
+    /* ── TIMELINE ── */
+    .tl{display:flex;flex-direction:column;margin-top:1.5rem}
+    .tl-row{
+      display:grid;grid-template-columns:80px 20px 1fr;
+      gap:.75rem;padding:.9rem 0;
+      border-bottom:1px solid rgba(0,0,0,.05);
+    }
+    .tl-row:last-child{border-bottom:none}
+    .tl-yr{font-family:'Space Mono';font-size:.65rem;color:var(--text3);padding-top:.3rem;line-height:1.5}
+    .tl-dot-wrap{display:flex;flex-direction:column;align-items:center;padding-top:.4rem}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--a);flex-shrink:0}
+    .dot-line{width:1px;flex:1;background:var(--a-mid);margin-top:4px}
+    .tl-row:last-child .dot-line{display:none}
+    .tl-body{}
+    .new-badge{
+      display:inline-block;padding:.13rem .5rem;border-radius:99px;
+      font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+      background:var(--a-soft);color:var(--a);border:1px solid var(--a-mid);
+      margin-bottom:.35rem;
+    }
+    .tl-role{font-weight:700;font-size:.93rem;color:var(--text)}
+    .tl-org{font-size:.8rem;color:var(--text2);margin-top:.1rem}
+    .tl-desc{font-size:.76rem;color:var(--text3);margin-top:.25rem;line-height:1.5}
 
-      /* ── CARDS ── */
-      .card {
-        background: linear-gradient(145deg, rgba(14,18,28,.92), rgba(6,8,14,.9));
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 1.75rem;
-        position: relative; overflow: hidden;
-        backdrop-filter: blur(20px);
-        transition: border-color .3s, box-shadow .3s, transform .3s cubic-bezier(.2,.8,.2,1);
-      }
-      .card:hover {
-        border-color: rgba(255,255,255,.22);
-        box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06);
-        transform: translateY(-4px);
-      }
-      @media (min-width: 768px) { .card { padding: 2.25rem; } }
+    /* ── EDU CARDS ── */
+    .edu-grid{
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:.7rem;margin-top:1.5rem;
+    }
+    .edu-card{
+      padding:1.2rem;border-radius:var(--rs);
+      background:var(--glass-strong);border:1px solid rgba(255,255,255,.9);
+      box-shadow:0 2px 10px rgba(0,0,0,.05);
+      transition:all .22s;
+    }
+    .edu-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .edu-status{font-size:.63rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--a);margin-bottom:.35rem}
+    .edu-name{font-weight:800;font-size:.92rem;color:var(--text)}
+    .edu-course{font-size:.78rem;color:var(--text2);margin-top:.15rem}
+    .edu-yr{font-family:'Space Mono';font-size:.67rem;color:var(--text3);margin-top:.4rem}
 
-      .card-glow-cyan::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at top left, rgba(0,229,255,.12), transparent 60%); pointer-events:none; border-radius:20px; }
-      .card-glow-gold::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at top right, rgba(245,200,66,.1), transparent 60%); pointer-events:none; border-radius:20px; }
-      .card-glow-purple::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at bottom left, rgba(176,108,255,.12), transparent 60%); pointer-events:none; border-radius:20px; }
-      .card-glow-pink::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at bottom right, rgba(255,107,157,.1), transparent 60%); pointer-events:none; border-radius:20px; }
-      .card-glow-orange::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at top left, rgba(255,140,66,.1), transparent 60%); pointer-events:none; border-radius:20px; }
+    /* ── PRESS ── */
+    .press-hero{
+      padding:1.2rem 1.4rem;border-radius:var(--rs);margin-bottom:1.25rem;
+      background:linear-gradient(135deg,rgba(79,70,229,.08),rgba(139,92,246,.05));
+      border:1px solid var(--a-mid);
+    }
+    .press-hero-tag{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin-bottom:.35rem}
+    .press-hero-title{font-weight:900;font-size:1.05rem;color:var(--text)}
+    .press-hero-sub{font-size:.8rem;color:var(--text2);margin-top:.2rem}
 
-      /* ── MAC DOTS ── */
-      .mac-dots {
-        display: flex; gap: 6px; margin-bottom: 1.5rem;
-      }
-      .mac-dot { width: 11px; height: 11px; border-radius: 50%; }
-      .mac-dot.r { background: #ff5f57; }
-      .mac-dot.y { background: #febc2e; }
-      .mac-dot.g { background: #28c840; }
+    .press-rail{
+      display:flex;gap:.7rem;overflow-x:auto;
+      scroll-snap-type:x mandatory;scrollbar-width:none;
+      padding-bottom:.5rem;margin-top:1rem;
+    }
+    .press-rail::-webkit-scrollbar{display:none}
+    .pc{
+      flex-shrink:0;width:168px;padding:1rem;
+      background:var(--glass-strong);border:1px solid rgba(255,255,255,.9);
+      border-radius:var(--rs);scroll-snap-align:start;
+      box-shadow:0 2px 10px rgba(0,0,0,.05);transition:all .2s;
+    }
+    .pc:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--a-mid)}
+    .pc-org{font-weight:800;font-size:.88rem;color:var(--text);margin-bottom:.2rem}
+    .pc-role{font-size:.73rem;color:var(--text2)}
+    .pc-yr{font-family:'Space Mono';font-size:.65rem;color:var(--text3);margin-top:.45rem}
+    .scroll-hint{font-size:.68rem;color:var(--text3);margin-top:.4rem}
 
-      /* ── GRID LAYOUTS ── */
-      .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; }
-      .col-12 { grid-column: span 12; }
-      .col-8 { grid-column: span 12; }
-      .col-4 { grid-column: span 12; }
-      .col-6 { grid-column: span 12; }
-      .col-5 { grid-column: span 12; }
-      .col-7 { grid-column: span 12; }
-      @media (min-width: 900px) {
-        .col-8 { grid-column: span 8; }
-        .col-4 { grid-column: span 4; }
-        .col-6 { grid-column: span 6; }
-        .col-5 { grid-column: span 5; }
-        .col-7 { grid-column: span 7; }
-      }
+    /* ── ACCORDION ── */
+    .accord{display:flex;flex-direction:column;gap:.5rem;margin-top:1.25rem}
+    .acc{
+      border-radius:var(--rs);overflow:hidden;
+      background:var(--glass-strong);border:1px solid rgba(255,255,255,.9);
+      box-shadow:0 2px 10px rgba(0,0,0,.05);
+    }
+    .acc-h{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:.95rem 1.2rem;cursor:pointer;
+      transition:background .18s;user-select:none;
+    }
+    .acc-h:hover{background:var(--a-soft)}
+    .acc-h.open{background:var(--a-soft)}
+    .acc-t{font-weight:700;font-size:.88rem;color:var(--text)}
+    .acc-s{font-size:.73rem;color:var(--text3);margin-top:.1rem}
+    .acc-i{color:var(--text3);font-size:.72rem;transition:transform .22s;flex-shrink:0;margin-left:.75rem}
+    .acc-h.open .acc-i{transform:rotate(180deg);color:var(--a)}
+    .acc-b{
+      display:none;padding:0 1.2rem .9rem;
+      border-top:1px solid rgba(0,0,0,.05);
+    }
+    .acc-b.open{display:block}
+    .acc-entries{display:flex;flex-direction:column;gap:.4rem;padding-top:.65rem}
+    .ace{
+      display:flex;gap:.7rem;
+      padding:.7rem .9rem;border-radius:10px;
+      background:var(--a-soft);border:1px solid var(--a-mid);
+      align-items:flex-start;
+    }
+    .ace-yr{font-family:'Space Mono';font-size:.65rem;color:var(--text3);flex-shrink:0;width:44px;padding-top:.15rem}
+    .ace-role{font-weight:700;font-size:.82rem;color:var(--text)}
+    .ace-note{font-size:.74rem;color:var(--text2);margin-top:.1rem}
 
-      /* ── HERO ── */
-      .hero-section {
-        min-height: 100vh; display: flex; flex-direction: column;
-        justify-content: center; padding: 8rem 0 4rem;
-        position: relative;
-      }
-      .hero-pre {
-        font-family: 'Space Mono', monospace; font-size: .75rem;
-        color: var(--cyan); letter-spacing: .22em; text-transform: uppercase;
-        margin-bottom: 1.5rem; opacity: .8;
-      }
-      .hero-pre span { animation: blink 1.2s step-end infinite; }
-      @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-      .hero-name {
-        font-family: 'Outfit', sans-serif; font-weight: 900;
-        font-size: clamp(3.5rem, 10vw, 10rem);
-        line-height: .9; letter-spacing: -.03em;
-        background: linear-gradient(135deg, #fff 30%, rgba(255,255,255,.6));
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        background-clip: text; margin-bottom: .5rem;
-      }
-      .hero-name-kr {
-        font-size: clamp(1.5rem, 4vw, 3.5rem);
-        font-weight: 900; color: rgba(255,255,255,.35);
-        letter-spacing: .1em; margin-bottom: 2.5rem;
-        font-family: 'Noto Sans KR', sans-serif;
-      }
-      .hero-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 3rem; }
-      .hero-tag {
-        padding: .4rem 1rem; border-radius: 999px;
-        font-size: .78rem; font-weight: 700; border: 1px solid;
-        font-family: 'Outfit', sans-serif;
-      }
-      .hero-tag.main { background: linear-gradient(135deg,rgba(0,229,255,.2),rgba(176,108,255,.2)); border-color: rgba(0,229,255,.5); color: var(--cyan); }
-      .hero-tag.sub { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15); color: rgba(200,210,230,.8); }
-      .hero-contacts { display: flex; flex-wrap: wrap; gap: .75rem; }
-      .hero-contact {
-        display: flex; align-items: center; gap: .6rem;
-        padding: .65rem 1.2rem; border-radius: 12px;
-        border: 1px solid rgba(255,255,255,.12);
-        background: rgba(255,255,255,.04);
-        color: rgba(200,215,235,.8); font-size: .82rem; font-weight: 600;
-        text-decoration: none; transition: all .2s;
-      }
-      .hero-contact:hover { border-color: rgba(0,229,255,.5); color: #fff; background: rgba(0,229,255,.08); transform: translateY(-2px); }
-      .hero-contact i { color: var(--cyan); font-size: .9rem; }
-      .hero-scroll-hint {
-        position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-        display: flex; flex-direction: column; align-items: center; gap: .5rem;
-        color: var(--text-dim); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
-        animation: bobDown 2.5s ease-in-out infinite;
-      }
-      @keyframes bobDown { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
-      .hero-scroll-hint::after {
-        content: ''; width: 1px; height: 48px;
-        background: linear-gradient(180deg,rgba(255,255,255,.25),transparent);
-      }
+    /* ── CIVIC ── */
+    .civic-grid{
+      display:grid;grid-template-columns:1fr;gap:.55rem;margin-top:1rem;
+    }
+    @media(min-width:600px){.civic-grid{grid-template-columns:repeat(2,1fr)}}
+    .ci{
+      padding:.85rem 1rem .85rem 1.1rem;border-radius:var(--rs);
+      background:var(--glass-strong);border:1px solid rgba(255,255,255,.9);
+      border-left:3px solid var(--a);
+      box-shadow:0 2px 10px rgba(0,0,0,.05);
+      transition:all .2s;
+    }
+    .ci:hover{transform:translateX(3px);box-shadow:var(--shadow)}
+    .ci-t{font-weight:700;font-size:.85rem;color:var(--text)}
+    .ci-y{font-family:'Space Mono';font-size:.66rem;color:var(--text3);margin-top:.2rem}
 
-      /* ── SECTION HEADINGS ── */
-      .sec-title {
-        font-family: 'Outfit', sans-serif; font-weight: 900;
-        font-size: clamp(1.8rem, 4vw, 3.2rem); line-height: 1.05;
-        letter-spacing: -.02em; margin-bottom: .75rem; color: #fff;
-      }
-      .sec-sub { font-size: .9rem; color: var(--text-muted); line-height: 1.7; }
-      .gradient-text-cyan { background: linear-gradient(90deg,var(--cyan),#a0f0ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-      .gradient-text-gold { background: linear-gradient(90deg,var(--gold),#ffe89b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-      .gradient-text-purple { background: linear-gradient(90deg,var(--purple),#d4a0ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-      .gradient-text-pink { background: linear-gradient(90deg,var(--pink),#ffadc5); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-      .gradient-text-orange { background: linear-gradient(90deg,var(--orange),#ffbe84); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    /* ── MORE TOGGLE ── */
+    .more-btn{
+      display:inline-flex;align-items:center;gap:.4rem;
+      padding:.5rem .95rem;border-radius:99px;margin-top:.9rem;
+      font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+      color:var(--a);border:1px solid var(--a-mid);background:var(--a-soft);
+      cursor:pointer;transition:all .2s;font-family:inherit;
+    }
+    .more-btn:hover{background:rgba(79,70,229,.14);border-color:rgba(79,70,229,.4)}
+    .chev{transition:transform .22s;display:inline-block}
+    .more-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+    .more-grid{display:none;margin-top:.7rem}
+    .more-grid.open{
+      display:grid;grid-template-columns:1fr;gap:.4rem;
+    }
+    @media(min-width:600px){.more-grid.open{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1024px){.more-grid.open{grid-template-columns:repeat(3,1fr)}}
+    .mi{
+      padding:.6rem .8rem;border-radius:10px;
+      background:var(--a-soft);border:1px solid var(--a-mid);
+      font-size:.76rem;color:var(--text2);line-height:1.4;
+    }
+    .my{font-weight:700;color:var(--a);margin-right:.35rem;font-family:'Space Mono';font-size:.66rem}
 
-      /* ── TIMELINE ── */
-      .timeline { display: flex; flex-direction: column; gap: 0; }
-      .tl-item {
-        display: grid; grid-template-columns: 90px 1fr;
-        gap: 1rem; padding: 1.1rem 0;
-        border-bottom: 1px solid var(--border);
-        align-items: start;
-      }
-      .tl-item:last-child { border-bottom: none; }
-      .tl-year { font-family: 'Space Mono', monospace; font-size: .7rem; color: var(--text-dim); padding-top: .15rem; line-height: 1.4; }
-      .tl-body {}
-      .tl-role { font-weight: 700; font-size: .92rem; color: #fff; margin-bottom: .15rem; }
-      .tl-org { font-size: .82rem; color: var(--text-muted); }
-      .tl-desc { font-size: .78rem; color: var(--text-dim); margin-top: .3rem; line-height: 1.5; }
-      .tl-badge {
-        display: inline-flex; align-items: center; gap: .3rem;
-        font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
-        padding: .18rem .55rem; border-radius: 999px; border: 1px solid; margin-bottom: .4rem;
-      }
-      .tl-badge.current { color: var(--green); border-color: rgba(0,245,160,.4); background: rgba(0,245,160,.08); }
-      .tl-badge.new { color: var(--gold); border-color: rgba(245,200,66,.4); background: rgba(245,200,66,.1); }
-      .tl-badge.new::before { content:'★ '; }
+    /* ── AWARDS ── */
+    .award-list{display:flex;flex-direction:column;gap:.6rem;margin-top:1.25rem}
+    .aw{
+      display:flex;gap:.9rem;align-items:flex-start;
+      padding:1rem 1.2rem;border-radius:var(--rs);
+      background:var(--glass-strong);border:1px solid rgba(255,255,255,.9);
+      box-shadow:0 2px 10px rgba(0,0,0,.05);transition:all .22s;
+    }
+    .aw:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .aw.gold{
+      background:linear-gradient(135deg,rgba(245,158,11,.07),rgba(255,255,255,.88));
+      border-color:rgba(245,158,11,.28);
+    }
+    .aw.gold:hover{border-color:rgba(245,158,11,.45)}
+    .aw-icon{font-size:1.4rem;width:1.8rem;text-align:center;flex-shrink:0;padding-top:.1rem}
+    .aw-grade{font-size:.61rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);margin-bottom:.15rem}
+    .aw.gold .aw-grade{color:#d97706}
+    .aw-title{font-weight:700;font-size:.88rem;color:var(--text)}
+    .aw-org{font-size:.76rem;color:var(--text2);margin-top:.12rem}
+    .aw-date{font-family:'Space Mono';font-size:.65rem;color:var(--text3);margin-top:.18rem}
 
-      /* ── JOURNALISM GRID ── */
-      .press-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
-      @media (min-width: 640px) { .press-grid { grid-template-columns: repeat(3, 1fr); } }
-      @media (min-width: 1024px) { .press-grid { grid-template-columns: repeat(4, 1fr); } }
-      .press-item {
-        padding: .9rem 1rem; border-radius: 14px;
-        background: var(--surface); border: 1px solid var(--border);
-        transition: all .22s;
-      }
-      .press-item:hover { background: var(--surface2); border-color: rgba(255,107,157,.4); transform: translateY(-3px); }
-      .press-item .pi-org { font-weight: 800; font-size: .88rem; color: #fff; margin-bottom: .2rem; }
-      .press-item .pi-role { font-size: .75rem; color: var(--text-muted); }
-      .press-item .pi-year { font-size: .68rem; color: var(--text-dim); margin-top: .3rem; font-family:'Space Mono',monospace; }
+    /* ── CERT ── */
+    .cert{
+      display:flex;gap:1rem;align-items:center;
+      padding:1.2rem 1.4rem;border-radius:var(--rs);margin-top:1.25rem;
+      background:linear-gradient(135deg,rgba(79,70,229,.07),rgba(139,92,246,.04));
+      border:1px solid var(--a-mid);
+    }
+    .cert-icon{font-size:1.8rem}
+    .cert-name{font-weight:800;font-size:.92rem;color:var(--text)}
+    .cert-detail{font-size:.78rem;color:var(--text2);margin-top:.15rem}
+    .cert-date{font-family:'Space Mono';font-size:.65rem;color:var(--text3);margin-top:.18rem}
 
-      /* ── FEATURED CARD ── */
-      .feat-number {
-        font-family: 'Outfit', sans-serif; font-weight: 900;
-        font-size: clamp(4rem,8vw,7rem); line-height: 1;
-        letter-spacing: -.04em; color: rgba(255,255,255,.07);
-        position: absolute; right: 1.5rem; bottom: 1.25rem;
-        pointer-events: none; user-select: none;
-      }
+    /* ── BOARD ── */
+    .board-tabs{display:flex;gap:.45rem;margin-bottom:1.2rem}
+    .btab{
+      padding:.45rem 1rem;border-radius:99px;
+      font-size:.76rem;font-weight:700;
+      background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.07);
+      color:var(--text2);cursor:pointer;transition:all .18s;font-family:inherit;
+    }
+    .btab.active{background:var(--a);color:#fff;border-color:var(--a)}
+    .btab:hover:not(.active){border-color:var(--a);color:var(--a)}
+    .bpost{
+      padding:.95rem 1.2rem;border-radius:var(--rs);
+      background:var(--glass-strong);border:1px solid rgba(255,255,255,.9);
+      box-shadow:0 2px 10px rgba(0,0,0,.05);
+      margin-bottom:.55rem;transition:border-color .2s;
+    }
+    .bpost:hover{border-color:var(--a-mid)}
+    .bp-title{font-weight:700;font-size:.9rem;color:var(--text)}
+    .bp-meta{font-family:'Space Mono';font-size:.67rem;color:var(--text3);margin-top:.25rem}
+    .bp-body{font-size:.8rem;color:var(--text2);margin-top:.45rem;line-height:1.65}
+    .bempty{
+      text-align:center;padding:2.5rem;color:var(--text3);font-size:.83rem;
+      border:1px dashed rgba(0,0,0,.1);border-radius:var(--rs);
+    }
 
-      /* ── AWARDS ── */
-      .award-item {
-        display: flex; gap: 1rem; align-items: flex-start;
-        padding: 1.1rem; border-radius: 14px;
-        border: 1px solid var(--border); background: var(--surface);
-        transition: all .22s;
-      }
-      .award-item:hover { border-color: rgba(245,200,66,.4); background: var(--gold-dim); transform: translateY(-2px); }
-      .award-icon { font-size: 1.5rem; flex-shrink: 0; width: 2.5rem; text-align: center; }
-      .award-grade { font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .15rem; }
-      .award-title { font-weight: 700; font-size: .88rem; color: #fff; margin-bottom: .15rem; }
-      .award-org { font-size: .73rem; color: var(--text-muted); }
-      .award-date { font-size: .68rem; color: var(--text-dim); font-family:'Space Mono',monospace; margin-top: .2rem; }
+    /* ── MANIFESTO ── */
+    .manifesto{padding:5rem 0 3rem;text-align:center}
+    .mf-tag{font-size:.65rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--a);margin-bottom:1.5rem;display:block}
+    .mf-title{
+      font-family:'Plus Jakarta Sans';font-weight:900;
+      font-size:clamp(1.8rem,4vw,3.8rem);
+      letter-spacing:-.03em;line-height:1.12;
+      color:var(--text);margin-bottom:1.5rem;
+    }
+    .mf-title .dim{color:var(--text3)}
+    .mf-sub{max-width:540px;margin:0 auto;font-size:.92rem;color:var(--text2);line-height:1.85}
 
-      /* ── POLICY BADGES ── */
-      .policy-grid { display: flex; flex-direction: column; gap: .5rem; }
-      .policy-item {
-        padding: .8rem 1rem; border-radius: 12px;
-        background: var(--surface); border: 1px solid var(--border);
-        transition: all .22s;
-      }
-      .policy-item:hover { border-color: rgba(176,108,255,.4); background: var(--purple-dim); }
-      .policy-item .py-role { font-weight: 700; font-size: .85rem; color: #fff; }
-      .policy-item .py-org { font-size: .75rem; color: var(--text-muted); margin-top: .15rem; }
-      .policy-item .py-note { font-size: .7rem; color: var(--text-dim); margin-top: .15rem; }
+    /* ── FOOTER ── */
+    footer{
+      border-top:1px solid rgba(0,0,0,.07);padding:1.75rem 0;
+      display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem;
+      max-width:1180px;margin:0 auto;padding-left:1.5rem;padding-right:1.5rem;
+      font-family:'Space Mono';font-size:.7rem;color:var(--text3);
+    }
 
-      /* ── CIVIC CARDS ── */
-      .civic-grid { display: grid; grid-template-columns: 1fr; gap: .65rem; }
-      @media (min-width: 640px) { .civic-grid { grid-template-columns: repeat(2, 1fr); } }
-      .civic-item {
-        padding: .85rem 1rem; border-radius: 12px;
-        background: var(--surface); border: 1px solid var(--border);
-        transition: all .22s; position: relative; overflow: hidden;
-      }
-      .civic-item::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:3px 0 0 3px; }
-      .civic-item.edu::before { background: var(--cyan); }
-      .civic-item.gov::before { background: var(--purple); }
-      .civic-item.npo::before { background: var(--green); }
-      .civic-item.env::before { background: var(--orange); }
-      .civic-item.dip::before { background: var(--pink); }
-      .civic-item.pan::before { background: var(--gold); }
-      .civic-item:hover { border-color: rgba(255,255,255,.18); transform: translateY(-2px); }
-      .civic-item .ci-cat { font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
-      .civic-item .ci-title { font-weight: 700; font-size: .87rem; color: #fff; }
-      .civic-item .ci-year { font-size: .7rem; color: var(--text-dim); margin-top: .25rem; font-family:'Space Mono',monospace; }
+    /* ── divider ── */
+    .div{height:1px;background:rgba(0,0,0,.06);margin:1.5rem 0}
 
-      /* ── CERT ── */
-      .cert-card {
-        display: flex; gap: 1.2rem; align-items: center;
-        padding: 1.25rem 1.5rem; border-radius: 16px;
-        background: linear-gradient(135deg, rgba(0,229,255,.07), rgba(176,108,255,.07));
-        border: 1px solid rgba(0,229,255,.25);
-      }
-      .cert-icon { font-size: 2rem; }
-      .cert-name { font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: .2rem; }
-      .cert-detail { font-size: .8rem; color: var(--text-muted); }
-      .cert-date { font-size: .72rem; color: var(--text-dim); font-family:'Space Mono',monospace; margin-top: .2rem; }
+    /* page padding */
+    .pp{padding-top:.5rem}
+  </style>
+</head>
+<body>
 
-      /* ── STAT PILLS ── */
-      .stat-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
-      .stat-pill {
-        display: flex; flex-direction: column; align-items: center;
-        padding: .9rem 1.4rem; border-radius: 14px;
-        background: var(--surface); border: 1px solid var(--border); min-width: 90px;
-      }
-      .stat-num { font-family:'Outfit',sans-serif; font-weight: 900; font-size: 1.6rem; line-height: 1; }
-      .stat-label { font-size: .68rem; color: var(--text-dim); margin-top: .25rem; text-align: center; }
-
-      /* ── DIVIDER ── */
-      .sec-divider {
-        height: 1px; margin: 4rem 0;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
-      }
-
-      /* ── BOARD SECTION ── */
-      .board-tab-row { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-      .board-tab {
-        padding: .5rem 1.2rem; border-radius: 10px;
-        font-size: .78rem; font-weight: 700; border: 1px solid var(--border);
-        background: var(--surface); color: var(--text-muted);
-        cursor: pointer; transition: all .2s;
-      }
-      .board-tab.active { background: rgba(0,229,255,.12); border-color: rgba(0,229,255,.4); color: var(--cyan); }
-      .board-tab:hover:not(.active) { border-color: rgba(255,255,255,.22); color: #fff; }
-      .board-post {
-        padding: 1rem 1.25rem; border-radius: 14px;
-        border: 1px solid var(--border); background: var(--surface);
-        margin-bottom: .65rem; transition: border-color .2s;
-      }
-      .board-post:hover { border-color: rgba(0,229,255,.3); }
-      .board-post-title { font-weight: 700; font-size: .92rem; color: #fff; margin-bottom: .35rem; }
-      .board-post-meta { font-size: .72rem; color: var(--text-dim); }
-      .board-post-body { font-size: .82rem; color: var(--text-muted); margin-top: .4rem; line-height: 1.6; }
-      .board-empty { font-size: .85rem; color: var(--text-dim); padding: 2rem; text-align: center; border: 1px dashed rgba(255,255,255,.1); border-radius: 14px; }
-
-      /* ── MANIFESTO ── */
-      .manifesto-section { padding: 8rem 0; text-align: center; }
-      .manifesto-kicker { font-size: .7rem; font-weight: 800; letter-spacing: .35em; text-transform: uppercase; color: var(--cyan); margin-bottom: 2rem; display: block; }
-      .manifesto-title {
-        font-family: 'Outfit', sans-serif; font-weight: 900;
-        font-size: clamp(2.2rem, 5vw, 5.5rem); line-height: 1.08;
-        letter-spacing: -.03em; margin-bottom: 2rem;
-      }
-      .manifesto-body { max-width: 680px; margin: 0 auto 3rem; font-size: 1.05rem; color: var(--text-muted); line-height: 1.85; }
-
-      /* ── FOOTER ── */
-      footer {
-        border-top: 1px solid var(--border); padding: 2.5rem 0;
-        display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
-        gap: 1rem; font-size: .75rem; color: var(--text-dim);
-        font-family: 'Space Mono', monospace; letter-spacing: .08em;
-      }
-
-      /* ── FADE IN ── */
-      .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
-      .fade-in.visible { opacity: 1; transform: translateY(0); }
-      .fade-in-left { opacity: 0; transform: translateX(-28px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
-      .fade-in-left.visible { opacity: 1; transform: translateX(0); }
-
-      /* ── SECTION SPACING ── */
-      .section-block { padding: 5rem 0 0; }
-
-      /* ── HIGHLIGHT ── */
-      .highlight-tag {
-        display: inline-block; padding: .1rem .45rem; border-radius: 5px;
-        background: rgba(245,200,66,.15); border: 1px solid rgba(245,200,66,.35);
-        color: var(--gold); font-weight: 800;
-      }
-
-      /* ── EDUCATION ── */
-      .edu-item {
-        padding: 1.1rem 1.25rem; border-radius: 14px;
-        border: 1px solid var(--border); background: var(--surface);
-        transition: all .22s; display: flex; gap: 1rem; align-items: flex-start;
-      }
-      .edu-item:hover { border-color: rgba(0,229,255,.35); transform: translateY(-2px); }
-      .edu-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; margin-top: .4rem; box-shadow: 0 0 8px var(--cyan); }
-      .edu-body {}
-      .edu-inst { font-weight: 800; font-size: .92rem; color: #fff; }
-      .edu-course { font-size: .8rem; color: var(--text-muted); margin-top: .15rem; }
-      .edu-year { font-size: .68rem; color: var(--text-dim); font-family:'Space Mono',monospace; margin-top: .25rem; }
-
-      /* ── MORE TOGGLE ── */
-      .more-toggle {
-        display: flex; align-items: center; gap: .5rem;
-        padding: .5rem 1rem; border-radius: 999px;
-        font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-        color: var(--cyan); border: 1px solid rgba(0,229,255,.3);
-        background: rgba(0,229,255,.06); cursor: pointer; transition: all .2s;
-        margin-top: 1rem;
-      }
-      .more-toggle:hover { background: rgba(0,229,255,.12); border-color: rgba(0,229,255,.6); }
-      .more-toggle .chevron { transition: transform .25s; }
-      .more-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
-      .more-list { display: none; margin-top: .75rem; }
-      .more-list.open { display: grid; grid-template-columns: repeat(1,1fr); gap: .5rem; }
-      @media (min-width: 640px) { .more-list.open { grid-template-columns: repeat(2,1fr); } }
-      @media (min-width: 1024px) { .more-list.open { grid-template-columns: repeat(3,1fr); } }
-      .more-item {
-        padding: .65rem .85rem; border-radius: 10px;
-        background: var(--surface); border: 1px solid var(--border);
-        font-size: .78rem; color: var(--text-muted); line-height: 1.4;
-      }
-      .more-item .my { color: var(--cyan); font-weight: 700; margin-right: .35rem; font-family:'Space Mono',monospace; font-size:.7rem; }
-    </style>
-  </head>
-
-  <body>
-    <div id="progress-bar"></div>
-    <div id="cursor-dot"></div>
-    <div id="cursor-ring"></div>
-
-    <div class="bg-mesh" aria-hidden="true">
-      <div class="mesh-orb a"></div>
-      <div class="mesh-orb b"></div>
-      <div class="mesh-orb c"></div>
-      <div class="mesh-orb d"></div>
-    </div>
-    <canvas class="stars" id="stars-canvas" aria-hidden="true"></canvas>
-
-    <nav>
-      <div class="nav-logo">LEE<span>.</span>DG</div>
-      <div class="nav-links">
-        <a href="#education">학력</a>
-        <a href="#academic">교육 TA</a>
-        <a href="#leadership">학생자치</a>
-        <a href="#journalism">저널리즘</a>
-        <a href="#policy">정책참여</a>
-        <a href="#civic">시민사회</a>
-        <a href="#awards">수상</a>
-        <a href="#board">기록</a>
-      </div>
+<header>
+  <div class="nav-inner">
+    <div class="nav-logo">이동규</div>
+    <nav class="nav-tabs" role="tablist" aria-label="포트폴리오 섹션">
+      <button class="nav-tab active" data-page="home" role="tab">홈</button>
+      <button class="nav-tab" data-page="edu" role="tab">교육·학술 <span class="tn">4</span></button>
+      <button class="nav-tab" data-page="lead" role="tab">리더십 <span class="tn">5</span></button>
+      <button class="nav-tab" data-page="press" role="tab">저널리즘 <span class="tn">9</span></button>
+      <button class="nav-tab" data-page="policy" role="tab">정치·정책 <span class="tn">11</span></button>
+      <button class="nav-tab" data-page="civic" role="tab">시민사회 <span class="tn">16</span></button>
+      <button class="nav-tab" data-page="awards" role="tab">수상·자격 <span class="tn">8</span></button>
+      <button class="nav-tab" data-page="board" role="tab">기록</button>
     </nav>
+  </div>
+</header>
 
-    <main>
-      <!-- ═══════════════ HERO ═══════════════ -->
-      <section class="hero-section">
-        <div>
-          <p class="hero-pre">Portfolio 2026<span>_</span></p>
-          <h1 class="hero-name" id="scramble-title">LEE DONGGYU</h1>
-          <p class="hero-name-kr">이 동 규</p>
-          <div class="hero-tags">
-            <span class="hero-tag main"><i class="fa-solid fa-building-columns" style="margin-right:.4rem"></i>중앙대학교 도시계획부동산학과</span>
-            <span class="hero-tag sub">대일외국어고등학교 졸업 (제40기)</span>
-            <span class="hero-tag sub">제40대 학생회장</span>
-            <span class="hero-tag sub">청라온 선임기자</span>
-            <span class="hero-tag sub">KIYP 운영부위원장</span>
-          </div>
-          <div class="hero-contacts">
-            <a href="mailto:ldgk@cau.ac.kr" class="hero-contact">
-              <i class="fa-solid fa-envelope"></i>ldgk@cau.ac.kr
-            </a>
-            <a href="https://www.instagram.com/ldg.lab" target="_blank" rel="noopener noreferrer" class="hero-contact">
-              <i class="fa-brands fa-instagram"></i>@ldg.lab
-            </a>
-          </div>
+<main>
+
+<!-- ══ 홈 ══ -->
+<section id="page-home" class="page active pp">
+  <div class="grid">
+
+    <div class="c8">
+      <div class="card" style="height:100%">
+        <div class="chip">Portfolio 2026</div>
+        <h1 class="h1">LEE<br>DONGGYU<span class="kr">이 동 규</span></h1>
+        <div class="accent-bar">
+          <span>중앙대학교 도시계획부동산학과 재학 · 대일외국어고등학교 제40기 졸업</span>
         </div>
-
-        <div class="stat-row">
-          <div class="stat-pill">
-            <span class="stat-num gradient-text-cyan">10+</span>
-            <span class="stat-label">활동 연차</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-num gradient-text-gold">100+</span>
-            <span class="stat-label">기사 집필</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-num gradient-text-purple">7</span>
-            <span class="stat-label">수상 실적</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-num gradient-text-pink">40+</span>
-            <span class="stat-label">참여 단체</span>
-          </div>
+        <div class="contacts">
+          <a href="mailto:ldgk@cau.ac.kr" class="clink"><i class="fa-solid fa-envelope"></i>ldgk@cau.ac.kr</a>
+          <a href="https://www.instagram.com/ldg.lab" target="_blank" rel="noopener" class="clink"><i class="fa-brands fa-instagram"></i>@ldg.lab</a>
         </div>
-
-        <div class="hero-scroll-hint">SCROLL</div>
-      </section>
-
-      <!-- ═══════════════ EDUCATION ═══════════════ -->
-      <section class="section-block" id="education">
-        <div class="grid-12">
-          <div class="col-12 fade-in">
-            <div class="card card-glow-cyan">
-              <div class="mac-dots"><div class="mac-dot r"></div><div class="mac-dot y"></div><div class="mac-dot g"></div></div>
-              <span class="sec-chip cyan"><i class="fa-solid fa-graduation-cap"></i>Education & Training</span>
-              <h2 class="sec-title">학력 및 교육 수료</h2>
-              <p class="sec-sub">중앙대학교 재학 및 주요 교육 수료 이력입니다.</p>
-              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.75rem;margin-top:1.75rem;">
-                <div class="edu-item">
-                  <div class="edu-dot"></div>
-                  <div class="edu-body">
-                    <div class="edu-inst">중앙대학교</div>
-                    <div class="edu-course">도시계획부동산학과 재학</div>
-                    <div class="edu-year">재학 중</div>
-                  </div>
-                </div>
-                <div class="edu-item">
-                  <div class="edu-dot" style="background:var(--purple);box-shadow:0 0 8px var(--purple)"></div>
-                  <div class="edu-body">
-                    <div class="edu-inst">대일외국어고등학교</div>
-                    <div class="edu-course">졸업 (제40기)</div>
-                    <div class="edu-year">졸업</div>
-                  </div>
-                </div>
-                <div class="edu-item">
-                  <div class="edu-dot" style="background:var(--gold);box-shadow:0 0 8px var(--gold)"></div>
-                  <div class="edu-body">
-                    <div class="edu-inst">서울교육대학교 소프트웨어 영재교육원</div>
-                    <div class="edu-course">6학년 기초과정 수료</div>
-                    <div class="edu-year">2019.04 — 2020.02</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="stat-strip">
+          <div class="stat-box"><span class="stat-n">10+</span><span class="stat-l">활동 연차</span></div>
+          <div class="stat-box"><span class="stat-n">100+</span><span class="stat-l">집필 기사</span></div>
+          <div class="stat-box"><span class="stat-n">7</span><span class="stat-l">수상 실적</span></div>
+          <div class="stat-box"><span class="stat-n">40+</span><span class="stat-l">참여 단체</span></div>
         </div>
-      </section>
-
-      <!-- ═══════════════ ACADEMIC / TA ═══════════════ -->
-      <section class="section-block" id="academic">
-        <div class="grid-12">
-          <div class="col-12 fade-in-left">
-            <div class="card card-glow-cyan">
-              <div class="mac-dots"><div class="mac-dot r"></div><div class="mac-dot y"></div><div class="mac-dot g"></div></div>
-              <span class="sec-chip cyan"><i class="fa-solid fa-chalkboard-teacher"></i>Academic &amp; Tutoring</span>
-              <h2 class="sec-title">교육 콘텐츠 개발 및 학술 TA</h2>
-              <p class="sec-sub">교육 현장에서 문항 제작, 칼럼 기고, 수능 검토까지 다양한 역할을 수행하고 있습니다.</p>
-              <div class="timeline" style="margin-top:1.75rem;">
-
-                <div class="tl-item">
-                  <div class="tl-year">2026 — NOW</div>
-                  <div class="tl-body">
-                    <span class="tl-badge new">NEW · 신규</span>
-                    <div class="tl-role">검토위원</div>
-                    <div class="tl-org">대성학력개발연구소</div>
-                    <div class="tl-desc">수능 영어 모의고사 검토 및 피드백</div>
-                  </div>
-                </div>
-
-                <div class="tl-item">
-                  <div class="tl-year">2025 — NOW</div>
-                  <div class="tl-body">
-                    <span class="tl-badge current">● 진행 중</span>
-                    <div class="tl-role">문항 제작 및 클리닉 담당</div>
-                    <div class="tl-org">이건호 대일수학 연구팀</div>
-                    <div class="tl-desc">공통 과목 및 확률과 통계 문항 제작 / 소수 질의응답 및 학습관리 클리닉 담당</div>
-                  </div>
-                </div>
-
-                <div class="tl-item">
-                  <div class="tl-year">2026</div>
-                  <div class="tl-body">
-                    <div class="tl-role">진학레터 '잇다' 에디터</div>
-                    <div class="tl-org">진학사</div>
-                    <div class="tl-desc">학생부종합전형 분석, 교과·비교과 탐구활동 칼럼 기고</div>
-                  </div>
-                </div>
-
-                <div class="tl-item">
-                  <div class="tl-year">2025 — 2026</div>
-                  <div class="tl-body">
-                    <div class="tl-role">클리닉 담당</div>
-                    <div class="tl-org">성북학림학원</div>
-                    <div class="tl-desc">대일외고 윈터스쿨 수학 질의응답 및 학습관리 클리닉 담당</div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ LEADERSHIP ═══════════════ -->
-      <section class="section-block" id="leadership">
-        <div class="grid-12">
-          <div class="col-8 fade-in">
-            <div class="card card-glow-purple" style="height:100%">
-              <div class="mac-dots"><div class="mac-dot r"></div><div class="mac-dot y"></div><div class="mac-dot g"></div></div>
-              <span class="sec-chip purple"><i class="fa-solid fa-crown"></i>School Leadership</span>
-              <h2 class="sec-title">학교 자치 및<br><span class="gradient-text-purple">학생회 활동</span></h2>
-              <div class="timeline" style="margin-top:1.5rem;">
-                <div class="tl-item">
-                  <div class="tl-year">2024 — 2025</div>
-                  <div class="tl-body">
-                    <div class="tl-role" style="font-size:1rem;">제40대 학생회장</div>
-                    <div class="tl-org">대일외국어고등학교</div>
-                    <div class="tl-desc">학생 자치 기구 총괄 및 학생 권익 증진 활동 주도</div>
-                  </div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-year">2024 — 2025</div>
-                  <div class="tl-body">
-                    <div class="tl-role">학생회 안전관리부 부장</div>
-                    <div class="tl-org">대일외국어고등학교</div>
-                    <div class="tl-desc">학생대의원회의 진행 및 학생 안전 정책 수립 담당</div>
-                  </div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-year">2023 — 2024</div>
-                  <div class="tl-body">
-                    <div class="tl-role">학생회 안전관리부 차장</div>
-                    <div class="tl-org">대일외국어고등학교</div>
-                    <div class="tl-desc">학생대의원회의 진행 및 학생 안전 정책 수립 담당</div>
-                  </div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-year">2022</div>
-                  <div class="tl-body">
-                    <div class="tl-role">학생회 생활교육부장</div>
-                    <div class="tl-org">고명중학교</div>
-                    <div class="tl-desc">학생 생활 지도 및 건전한 학교 문화 조성 활동</div>
-                  </div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-year">2021</div>
-                  <div class="tl-body">
-                    <div class="tl-role">학생회 차장 / 방송부원</div>
-                    <div class="tl-org">고명중학교</div>
-                  </div>
-                </div>
-              </div>
-              <div class="feat-number">40</div>
-            </div>
-          </div>
-          <div class="col-4 fade-in">
-            <div class="card" style="background:linear-gradient(145deg,rgba(176,108,255,.12),rgba(10,8,20,.95));border-color:rgba(176,108,255,.3);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1rem;padding:2.5rem 1.5rem;">
-              <div style="font-size:4rem;line-height:1;">👑</div>
-              <div>
-                <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.8rem;color:#fff;line-height:1.1;">제40대</div>
-                <div style="font-weight:900;font-size:1.1rem;color:var(--purple);margin-top:.25rem;">대일외고 학생회장</div>
-              </div>
-              <p style="font-size:.82rem;color:var(--text-muted);line-height:1.7;">학생 자치 기구 총괄 및<br>학생 권익 증진 활동 주도</p>
-              <div style="background:rgba(176,108,255,.1);border:1px solid rgba(176,108,255,.3);border-radius:10px;padding:.7rem 1.2rem;font-size:.75rem;color:var(--purple);font-weight:700;">2024 — 2025</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ JOURNALISM ═══════════════ -->
-      <section class="section-block" id="journalism">
-        <div class="grid-12">
-          <div class="col-12 fade-in">
-            <div class="card card-glow-pink" style="background:rgba(8,4,12,.96);">
-              <div class="mac-dots"><div class="mac-dot r"></div><div class="mac-dot y"></div><div class="mac-dot g"></div></div>
-              <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:1.5rem;margin-bottom:2rem;">
-                <div>
-                  <span class="sec-chip pink"><i class="fa-solid fa-newspaper"></i>Journalism</span>
-                  <h2 class="sec-title">언론 및 미디어<br><span class="gradient-text-pink">저널리즘</span></h2>
-                  <p class="sec-sub" style="max-width:500px;">사회 이슈·정책 분석 기사 <strong style="color:#fff">100여 건</strong> 집필 (2020—현재). 청라온 선임기자로서 꾸준한 활동 중.</p>
-                </div>
-                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,107,157,.08);border:1px solid rgba(255,107,157,.25);border-radius:16px;padding:1.5rem 2rem;gap:.3rem;text-align:center;">
-                  <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2.8rem;color:var(--pink);line-height:1;">100+</div>
-                  <div style="font-size:.72rem;color:var(--text-muted);">집필 기사 수</div>
-                </div>
-              </div>
-
-              <!-- Featured -->
-              <div style="background:linear-gradient(135deg,rgba(255,107,157,.12),rgba(176,108,255,.1));border:1px solid rgba(255,107,157,.3);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
-                <div style="font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin-bottom:.4rem;">FLAGSHIP</div>
-                <div style="font-weight:900;font-size:1.1rem;color:#fff;">청소년 언론 '청라온' 선임기자</div>
-                <div style="font-size:.8rem;color:var(--text-muted);margin-top:.2rem;">2020 — 현재 · 사회 이슈 및 정책 분석 기사 집필</div>
-              </div>
-
-              <div class="press-grid">
-                <div class="press-item">
-                  <div class="pi-org">한국경제신문<br>주니어 생글생글</div>
-                  <div class="pi-role">기자</div>
-                  <div class="pi-year">2022 — 2024</div>
-                </div>
-                <div class="press-item">
-                  <div class="pi-org">에듀뉴스</div>
-                  <div class="pi-role">학생기자</div>
-                  <div class="pi-year">2022 — 2024</div>
-                </div>
-                <div class="press-item">
-                  <div class="pi-org">수완뉴스</div>
-                  <div class="pi-role">청소년 기자</div>
-                  <div class="pi-year">2020 — 2022</div>
-                </div>
-                <div class="press-item">
-                  <div class="pi-org">글로밥상</div>
-                  <div class="pi-role">저작거리 감성 매거진 필진</div>
-                  <div class="pi-year">2020 — 2022</div>
-                </div>
-                <div class="press-item">
-                  <div class="pi-org">통일부</div>
-                  <div class="pi-role">제8기 어린이 기자</div>
-                  <div class="pi-year">2019 — 2020</div>
-                </div>
-                <div class="press-item">
-                  <div class="pi-org">내친구서울</div>
-                  <div class="pi-role">서울특별시 어린이 기자</div>
-                  <div class="pi-year">2016 — 2017</div>
-                </div>
-                <div class="press-item">
-                  <div class="pi-org">금융소비자연맹</div>
-                  <div class="pi-role">청소년소비자기자</div>
-                  <div class="pi-year">2022</div>
-                </div>
-                <div class="press-item">
-                  <div class="pi-org">STEMATIX</div>
-                  <div class="pi-role">청소년 과학전문지 한국지부 저널리스트</div>
-                  <div class="pi-year">2021</div>
-                </div>
-                <div class="press-item">
-                  <div class="pi-org">아이엠뉴스</div>
-                  <div class="pi-role">시민기자</div>
-                  <div class="pi-year">2021</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ POLICY ═══════════════ -->
-      <section class="section-block" id="policy">
-        <div class="grid-12">
-          <div class="col-5 fade-in-left">
-            <div class="card card-glow-purple" style="height:100%">
-              <div class="mac-dots"><div class="mac-dot r"></div><div class="mac-dot y"></div><div class="mac-dot g"></div></div>
-              <span class="sec-chip purple"><i class="fa-solid fa-landmark"></i>Political &amp; Policy</span>
-              <h2 class="sec-title">정당 및 정책·<br><span class="gradient-text-purple">정치 참여</span></h2>
-              <p class="sec-sub" style="margin-bottom:1.5rem;">청소년 정치 참여의 최전선에서 정책 개발과 선거 캠프 활동을 수행했습니다.</p>
-              <div style="background:var(--purple-dim);border:1px solid rgba(176,108,255,.3);border-radius:14px;padding:1.25rem 1.4rem;">
-                <div style="font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:.5rem;">FLAGSHIP</div>
-                <div style="font-weight:900;font-size:.95rem;color:#fff;margin-bottom:.2rem;">KIYP 한국청소년정책연구소</div>
-                <div style="font-size:.8rem;color:var(--text-muted);">운영부위원장 · 2021 — 현재</div>
-                <div style="font-size:.75rem;color:var(--text-dim);margin-top:.3rem;">청소년 정책 연구 및 자문</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-7 fade-in">
-            <div class="card" style="height:100%">
-              <span class="sec-chip white">제20대 대통령 선거 캠프</span>
-              <h3 style="font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:1rem;">더불어민주당 대한민국 대전환 선대위</h3>
-              <div class="policy-grid">
-                <div class="policy-item">
-                  <div class="py-role">조직본부 양성평등가족위원회 공동위원장</div>
-                  <div class="py-note">2022</div>
-                </div>
-                <div class="policy-item">
-                  <div class="py-role">조직본부 생애첫투표위원회 총괄상황실장</div>
-                  <div class="py-note">2022</div>
-                </div>
-                <div class="policy-item">
-                  <div class="py-role">정무특보단 하이블루 청소년위원회 홍보소통본부원</div>
-                  <div class="py-note">2022</div>
-                </div>
-                <div class="policy-item">
-                  <div class="py-role">총괄특보단 대전환 기후에너지 특보</div>
-                  <div class="py-note">2022</div>
-                </div>
-                <div class="policy-item">
-                  <div class="py-role">직능본부 산업중소벤처위 기후에너지본부 운영위원</div>
-                  <div class="py-note">2022</div>
-                </div>
-                <div class="policy-item">
-                  <div class="py-role">직능본부 정책 및 홍보 파트너</div>
-                  <div class="py-note">2022</div>
-                </div>
-              </div>
-              <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);">
-                <span class="sec-chip white" style="margin-bottom:.75rem;">제8회 전국동시지방선거</span>
-                <div style="font-weight:800;font-size:.92rem;color:#fff;margin-bottom:.75rem;">더불어민주당 김동연 경기도지사 후보 캠프</div>
-                <div class="policy-grid">
-                  <div class="policy-item">
-                    <div class="py-role">성평등위원회 부위원장</div>
-                    <div class="py-note">2022</div>
-                  </div>
-                  <div class="policy-item">
-                    <div class="py-role">청소년특보</div>
-                    <div class="py-note">2022</div>
-                  </div>
-                </div>
-              </div>
-              <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);">
-                <span class="sec-chip white" style="margin-bottom:.75rem;">청소년 정책 네트워크</span>
-                <div style="font-weight:800;font-size:.92rem;color:#fff;margin-bottom:.75rem;">더불어민주당 청소년 지지포럼 '더불어청소년'</div>
-                <div class="policy-grid">
-                  <div class="policy-item">
-                    <div class="py-role">청소년정치개혁특별위원장</div>
-                    <div class="py-note">2022</div>
-                  </div>
-                  <div class="policy-item">
-                    <div class="py-role">정책본부장 · 청소년 관련 공약 개발 지원</div>
-                    <div class="py-note">2021 — 2022</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ CIVIC ═══════════════ -->
-      <section class="section-block" id="civic">
-        <div class="grid-12">
-          <div class="col-12 fade-in">
-            <div class="card card-glow-gold">
-              <div class="mac-dots"><div class="mac-dot r"></div><div class="mac-dot y"></div><div class="mac-dot g"></div></div>
-              <span class="sec-chip gold"><i class="fa-solid fa-earth-asia"></i>Civic &amp; Social</span>
-              <h2 class="sec-title">시민사회 및<br><span class="gradient-text-gold">공공 임팩트 활동</span></h2>
-              <p class="sec-sub" style="margin-bottom:1.75rem;">정책 제안과 제도 참여로 이어지는 활동을 중심으로 정리했습니다.</p>
-
-              <!-- Major Items -->
-              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem;margin-bottom:1.25rem;">
-                <div style="background:linear-gradient(135deg,rgba(0,245,160,.1),rgba(0,229,255,.07));border:1px solid rgba(0,245,160,.3);border-radius:16px;padding:1.25rem 1.4rem;">
-                  <div style="font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">FLAGSHIP · 2020 — NOW</div>
-                  <div style="font-weight:900;font-size:.95rem;color:#fff;">청소년 단체 '유니엄' 대표이사</div>
-                  <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">공공 임팩트 프로젝트 총괄</div>
-                </div>
-                <div style="background:linear-gradient(135deg,rgba(0,229,255,.08),rgba(176,108,255,.07));border:1px solid rgba(0,229,255,.25);border-radius:16px;padding:1.25rem 1.4rem;">
-                  <div style="font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem;">FLAGSHIP · 2020 — 2021</div>
-                  <div style="font-weight:900;font-size:.95rem;color:#fff;">여성가족부 제16회 청소년특별회의</div>
-                  <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">온라인소통팀장 (선발직 위원) · 정부 청소년 정책 의제 발굴 및 제안</div>
-                </div>
-                <div style="background:linear-gradient(135deg,rgba(176,108,255,.08),rgba(245,200,66,.05));border:1px solid rgba(176,108,255,.25);border-radius:16px;padding:1.25rem 1.4rem;">
-                  <div style="font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:.4rem;">FLAGSHIP · 2022 — 2025</div>
-                  <div style="font-weight:900;font-size:.95rem;color:#fff;">서울특별시교육청 학생참여단</div>
-                  <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">제11기(2022) · 제12기(2023) · 제13기(2024) 위원</div>
-                </div>
-              </div>
-
-              <div class="civic-grid">
-                <div class="civic-item env">
-                  <div class="ci-cat" style="color:var(--orange);">Climate</div>
-                  <div class="ci-title">청소년기후행동 기후정치크루</div>
-                  <div class="ci-year">2021 — 현재</div>
-                </div>
-                <div class="civic-item env">
-                  <div class="ci-cat" style="color:var(--orange);">Climate</div>
-                  <div class="ci-title">청소년기후행동 924글로벌기후파업 참여</div>
-                  <div class="ci-year">2021 — 현재</div>
-                </div>
-                <div class="civic-item pan">
-                  <div class="ci-cat" style="color:var(--gold);">Panel</div>
-                  <div class="ci-title">국민권익위원회 국민생각함 국민패널</div>
-                  <div class="ci-year">2022 — 2025</div>
-                </div>
-                <div class="civic-item dip">
-                  <div class="ci-cat" style="color:var(--pink);">Diplomacy</div>
-                  <div class="ci-title">사이버외교사절단 반크 (VANK) 청년공공외교대사 9기</div>
-                  <div class="ci-year">2022</div>
-                </div>
-                <div class="civic-item gov">
-                  <div class="ci-cat" style="color:var(--purple);">Education</div>
-                  <div class="ci-title">대통령 직속 국가교육회의 국민참여단</div>
-                  <div class="ci-year">2021</div>
-                </div>
-                <div class="civic-item gov">
-                  <div class="ci-cat" style="color:var(--purple);">Regional</div>
-                  <div class="ci-title">성북구 혁신교육 추진단원</div>
-                  <div class="ci-year">2021</div>
-                </div>
-              </div>
-
-              <button type="button" class="more-toggle" id="civic-more-btn" aria-expanded="false">
-                더 많은 활동 보기 <span class="chevron">⌄</span>
-              </button>
-              <div class="more-list" id="civic-more-list">
-                <div class="more-item"><span class="my">2018—2019</span>키자니아 서울 제9대 어린이 의원</div>
-                <div class="more-item"><span class="my">2018</span>한국청소년상담복지개발원 솔리언 또래상담 프로그램 수료</div>
-                <div class="more-item"><span class="my">2020—2021</span>한국미래청년청소년정책연구회 대외소통국장 겸 조직국원</div>
-                <div class="more-item"><span class="my">2021</span>청소년사회교육혁명포럼 '청춘희망소' 창립준비위원회 홍보소통팀장</div>
-                <div class="more-item"><span class="my">2021</span>청소년 인권 단체 '아수나로' 회원</div>
-                <div class="more-item"><span class="my">2021</span>청소년인권모임 청소년 활동가</div>
-                <div class="more-item"><span class="my">2022</span>청년너울 청소년위원회 위원 (2022—2023)</div>
-                <div class="more-item"><span class="my">2022</span>전국학생협회 '새싹' 대외협력실장</div>
-                <div class="more-item"><span class="my">2022</span>전국학생협회 '새싹' 인사위원장</div>
-                <div class="more-item"><span class="my">2022</span>그린피스 자원봉사자</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ AWARDS ═══════════════ -->
-      <section class="section-block" id="awards">
-        <div class="grid-12">
-          <div class="col-7 fade-in-left">
-            <div class="card card-glow-gold">
-              <div class="mac-dots"><div class="mac-dot r"></div><div class="mac-dot y"></div><div class="mac-dot g"></div></div>
-              <span class="sec-chip gold"><i class="fa-solid fa-trophy"></i>Awards &amp; Honors</span>
-              <h2 class="sec-title">수상 실적</h2>
-              <div style="display:flex;flex-direction:column;gap:.65rem;margin-top:1.5rem;">
-                <div class="award-item">
-                  <div class="award-icon">🏆</div>
-                  <div>
-                    <div class="award-grade" style="color:var(--gold);">Grand Prize · 통일부장관상</div>
-                    <div class="award-title">제19회 전국장애인과 함께하는 문예글짓기 대회 (대상)</div>
-                    <div class="award-org">사단법인 한국장애인유권자연맹</div>
-                    <div class="award-date">2022.11.07</div>
-                  </div>
-                </div>
-                <div class="award-item">
-                  <div class="award-icon">🥇</div>
-                  <div>
-                    <div class="award-grade" style="color:#a0d4ff;">Gold Prize · 서울지방국세청장상</div>
-                    <div class="award-title">2022 청소년 세금작품공모전 글짓기 부문 (금상)</div>
-                    <div class="award-org">국세청</div>
-                    <div class="award-date">2022.09.30</div>
-                  </div>
-                </div>
-                <div class="award-item">
-                  <div class="award-icon">🥈</div>
-                  <div>
-                    <div class="award-grade" style="color:#c8c8c8;">1st Prize · 아동권리보장원장상</div>
-                    <div class="award-title">아동정책영향평가 공모전 슬로건 부문 (최우수상)</div>
-                    <div class="award-org">아동권리보장원</div>
-                    <div class="award-date">2020.12.17</div>
-                  </div>
-                </div>
-                <div class="award-item">
-                  <div class="award-icon">🎖️</div>
-                  <div>
-                    <div class="award-grade" style="color:var(--cyan);">Special Prize · 서울시립청소년미디어센터관장상</div>
-                    <div class="award-title">제9회 대한민국청소년기자대상 글 기사 부문 (주관기관상)</div>
-                    <div class="award-org">서울시립청소년미디어센터</div>
-                    <div class="award-date">2022.11.12</div>
-                  </div>
-                </div>
-                <div class="award-item">
-                  <div class="award-icon">📜</div>
-                  <div>
-                    <div class="award-grade" style="color:var(--text-muted);">장려상 · 금융소비자연맹회장상</div>
-                    <div class="award-title">2022년 청소년 소비자 기사·포스터 공모전 기사 부문</div>
-                    <div class="award-org">금융소비자연맹</div>
-                    <div class="award-date">2022.12.27</div>
-                  </div>
-                </div>
-                <div class="award-item">
-                  <div class="award-icon">📜</div>
-                  <div>
-                    <div class="award-grade" style="color:var(--text-muted);">장려상 · 초록우산 어린이재단회장상</div>
-                    <div class="award-title">제7회 전국 감사편지 공모전</div>
-                    <div class="award-org">초록우산 어린이재단</div>
-                    <div class="award-date">2022.11.22</div>
-                  </div>
-                </div>
-                <div class="award-item">
-                  <div class="award-icon">📜</div>
-                  <div>
-                    <div class="award-grade" style="color:var(--text-dim);">입선 · 이사장상</div>
-                    <div class="award-title">제8회 극지·해양 도서 독후감 및 콘텐츠 감상문 공모전</div>
-                    <div class="award-org">사단법인 극지해양미래포럼</div>
-                    <div class="award-date">2022.09.16</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-5 fade-in">
-            <div style="display:flex;flex-direction:column;gap:1.25rem;height:100%;">
-              <!-- Certificate -->
-              <div class="card card-glow-cyan">
-                <span class="sec-chip cyan"><i class="fa-solid fa-certificate"></i>Certificate</span>
-                <h2 class="sec-title" style="font-size:1.6rem;">보유 자격증</h2>
-                <div class="cert-card" style="margin-top:1.25rem;">
-                  <div class="cert-icon">💻</div>
-                  <div>
-                    <div class="cert-name">DIAT 디지털정보활용능력</div>
-                    <div class="cert-detail">프리젠테이션(PPT) 과목 · 고급 등급</div>
-                    <div class="cert-date">2017.03.17 · 한국정보통신진흥협회</div>
-                  </div>
-                </div>
-              </div>
-              <!-- Quick Stats -->
-              <div class="card" style="flex:1;">
-                <span class="sec-chip white"><i class="fa-solid fa-chart-simple"></i>Quick Stats</span>
-                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1.25rem;">
-                  <div style="background:var(--gold-dim);border:1px solid rgba(245,200,66,.2);border-radius:12px;padding:1rem;text-align:center;">
-                    <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2rem;color:var(--gold);line-height:1;">7</div>
-                    <div style="font-size:.7rem;color:var(--text-muted);margin-top:.25rem;">수상 실적</div>
-                  </div>
-                  <div style="background:var(--cyan-dim);border:1px solid rgba(0,229,255,.18);border-radius:12px;padding:1rem;text-align:center;">
-                    <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2rem;color:var(--cyan);line-height:1;">3</div>
-                    <div style="font-size:.7rem;color:var(--text-muted);margin-top:.25rem;">장관상급 이상</div>
-                  </div>
-                  <div style="background:var(--purple-dim);border:1px solid rgba(176,108,255,.18);border-radius:12px;padding:1rem;text-align:center;">
-                    <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2rem;color:var(--purple);line-height:1;">9+</div>
-                    <div style="font-size:.7rem;color:var(--text-muted);margin-top:.25rem;">언론 활동</div>
-                  </div>
-                  <div style="background:var(--pink-dim);border:1px solid rgba(255,107,157,.18);border-radius:12px;padding:1rem;text-align:center;">
-                    <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2rem;color:var(--pink);line-height:1;">6</div>
-                    <div style="font-size:.7rem;color:var(--text-muted);margin-top:.25rem;">주요 정치참여</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ BOARD ═══════════════ -->
-      <section class="section-block" id="board">
-        <div class="grid-12">
-          <div class="col-12 fade-in">
-            <div class="card card-glow-cyan">
-              <div class="mac-dots"><div class="mac-dot r"></div><div class="mac-dot y"></div><div class="mac-dot g"></div></div>
-              <span class="sec-chip cyan"><i class="fa-solid fa-pen-nib"></i>Board</span>
-              <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem;margin-bottom:1.75rem;">
-                <div>
-                  <h2 class="sec-title" style="margin-bottom:.5rem;">기록 보드</h2>
-                  <p class="sec-sub">Newsroom과 Opinion을 전환해 최신 글을 확인할 수 있습니다.</p>
-                </div>
-                <div class="board-tab-row" style="margin-bottom:0;">
-                  <button type="button" class="board-tab active" data-board="newsroom">My Newsroom</button>
-                  <button type="button" class="board-tab" data-board="opinion">My Opinion</button>
-                </div>
-              </div>
-              <div id="board-list"></div>
-              <div style="text-align:center;margin-top:1.25rem;">
-                <button type="button" id="board-load-more" style="display:none;padding:.6rem 1.5rem;border-radius:10px;font-size:.8rem;font-weight:700;border:1px solid rgba(0,229,255,.3);background:rgba(0,229,255,.06);color:var(--cyan);cursor:pointer;transition:all .2s;">더보기</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ MANIFESTO ═══════════════ -->
-      <div class="manifesto-section">
-        <span class="manifesto-kicker">The Roadmap</span>
-        <h2 class="manifesto-title">
-          논리로 도시를 설계하고,<br>
-          <span class="gradient-text-cyan">진심으로 사회를 움직입니다.</span>
-        </h2>
-        <p class="manifesto-body">
-          중앙대학교 도시계획부동산학과에서의 학업을 통해 <strong style="color:#fff">지속 가능한 공간</strong>을 구상하고,
-          지난 10년간 이어온 사회 참여 활동의 동력으로 <strong style="color:#fff">모두를 위한 정책</strong>을 실현하는 전문가가 되겠습니다.
-        </p>
-        <div style="width:1px;height:60px;background:linear-gradient(180deg,var(--cyan),transparent);margin:0 auto;"></div>
       </div>
+    </div>
 
-      <footer>
-        <span>© 2026 Lee Donggyu</span>
-        <span>Official Portfolio — ldgk@cau.ac.kr</span>
-      </footer>
-    </main>
+    <div class="c4">
+      <div class="card" style="height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1rem;background:linear-gradient(145deg,rgba(79,70,229,.09),rgba(255,255,255,.75))">
+        <div style="font-size:3.2rem">👑</div>
+        <div>
+          <div style="font-family:'Plus Jakarta Sans';font-weight:900;font-size:1.65rem;color:var(--a);line-height:1">제40대</div>
+          <div style="font-weight:700;font-size:.95rem;color:var(--text);margin-top:.3rem">대일외고 학생회장</div>
+        </div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.7">학생 자치 기구 총괄 및<br>학생 권익 증진 활동 주도</div>
+        <div style="background:var(--a-soft);border:1px solid var(--a-mid);border-radius:99px;padding:.35rem .9rem;font-size:.73rem;color:var(--a);font-weight:700">2024 — 2025</div>
+      </div>
+    </div>
 
-    <script>
-    (() => {
-      /* ── cursor ── */
-      const dot = document.getElementById('cursor-dot');
-      const ring = document.getElementById('cursor-ring');
-      let rx = 0, ry = 0;
-      document.addEventListener('mousemove', e => {
-        dot.style.left = e.clientX + 'px';
-        dot.style.top = e.clientY + 'px';
-        rx += (e.clientX - rx) * .12;
-        ry += (e.clientY - ry) * .12;
-        ring.style.left = e.clientX + 'px';
-        ring.style.top = e.clientY + 'px';
-      });
-      document.querySelectorAll('a,button,.card,.press-item,.award-item,.civic-item,.policy-item,.edu-item,.tl-item').forEach(el => {
-        el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
-      });
+    <div class="c12">
+      <div class="card">
+        <div class="chip">대표 경력 — 탭을 클릭해 상세 확인</div>
+        <div class="feat-list">
+          <div class="feat-item">
+            <div class="feat-tag">학생자치</div>
+            <div class="feat-title">대일외국어고등학교 제40대 학생회장</div>
+            <div class="feat-note">2024 — 2025</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-tag">언론</div>
+            <div class="feat-title">청소년 언론 '청라온' 선임기자</div>
+            <div class="feat-note">2020 — 현재 · 기사 100여 건</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-tag">정책연구</div>
+            <div class="feat-title">KIYP 한국청소년정책연구소 운영부위원장</div>
+            <div class="feat-note">2021 — 현재</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-tag">교육 · NEW</div>
+            <div class="feat-title">대성학력개발연구소 검토위원</div>
+            <div class="feat-note">2026 — 현재 · 수능 영어 모의고사 검토</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-tag">공공 임팩트</div>
+            <div class="feat-title">청소년 단체 '유니엄' 대표이사</div>
+            <div class="feat-note">2020 — 현재</div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-tag">정치참여</div>
+            <div class="feat-title">제20대 대선 선대위 6개 직책</div>
+            <div class="feat-note">2022 · 더불어민주당 대한민국 대전환 선대위</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      /* ── progress bar ── */
-      const bar = document.getElementById('progress-bar');
-      const updateProgress = () => {
-        const sc = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.width = (sc > 0 ? (window.scrollY / sc) * 100 : 0) + '%';
-      };
-      window.addEventListener('scroll', updateProgress, { passive: true });
+  </div>
 
-      /* ── stars ── */
-      const canvas = document.getElementById('stars-canvas');
-      const ctx = canvas.getContext('2d');
-      let stars = [];
-      const resize = () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        stars = Array.from({ length: 180 }, () => ({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.2 + .2,
-          a: Math.random(),
-          speed: Math.random() * .004 + .002,
-          phase: Math.random() * Math.PI * 2
-        }));
-      };
-      resize();
-      window.addEventListener('resize', resize);
-      let frame = 0;
-      const animStars = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(s => {
-          const a = s.a * (.5 + .5 * Math.sin(s.phase + frame * s.speed));
-          ctx.beginPath();
-          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(200,220,255,${a})`;
-          ctx.fill();
-        });
-        frame++;
-        requestAnimationFrame(animStars);
-      };
-      animStars();
+  <div class="manifesto">
+    <span class="mf-tag">The Roadmap</span>
+    <p class="mf-title">논리로 도시를 설계하고,<br><span class="dim">진심으로 사회를 움직입니다.</span></p>
+    <p class="mf-sub">중앙대학교 도시계획부동산학과에서의 학업을 통해 <strong>지속 가능한 공간</strong>을 구상하고, 지난 10년간 이어온 사회 참여 활동의 동력으로 <strong>모두를 위한 정책</strong>을 실현하는 전문가가 되겠습니다.</p>
+  </div>
+</section>
 
-      /* ── scramble title ── */
-      const chars = '!<>-_\\/[]{}—=+*^?#';
-      const scramble = (el, text) => {
-        let queue = [];
-        for (let i = 0; i < text.length; i++) {
-          const start = Math.floor(Math.random() * 30);
-          const end = start + Math.floor(Math.random() * 25);
-          queue.push({ to: text[i], start, end, char: '' });
-        }
-        let f = 0;
-        const tick = () => {
-          let out = '', done = 0;
-          for (let i = 0; i < queue.length; i++) {
-            const q = queue[i];
-            if (f >= q.end) { done++; out += q.to; }
-            else if (f >= q.start) {
-              if (!q.char || Math.random() < .3) q.char = chars[Math.floor(Math.random() * chars.length)];
-              out += `<span style="color:var(--cyan)">${q.char}</span>`;
-            } else out += q.to;
-          }
-          el.innerHTML = out;
-          if (done < queue.length) { f++; requestAnimationFrame(tick); }
-        };
-        tick();
-      };
-      const titleEl = document.getElementById('scramble-title');
-      if (titleEl) setTimeout(() => scramble(titleEl, 'LEE DONGGYU'), 600);
+<!-- ══ 교육·학술 ══ -->
+<section id="page-edu" class="page pp">
+  <div class="grid">
+    <div class="c12">
+      <div class="card">
+        <div class="chip">Education &amp; Training</div>
+        <h2 class="h2">학력 및 교육 수료</h2>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div class="edu-status">● 재학 중</div>
+            <div class="edu-name">중앙대학교</div>
+            <div class="edu-course">도시계획부동산학과</div>
+            <div class="edu-yr">재학 중</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-status">졸업</div>
+            <div class="edu-name">대일외국어고등학교</div>
+            <div class="edu-course">제40기 졸업</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-status">수료</div>
+            <div class="edu-name">서울교육대학교 소프트웨어 영재교육원</div>
+            <div class="edu-course">6학년 기초과정 수료</div>
+            <div class="edu-yr">2019.04 — 2020.02</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c12">
+      <div class="card">
+        <div class="chip">Academic &amp; Tutoring</div>
+        <h2 class="h2">교육 콘텐츠 개발 및 학술 TA</h2>
+        <div class="tl">
+          <div class="tl-row">
+            <div class="tl-yr">2026<br>NOW</div>
+            <div class="tl-dot-wrap"><div class="dot"></div><div class="dot-line"></div></div>
+            <div class="tl-body">
+              <span class="new-badge">★ NEW · 2026 신규</span>
+              <div class="tl-role">검토위원</div>
+              <div class="tl-org">대성학력개발연구소</div>
+              <div class="tl-desc">수능 영어 모의고사 검토 및 피드백</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-yr">2025<br>NOW</div>
+            <div class="tl-dot-wrap"><div class="dot"></div><div class="dot-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-role">문항 제작 및 클리닉 담당</div>
+              <div class="tl-org">이건호 대일수학 연구팀</div>
+              <div class="tl-desc">공통 과목 및 확률과 통계 문항 제작 / 소수 질의응답 및 학습관리 클리닉 담당</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-yr">2026</div>
+            <div class="tl-dot-wrap"><div class="dot"></div><div class="dot-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-role">진학레터 '잇다' 에디터</div>
+              <div class="tl-org">진학사</div>
+              <div class="tl-desc">학생부종합전형 분석, 교과·비교과 탐구활동 칼럼 기고</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-yr">2025<br>2026</div>
+            <div class="tl-dot-wrap"><div class="dot"></div><div class="dot-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-role">클리닉 담당</div>
+              <div class="tl-org">성북학림학원</div>
+              <div class="tl-desc">대일외고 윈터스쿨 수학 질의응답 및 학습관리 클리닉 담당</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      /* ── fade-in on scroll ── */
-      const fadeEls = document.querySelectorAll('.fade-in, .fade-in-left');
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-      }, { threshold: .12 });
-      fadeEls.forEach(el => io.observe(el));
+<!-- ══ 리더십 ══ -->
+<section id="page-lead" class="page pp">
+  <div class="grid">
+    <div class="c8">
+      <div class="card" style="height:100%">
+        <div class="chip">School Leadership</div>
+        <h2 class="h2">학교 자치 및 학생회 활동</h2>
+        <div class="tl">
+          <div class="tl-row">
+            <div class="tl-yr">2024<br>2025</div>
+            <div class="tl-dot-wrap"><div class="dot"></div><div class="dot-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-role" style="font-size:1rem">제40대 학생회장</div>
+              <div class="tl-org">대일외국어고등학교</div>
+              <div class="tl-desc">학생 자치 기구 총괄 및 학생 권익 증진 활동 주도</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-yr">2024<br>2025</div>
+            <div class="tl-dot-wrap"><div class="dot"></div><div class="dot-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-role">학생회 안전관리부 부장</div>
+              <div class="tl-org">대일외국어고등학교</div>
+              <div class="tl-desc">학생대의원회의 진행 및 학생 안전 정책 수립 담당</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-yr">2023<br>2024</div>
+            <div class="tl-dot-wrap"><div class="dot"></div><div class="dot-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-role">학생회 안전관리부 차장</div>
+              <div class="tl-org">대일외국어고등학교</div>
+              <div class="tl-desc">학생대의원회의 진행 및 학생 안전 정책 수립 담당</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-yr">2022</div>
+            <div class="tl-dot-wrap"><div class="dot"></div><div class="dot-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-role">학생회 생활교육부장</div>
+              <div class="tl-org">고명중학교</div>
+              <div class="tl-desc">학생 생활 지도 및 건전한 학교 문화 조성 활동</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-yr">2021</div>
+            <div class="tl-dot-wrap"><div class="dot"></div><div class="dot-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-role">학생회 차장</div>
+              <div class="tl-org">고명중학교</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-yr">2021</div>
+            <div class="tl-dot-wrap"><div class="dot"></div><div class="dot-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-role">방송부원</div>
+              <div class="tl-org">고명중학교</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c4">
+      <div class="card" style="height:100%;display:flex;flex-direction:column;gap:1rem">
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:.9rem;background:linear-gradient(145deg,rgba(79,70,229,.09),transparent);border-radius:12px;padding:1.5rem">
+          <div style="font-size:3rem">🏫</div>
+          <div style="font-weight:700;font-size:.88rem;color:var(--text2);line-height:1.7">고명중학교에서 시작해<br>대일외고 학생회장까지,<br>학생자치의 전 과정을 경험했습니다.</div>
+        </div>
+        <div style="background:var(--a-soft);border:1px solid var(--a-mid);border-radius:12px;padding:1rem;text-align:center">
+          <div style="font-family:'Plus Jakarta Sans';font-weight:900;font-size:1.5rem;color:var(--a)">3개교</div>
+          <div style="font-size:.72rem;color:var(--text3);margin-top:.2rem">학생회 활동 기관</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      /* ── more toggle ── */
-      const civicBtn = document.getElementById('civic-more-btn');
-      const civicList = document.getElementById('civic-more-list');
-      if (civicBtn && civicList) {
-        civicBtn.addEventListener('click', () => {
-          const open = civicList.classList.toggle('open');
-          civicBtn.setAttribute('aria-expanded', String(open));
-        });
-      }
+<!-- ══ 저널리즘 ══ -->
+<section id="page-press" class="page pp">
+  <div class="grid">
+    <div class="c12">
+      <div class="card">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:1.5rem;margin-bottom:1.5rem">
+          <div>
+            <div class="chip">Journalism</div>
+            <h2 class="h2">언론 및 미디어 저널리즘</h2>
+            <p class="sub">사회 이슈 및 정책 분석 기사 <strong>100여 건</strong> 집필 (2020 — 현재)</p>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:'Plus Jakarta Sans';font-weight:900;font-size:2.8rem;color:var(--a);line-height:1">100+</div>
+            <div style="font-size:.73rem;color:var(--text3)">집필 기사 수</div>
+          </div>
+        </div>
 
-      /* ── board ── */
-      const boardKey = 'portfolioBoards';
-      let boardState = { active: 'newsroom', visible: 5, data: { newsroom: [], opinion: [] } };
-      const loadBoard = () => {
-        try {
-          const p = JSON.parse(localStorage.getItem(boardKey) || '{}');
-          boardState.data = {
-            newsroom: Array.isArray(p.newsroom) ? p.newsroom : [],
-            opinion: Array.isArray(p.opinion) ? p.opinion : []
-          };
-        } catch {}
-      };
-      const fmtDate = iso => {
-        if (!iso) return '';
-        const d = new Date(iso);
-        return isNaN(d) ? '' : d.toLocaleDateString('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit' });
-      };
-      const renderBoard = () => {
-        const list = document.getElementById('board-list');
-        const lm = document.getElementById('board-load-more');
-        if (!list) return;
-        const posts = [...(boardState.data[boardState.active] || [])].sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
-        const visible = posts.slice(0, boardState.visible);
-        if (!visible.length) {
-          list.innerHTML = '<div class="board-empty">아직 등록된 글이 없습니다.</div>';
-        } else {
-          list.innerHTML = visible.map(p => {
-            const preview = p.content.length > 180 ? p.content.slice(0,180)+'…' : p.content;
-            return `<div class="board-post"><div class="board-post-title">${p.title}</div><div class="board-post-meta">${fmtDate(p.createdAt)}</div><div class="board-post-body">${preview}</div></div>`;
-          }).join('');
-        }
-        if (lm) lm.style.display = boardState.visible >= posts.length ? 'none' : 'inline-block';
-      };
-      const syncTabs = () => {
-        document.querySelectorAll('.board-tab').forEach(t => {
-          t.classList.toggle('active', t.dataset.board === boardState.active);
-        });
-      };
-      loadBoard();
-      syncTabs();
-      renderBoard();
-      document.querySelectorAll('.board-tab').forEach(t => {
-        t.addEventListener('click', () => {
-          boardState.active = t.dataset.board;
-          boardState.visible = 5;
-          syncTabs();
-          renderBoard();
-        });
-      });
-      const lmBtn = document.getElementById('board-load-more');
-      if (lmBtn) lmBtn.addEventListener('click', () => { boardState.visible += 5; renderBoard(); });
-    })();
-    </script>
-  </body>
+        <div class="press-hero">
+          <div class="press-hero-tag">Flagship · 2020 — 현재</div>
+          <div class="press-hero-title">청소년 언론 '청라온' 선임기자</div>
+          <div class="press-hero-sub">사회 이슈 및 정책 분석 기사 집필 · 현재 활동 중</div>
+        </div>
+
+        <div class="chip" style="margin-bottom:.5rem">참여 매체 — 좌우 스크롤</div>
+        <div class="press-rail">
+          <div class="pc"><div class="pc-org">한국경제신문 주니어 생글생글</div><div class="pc-role">기자</div><div class="pc-yr">2022 — 2024</div></div>
+          <div class="pc"><div class="pc-org">에듀뉴스</div><div class="pc-role">학생기자</div><div class="pc-yr">2022 — 2024</div></div>
+          <div class="pc"><div class="pc-org">수완뉴스</div><div class="pc-role">청소년 기자</div><div class="pc-yr">2020 — 2022</div></div>
+          <div class="pc"><div class="pc-org">저작거리 감성 매거진 '글로밥상'</div><div class="pc-role">필진</div><div class="pc-yr">2020 — 2022</div></div>
+          <div class="pc"><div class="pc-org">통일부</div><div class="pc-role">제8기 어린이 기자</div><div class="pc-yr">2019 — 2020</div></div>
+          <div class="pc"><div class="pc-org">서울특별시 내친구서울</div><div class="pc-role">어린이 기자</div><div class="pc-yr">2016 — 2017</div></div>
+          <div class="pc"><div class="pc-org">금융소비자연맹</div><div class="pc-role">청소년소비자기자</div><div class="pc-yr">2022</div></div>
+          <div class="pc"><div class="pc-org">청소년 과학전문지 STEMATIX</div><div class="pc-role">한국지부 저널리스트</div><div class="pc-yr">2021</div></div>
+          <div class="pc"><div class="pc-org">아이엠뉴스</div><div class="pc-role">시민기자</div><div class="pc-yr">2021</div></div>
+        </div>
+        <p class="scroll-hint">← → 스크롤로 더 보기</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 정치·정책 ══ -->
+<section id="page-policy" class="page pp">
+  <div class="grid">
+    <div class="c12">
+      <div class="card">
+        <div class="chip">Political &amp; Policy Engagement</div>
+        <h2 class="h2">정당 및 정책·정치 참여</h2>
+        <p class="sub" style="margin-bottom:1.5rem">청소년 정치 참여의 최전선에서 정책 개발과 선거 캠프 활동을 수행했습니다.</p>
+
+        <div class="press-hero" style="margin-bottom:1.5rem">
+          <div class="press-hero-tag">Flagship · 2021 — 현재</div>
+          <div class="press-hero-title">KIYP 한국청소년정책연구소 운영부위원장</div>
+          <div class="press-hero-sub">청소년 정책 연구 및 자문</div>
+        </div>
+
+        <div class="accord">
+          <div class="acc">
+            <div class="acc-h" data-target="a1">
+              <div>
+                <div class="acc-t">더불어민주당 대한민국 대전환 선대위</div>
+                <div class="acc-s">제20대 대통령 선거 캠프 · 2022 · 6개 직책</div>
+              </div>
+              <i class="fa-solid fa-chevron-down acc-i"></i>
+            </div>
+            <div class="acc-b" id="a1">
+              <div class="acc-entries">
+                <div class="ace"><div class="ace-yr">2022</div><div><div class="ace-role">조직본부 양성평등가족위원회 공동위원장</div></div></div>
+                <div class="ace"><div class="ace-yr">2022</div><div><div class="ace-role">조직본부 생애첫투표위원회 총괄상황실장</div></div></div>
+                <div class="ace"><div class="ace-yr">2022</div><div><div class="ace-role">정무특보단 하이블루 청소년위원회 홍보소통본부원</div></div></div>
+                <div class="ace"><div class="ace-yr">2022</div><div><div class="ace-role">총괄특보단 대전환 기후에너지 특보</div></div></div>
+                <div class="ace"><div class="ace-yr">2022</div><div><div class="ace-role">직능본부 산업중소벤처위 기후에너지본부 운영위원</div></div></div>
+                <div class="ace"><div class="ace-yr">2022</div><div><div class="ace-role">직능본부 정책 및 홍보 파트너</div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc">
+            <div class="acc-h" data-target="a2">
+              <div>
+                <div class="acc-t">더불어민주당 김동연 경기도지사 후보 캠프</div>
+                <div class="acc-s">제8회 전국동시지방선거 · 2022 · 2개 직책</div>
+              </div>
+              <i class="fa-solid fa-chevron-down acc-i"></i>
+            </div>
+            <div class="acc-b" id="a2">
+              <div class="acc-entries">
+                <div class="ace"><div class="ace-yr">2022</div><div><div class="ace-role">성평등위원회 부위원장</div></div></div>
+                <div class="ace"><div class="ace-yr">2022</div><div><div class="ace-role">청소년특보</div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc">
+            <div class="acc-h" data-target="a3">
+              <div>
+                <div class="acc-t">더불어민주당 청소년 지지포럼 '더불어청소년'</div>
+                <div class="acc-s">청소년 정책 네트워크 · 2021 — 2022 · 2개 직책</div>
+              </div>
+              <i class="fa-solid fa-chevron-down acc-i"></i>
+            </div>
+            <div class="acc-b" id="a3">
+              <div class="acc-entries">
+                <div class="ace"><div class="ace-yr">2022</div><div><div class="ace-role">청소년정치개혁특별위원장</div></div></div>
+                <div class="ace"><div class="ace-yr">2021–22</div><div><div class="ace-role">정책본부장</div><div class="ace-note">청소년 관련 공약 개발 지원</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 시민사회 ══ -->
+<section id="page-civic" class="page pp">
+  <div class="grid">
+    <div class="c12">
+      <div class="card">
+        <div class="chip">Civic &amp; Social Participation</div>
+        <h2 class="h2">시민사회 및 공공 임팩트 활동</h2>
+        <p class="sub" style="margin-bottom:1.5rem">정책 제안과 제도 참여로 이어지는 활동을 중심으로 정리했습니다.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.7rem;margin-bottom:1.5rem">
+          <div class="press-hero">
+            <div class="press-hero-tag">Flagship · 2020 — 현재</div>
+            <div class="press-hero-title">청소년 단체 '유니엄' 대표이사</div>
+            <div class="press-hero-sub">공공 임팩트 프로젝트 총괄</div>
+          </div>
+          <div class="press-hero">
+            <div class="press-hero-tag">Government · 2020 — 2021</div>
+            <div class="press-hero-title">여성가족부 제16회 청소년특별회의 선발직 위원</div>
+            <div class="press-hero-sub">온라인소통팀장 · 정부 청소년 정책 의제 발굴</div>
+          </div>
+          <div class="press-hero">
+            <div class="press-hero-tag">Education · 2022 — 2025</div>
+            <div class="press-hero-title">서울특별시교육청 학생참여단</div>
+            <div class="press-hero-sub">제11기 · 제12기 · 제13기 위원</div>
+          </div>
+        </div>
+
+        <div class="chip">주요 활동</div>
+        <div class="civic-grid">
+          <div class="ci"><div class="ci-t">청소년기후행동 기후정치크루</div><div class="ci-y">2021 — 현재</div></div>
+          <div class="ci"><div class="ci-t">청소년기후행동 924글로벌기후파업 참여</div><div class="ci-y">2021 — 현재</div></div>
+          <div class="ci"><div class="ci-t">국민권익위원회 국민생각함 국민패널</div><div class="ci-y">2022 — 2025</div></div>
+          <div class="ci"><div class="ci-t">사이버외교사절단 반크 청년공공외교대사 9기</div><div class="ci-y">2022</div></div>
+          <div class="ci"><div class="ci-t">대통령 직속 국가교육회의 국민참여단</div><div class="ci-y">2021</div></div>
+          <div class="ci"><div class="ci-t">성북구 혁신교육 추진단원</div><div class="ci-y">2021</div></div>
+        </div>
+
+        <button type="button" class="more-btn" id="civic-btn" aria-expanded="false">더 보기 <span class="chev">⌄</span></button>
+        <div class="more-grid" id="civic-list">
+          <div class="mi"><span class="my">2018–19</span>키자니아 서울 제9대 어린이 의원</div>
+          <div class="mi"><span class="my">2018</span>한국청소년상담복지개발원 솔리언 또래상담 수료</div>
+          <div class="mi"><span class="my">2020–21</span>한국미래청년청소년정책연구회 대외소통국장 겸 조직국원</div>
+          <div class="mi"><span class="my">2021</span>청소년사회교육혁명포럼 '청춘희망소' 창립준비위 홍보소통팀장</div>
+          <div class="mi"><span class="my">2021</span>청소년 인권 단체 '아수나로' 회원</div>
+          <div class="mi"><span class="my">2021</span>청소년인권모임 청소년 활동가</div>
+          <div class="mi"><span class="my">2022–23</span>청년너울 청소년위원회 위원</div>
+          <div class="mi"><span class="my">2022</span>전국학생협회 '새싹' 대외협력실장</div>
+          <div class="mi"><span class="my">2022</span>전국학생협회 '새싹' 인사위원장</div>
+          <div class="mi"><span class="my">2022</span>그린피스 자원봉사자</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 수상·자격 ══ -->
+<section id="page-awards" class="page pp">
+  <div class="grid">
+    <div class="c7">
+      <div class="card" style="height:100%">
+        <div class="chip">Awards &amp; Honors</div>
+        <h2 class="h2">수상 실적</h2>
+        <div class="award-list">
+          <div class="aw gold">
+            <div class="aw-icon">🏆</div>
+            <div>
+              <div class="aw-grade">Grand Prize · 통일부장관상</div>
+              <div class="aw-title">제19회 전국장애인과 함께하는 문예글짓기 대회 (대상)</div>
+              <div class="aw-org">사단법인 한국장애인유권자연맹</div>
+              <div class="aw-date">2022.11.07</div>
+            </div>
+          </div>
+          <div class="aw gold">
+            <div class="aw-icon">🥇</div>
+            <div>
+              <div class="aw-grade">Gold Prize · 서울지방국세청장상</div>
+              <div class="aw-title">2022 청소년 세금작품공모전 글짓기 부문 (금상)</div>
+              <div class="aw-org">국세청</div>
+              <div class="aw-date">2022.09.30</div>
+            </div>
+          </div>
+          <div class="aw">
+            <div class="aw-icon">🥈</div>
+            <div>
+              <div class="aw-grade">1st Prize · 아동권리보장원장상</div>
+              <div class="aw-title">아동정책영향평가 공모전 슬로건 부문 (최우수상)</div>
+              <div class="aw-org">아동권리보장원</div>
+              <div class="aw-date">2020.12.17</div>
+            </div>
+          </div>
+          <div class="aw">
+            <div class="aw-icon">🎖️</div>
+            <div>
+              <div class="aw-grade">Special · 서울시립청소년미디어센터관장상</div>
+              <div class="aw-title">제9회 대한민국청소년기자대상 글 기사 부문 (주관기관상)</div>
+              <div class="aw-org">서울시립청소년미디어센터</div>
+              <div class="aw-date">2022.11.12</div>
+            </div>
+          </div>
+          <div class="aw">
+            <div class="aw-icon">📜</div>
+            <div>
+              <div class="aw-grade">장려상 · 금융소비자연맹회장상</div>
+              <div class="aw-title">2022년 청소년 소비자 기사·포스터 공모전 기사 부문</div>
+              <div class="aw-org">금융소비자연맹</div>
+              <div class="aw-date">2022.12.27</div>
+            </div>
+          </div>
+          <div class="aw">
+            <div class="aw-icon">📜</div>
+            <div>
+              <div class="aw-grade">장려상 · 초록우산 어린이재단회장상</div>
+              <div class="aw-title">제7회 전국 감사편지 공모전</div>
+              <div class="aw-org">초록우산 어린이재단</div>
+              <div class="aw-date">2022.11.22</div>
+            </div>
+          </div>
+          <div class="aw">
+            <div class="aw-icon">📜</div>
+            <div>
+              <div class="aw-grade">입선 · 이사장상</div>
+              <div class="aw-title">제8회 극지·해양 도서 독후감 및 콘텐츠 감상문 공모전</div>
+              <div class="aw-org">사단법인 극지해양미래포럼</div>
+              <div class="aw-date">2022.09.16</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c5">
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="card">
+          <div class="chip">Certificates</div>
+          <h2 class="h2" style="font-size:1.4rem">보유 자격증</h2>
+          <div class="cert">
+            <div class="cert-icon">💻</div>
+            <div>
+              <div class="cert-name">DIAT 디지털정보활용능력</div>
+              <div class="cert-detail">프리젠테이션(PPT) 과목 · 고급 등급</div>
+              <div class="cert-date">2017.03.17 · 한국정보통신진흥협회</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="chip">Summary</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem">
+            <div class="stat-box"><span class="stat-n">7</span><span class="stat-l">수상 건수</span></div>
+            <div class="stat-box"><span class="stat-n">3</span><span class="stat-l">장관급 이상</span></div>
+          </div>
+          <div style="margin-top:.75rem;padding:.85rem 1rem;border-radius:var(--rs);background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(255,255,255,.5));border:1px solid rgba(245,158,11,.25)">
+            <div style="font-size:.63rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#d97706;margin-bottom:.2rem">Top Award</div>
+            <div style="font-weight:700;font-size:.88rem;color:var(--text)">통일부장관상 대상</div>
+            <div style="font-size:.75rem;color:var(--text2);margin-top:.1rem">제19회 전국장애인과 함께하는 문예글짓기 대회</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 기록 ══ -->
+<section id="page-board" class="page pp">
+  <div class="grid">
+    <div class="c12">
+      <div class="card">
+        <div class="chip">Board</div>
+        <h2 class="h2" style="margin-bottom:.4rem">기록 보드</h2>
+        <p class="sub" style="margin-bottom:1.5rem">Newsroom과 Opinion을 전환해 최신 글을 확인할 수 있습니다.</p>
+        <div class="board-tabs">
+          <button type="button" class="btab active" data-board="newsroom">My Newsroom</button>
+          <button type="button" class="btab" data-board="opinion">My Opinion</button>
+        </div>
+        <div id="board-list"></div>
+        <div style="text-align:center;margin-top:1rem">
+          <button id="board-more" style="display:none;padding:.5rem 1.3rem;border-radius:99px;font-size:.78rem;font-weight:700;border:1px solid var(--a-mid);background:var(--a-soft);color:var(--a);cursor:pointer;font-family:inherit;transition:all .2s">더보기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>© 2026 Lee Donggyu</span>
+  <span>ldgk@cau.ac.kr</span>
+</footer>
+
+<script>
+(() => {
+  // Tab navigation
+  const tabs = document.querySelectorAll('.nav-tab');
+  const pages = document.querySelectorAll('.page');
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      pages.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      const p = document.getElementById('page-' + t.dataset.page);
+      if (p) { p.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    });
+  });
+
+  // Accordion
+  document.querySelectorAll('.acc-h').forEach(h => {
+    h.addEventListener('click', () => {
+      const id = h.dataset.target;
+      const body = document.getElementById(id);
+      const wasOpen = h.classList.contains('open');
+      document.querySelectorAll('.acc-h').forEach(x => x.classList.remove('open'));
+      document.querySelectorAll('.acc-b').forEach(x => x.classList.remove('open'));
+      if (!wasOpen) { h.classList.add('open'); body && body.classList.add('open'); }
+    });
+  });
+
+  // More toggle (civic)
+  const civicBtn = document.getElementById('civic-btn');
+  const civicList = document.getElementById('civic-list');
+  if (civicBtn && civicList) {
+    civicBtn.addEventListener('click', () => {
+      const open = civicList.classList.toggle('open');
+      civicBtn.setAttribute('aria-expanded', String(open));
+    });
+  }
+
+  // Board
+  const BOARD_KEY = 'portfolioBoards';
+  const state = { active: 'newsroom', visible: 5 };
+  const getData = () => {
+    try {
+      const p = JSON.parse(localStorage.getItem(BOARD_KEY) || '{}');
+      return { newsroom: Array.isArray(p.newsroom) ? p.newsroom : [], opinion: Array.isArray(p.opinion) ? p.opinion : [] };
+    } catch { return { newsroom: [], opinion: [] }; }
+  };
+  const fmt = iso => { if (!iso) return ''; const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleDateString('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit' }); };
+  const render = () => {
+    const data = getData();
+    const list = document.getElementById('board-list');
+    const more = document.getElementById('board-more');
+    if (!list) return;
+    const posts = [...(data[state.active] || [])].sort((a,b) => new Date(b.createdAt)-new Date(a.createdAt));
+    const slice = posts.slice(0, state.visible);
+    list.innerHTML = slice.length
+      ? slice.map(p => `<div class="bpost"><div class="bp-title">${p.title}</div><div class="bp-meta">${fmt(p.createdAt)}</div><div class="bp-body">${p.content.length > 200 ? p.content.slice(0,200)+'…' : p.content}</div></div>`).join('')
+      : '<div class="bempty">아직 등록된 글이 없습니다.</div>';
+    if (more) more.style.display = state.visible >= posts.length ? 'none' : 'inline-block';
+  };
+  const syncBTabs = () => document.querySelectorAll('.btab').forEach(t => t.classList.toggle('active', t.dataset.board === state.active));
+  render(); syncBTabs();
+  document.querySelectorAll('.btab').forEach(t => t.addEventListener('click', () => { state.active = t.dataset.board; state.visible = 5; syncBTabs(); render(); }));
+  const moreBtn = document.getElementById('board-more');
+  if (moreBtn) moreBtn.addEventListener('click', () => { state.visible += 5; render(); });
+})();
+</script>
+</body>
 </html>
