@@ -346,6 +346,32 @@
   .logo-wm-lg{height:28px;width:auto;display:block;color:rgba(255,255,255,.9)}
   .logo-sym-hero{height:40px;width:auto;display:block;color:rgba(255,255,255,.18);margin:0 auto 2rem}
 
+  /* ── What I Do (editorial list) ── */
+  .what-list{display:flex;flex-direction:column;margin-top:4rem}
+  .wl-item{display:grid;grid-template-columns:72px 1fr;gap:0 3rem;padding:2rem 0;border-top:1px solid rgba(0,0,0,.09);align-items:start}
+  .wl-item:last-child{border-bottom:1px solid rgba(0,0,0,.09)}
+  @media(max-width:600px){.wl-item{grid-template-columns:48px 1fr;gap:0 1.5rem}}
+  .wl-num{font-family:'Outfit';font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;color:rgba(0,0,0,.1);line-height:1;padding-top:.1rem}
+  .wl-t{font-family:'Outfit';font-weight:700;font-size:clamp(1.1rem,2.5vw,1.5rem);color:#111;margin-bottom:.5rem;letter-spacing:-.02em}
+  .wl-d{font-size:.9rem;color:#666;line-height:1.85;max-width:520px}
+
+  /* ── About editorial ── */
+  .about-editorial{display:grid;grid-template-columns:1fr 340px;gap:5rem;align-items:start}
+  @media(max-width:900px){.about-editorial{grid-template-columns:1fr;gap:3rem}}
+  .ae-main{}
+  .ae-quote{
+    font-family:'Outfit';font-size:clamp(1.6rem,3.5vw,2.4rem);
+    font-weight:700;letter-spacing:-.025em;line-height:1.35;
+    color:#fff;margin-bottom:2rem;
+  }
+  .ae-text{font-size:1rem;line-height:2;color:rgba(255,255,255,.6);font-weight:300}
+  .ae-text strong{color:#fff;font-weight:600}
+  .ae-side{}
+  .ae-stat{padding:1.5rem 0;border-top:1px solid rgba(255,255,255,.1)}
+  .ae-stat:first-child{border-top:none;padding-top:0}
+  .ae-num{font-family:'Outfit';font-size:2.5rem;font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1}
+  .ae-label{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.3rem}
+
   footer{
     background:#060606;color:rgba(255,255,255,.35);
     text-align:center;padding:2.5rem 1.5rem;
@@ -405,41 +431,30 @@
 <!-- ══ ABOUT ══ -->
 <section id="about" class="sec sec-dark">
   <div class="wrap">
-    <div class="split">
-      <div class="rv-l">
-        <div class="sec-eyebrow">소개 &nbsp;About</div>
-        <blockquote class="about-quote">
-          "어떻게 하면<br>
-          더 많은 사람이<br>
-          <em>더 나은 세상</em>에서<br>
-          살 수 있을까?"
-        </blockquote>
-      </div>
-      <div class="rv-r">
-        <p class="about-body">
-          저는 언론, 정치, 시민사회, 교육의 경계를 넘나들며 활동하는 이동규입니다.<br><br>
-          학생기자로 시작해 국회·지방정부 정책 현장에 뛰어들었고, 대입 교육 콘텐츠 개발과 수능 영어 검토까지 —
-          세상을 바꾸는 데 필요한 모든 영역을 직접 경험했습니다.<br><br>
-          지금은 <strong>중앙대학교 도시계획부동산학과</strong>에서 공간이 어떻게 사람의 삶을 바꾸는지를 탐구하고 있습니다.
-          글 한 줄, 정책 하나, 학생 한 명이 세상을 어떻게 바꾸는지를 믿습니다.
+    <div class="about-editorial">
+      <div class="ae-main rv-l">
+        <div class="sec-eyebrow" style="margin-bottom:2.5rem">About</div>
+        <p class="ae-quote">"어떻게 하면 더 많은 사람이<br>더 나은 세상에서 살 수 있을까?"</p>
+        <p class="ae-text">
+          <strong>중앙대학교 도시계획부동산학과</strong>에서 공부하고 있습니다.<br><br>
+          고2 때 처음 기사를 썼습니다. 그 뒤로 10개 넘는 매체에 100편 넘게 글을 실었고,
+          선거 캠프 새벽에서 정책을 만졌고, 전국 단위 청소년 회의에서 의제를 냈습니다.
+          지금은 도시계획을 공부하면서, 수능 영어 문항도 검토하고, 수학 클리닉도 맡고 있습니다.<br><br>
+          딱 한 가지 궁금한 게 있는데, 그게 저 위 질문입니다.
         </p>
-        <div class="stats-g stagger">
-          <div class="stat-i">
-            <div class="stat-n" data-count="9" data-sfx="+">0</div>
-            <div class="stat-l">언론·저널리즘 활동</div>
-          </div>
-          <div class="stat-i">
-            <div class="stat-n" data-count="11" data-sfx="+">0</div>
-            <div class="stat-l">정치·정책 참여</div>
-          </div>
-          <div class="stat-i">
-            <div class="stat-n" data-count="16" data-sfx="+">0</div>
-            <div class="stat-l">시민사회 활동</div>
-          </div>
-          <div class="stat-i">
-            <div class="stat-n" data-count="7">0</div>
-            <div class="stat-l">수상 실적</div>
-          </div>
+      </div>
+      <div class="ae-side rv-r">
+        <div class="ae-stat">
+          <div class="ae-num" data-count="9" data-sfx="+">0</div>
+          <div class="ae-label">저널리즘 활동 매체</div>
+        </div>
+        <div class="ae-stat">
+          <div class="ae-num" data-count="16" data-sfx="+">0</div>
+          <div class="ae-label">시민사회 활동</div>
+        </div>
+        <div class="ae-stat">
+          <div class="ae-num" data-count="7">0</div>
+          <div class="ae-label">수상</div>
         </div>
       </div>
     </div>
@@ -449,29 +464,34 @@
 <!-- ══ WHAT I DO ══ -->
 <section class="sec sec-cream">
   <div class="wrap">
-    <div class="sec-eyebrow rv">내가 하는 일</div>
-    <h2 class="sec-h rv">네 가지 정체성</h2>
-    <p class="sec-lead rv">저를 이루는 네 가지 영역입니다. 이 모든 것이 하나의 질문으로 수렴합니다 — 어떻게 더 많은 사람이 더 나은 세상에서 살 수 있을까.</p>
-    <div class="pillars-g stagger">
-      <div class="p-card">
-        <span class="p-ico">✍️</span>
-        <div class="p-t">저널리스트</div>
-        <div class="p-d">10여 개 매체에서 사회·정책 분야 기사 100편 이상. 청소년의 시선으로 세상을 기록합니다.</div>
+    <div class="what-list">
+      <div class="wl-item rv">
+        <div class="wl-num">01</div>
+        <div>
+          <div class="wl-t">저널리스트</div>
+          <div class="wl-d">중학교 때부터 기사를 써왔습니다. 통일부 어린이기자부터 한국경제신문까지, 10개 넘는 매체에 100편 이상의 기사를 실었습니다. 주로 사회·정책 분야를 다뤘습니다.</div>
+        </div>
       </div>
-      <div class="p-card">
-        <span class="p-ico">🏛️</span>
-        <div class="p-t">정치·정책 참여자</div>
-        <div class="p-d">대통령 선거 캠프부터 지방선거까지, 청소년 정치 참여의 최전선에서 정책 개발을 지원했습니다.</div>
+      <div class="wl-item rv">
+        <div class="wl-num">02</div>
+        <div>
+          <div class="wl-t">시민 활동가</div>
+          <div class="wl-d">청소년기후행동, 여성가족부 청소년특별회의, 서울시교육청 학생참여단 — 기후·교육·인권 의제를 중심으로 40개 이상의 단체에서 활동했습니다.</div>
+        </div>
       </div>
-      <div class="p-card">
-        <span class="p-ico">✊</span>
-        <div class="p-t">시민 활동가</div>
-        <div class="p-d">40개 이상의 단체를 통해 기후, 교육, 인권 등 다양한 사회 의제에 청소년의 목소리를 전달해왔습니다.</div>
+      <div class="wl-item rv">
+        <div class="wl-num">03</div>
+        <div>
+          <div class="wl-t">학생 자치</div>
+          <div class="wl-d">고명중학교 학생회 차장에서 시작해 대일외고 제40대 학생회장으로 마무리했습니다. 자치 조직을 직접 운영했습니다.</div>
+        </div>
       </div>
-      <div class="p-card">
-        <span class="p-ico">📐</span>
-        <div class="p-t">도시 탐구자·교육자</div>
-        <div class="p-d">중앙대학교 도시계획부동산학과에서 공간과 사람의 관계를 공부하고, 다음 세대의 배움을 돕습니다.</div>
+      <div class="wl-item rv">
+        <div class="wl-num">04</div>
+        <div>
+          <div class="wl-t">교육</div>
+          <div class="wl-d">수능 영어 모의고사 검토, 수학 문항 제작, 클리닉 조교까지. 가르치는 일을 계속하고 있습니다.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -481,8 +501,8 @@
 <section id="edu" class="sec sec-dark">
   <div class="wrap">
     <div class="sec-eyebrow rv">Education &amp; Academic</div>
-    <h2 class="sec-h rv">교육·학술 경력</h2>
-    <p class="sec-lead rv">배움은 교실 안에서만 이뤄지지 않았습니다. 가르치는 일은 배우는 일의 연장입니다.</p>
+    <h2 class="sec-h rv">교육·학술</h2>
+    <p class="sec-lead rv">학력과 교육 현장 경력입니다.</p>
 
     <div style="margin-top:3rem">
       <div class="sec-eyebrow rv" style="font-size:.65rem">학력</div>
@@ -554,8 +574,8 @@
 <section id="lead" class="sec sec-cream">
   <div class="wrap">
     <div class="sec-eyebrow rv">Leadership</div>
-    <h2 class="sec-h rv">학교 자치 및 리더십</h2>
-    <p class="sec-lead rv">리더십은 타이틀이 아니라 책임입니다. 학생회장까지.</p>
+    <h2 class="sec-h rv">학생 자치</h2>
+    <p class="sec-lead rv">고명중학교부터 대일외고까지, 학생 자치 조직에서 일했습니다.</p>
     <div class="tl" style="margin-top:3rem">
       <div class="tli rv">
         <div class="tli-yr">2024<br>2025</div>
@@ -609,8 +629,8 @@
 <section id="press" class="sec sec-dark">
   <div class="wrap">
     <div class="sec-eyebrow rv">Journalism &amp; Media</div>
-    <h2 class="sec-h rv">언론 및 미디어 저널리즘</h2>
-    <p class="sec-lead rv">기자란 세상을 기록하는 사람입니다. 저는 청소년의 눈으로 세상을 기록했습니다. 2020년부터 현재까지 10개 이상의 매체에서 활동했습니다.</p>
+    <h2 class="sec-h rv">저널리즘</h2>
+    <p class="sec-lead rv">2016년부터 활동했습니다. 10개 이상의 매체, 100편 이상의 기사.</p>
 
     <div class="press-hero rv">
       <div class="ph-tag">Flagship · 2020 — 2024</div>
@@ -639,8 +659,8 @@
 <section id="civic" class="sec sec-dark">
   <div class="wrap">
     <div class="sec-eyebrow rv">Civic &amp; Social</div>
-    <h2 class="sec-h rv">시민사회 및 공공 임팩트</h2>
-    <p class="sec-lead rv">세상을 바꾸는 가장 작은 단위는 한 명의 청소년이 손을 드는 것입니다. 기후, 교육, 인권, 외교 — 40개 이상의 단체를 통해 참여했습니다.</p>
+    <h2 class="sec-h rv">시민 참여</h2>
+    <p class="sec-lead rv">기후, 교육, 인권, 외교 분야 40개 이상의 단체에서 활동했습니다.</p>
 
     <div class="cg" style="margin-top:2.5rem">
       <div class="gcard rv">
@@ -692,8 +712,8 @@
 <section id="awards" class="sec sec-cream">
   <div class="wrap">
     <div class="sec-eyebrow rv">Awards &amp; Honors</div>
-    <h2 class="sec-h rv">수상 및 자격</h2>
-    <p class="sec-lead rv">글로 세상에 말을 걸었더니, 세상이 7번의 수상으로 응답했습니다.</p>
+    <h2 class="sec-h rv">수상</h2>
+    <p class="sec-lead rv">글쓰기 공모전을 중심으로 7건의 수상 실적이 있습니다.</p>
 
     <div class="aw-list rv">
       <div class="aw gold">
@@ -773,12 +793,13 @@
   </div>
 </section>
 
-<!-- ══ MANIFESTO ══ -->
+<!-- ══ CONTACT ══ -->
 <section class="sec sec-dark">
   <div class="wrap">
-    <div class="mf-block rv" style="margin:0">
-      <div class="mf-t">논리로 도시를 설계하고,<br><span style="-webkit-text-stroke:1px rgba(255,255,255,.4);-webkit-text-fill-color:transparent">진심으로 사회를 움직입니다.</span></div>
-      <p class="mf-s">중앙대학교 도시계획부동산학과에서의 학업을 통해 지속 가능한 공간을 구상하고, 지난 10년간 이어온 사회 참여 활동의 동력으로 모두를 위한 정책을 실현하는 전문가가 되겠습니다.</p>
+    <div class="rv" style="max-width:640px">
+      <div class="sec-eyebrow" style="margin-bottom:2rem">Contact</div>
+      <p style="font-family:'Outfit';font-size:clamp(1.8rem,4vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.2;color:#fff;margin-bottom:1.5rem">연락은 언제든 환영합니다.</p>
+      <a href="mailto:ldg@ldgk.kr" style="display:inline-flex;align-items:center;gap:.75rem;font-family:'Outfit';font-size:1.1rem;font-weight:600;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:.3rem;transition:border-color .2s" onmouseover="this.style.borderColor='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,.3)'">ldg@ldgk.kr</a>
     </div>
   </div>
 </section>
