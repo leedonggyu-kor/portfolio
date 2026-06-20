@@ -105,15 +105,10 @@
 
       const getBoardData = () => {
         try {
-          const parsed = JSON.parse(
-            localStorage.getItem(boardStorageKey) || "{}",
-          );
-          return {
-            newsroom: Array.isArray(parsed.newsroom) ? parsed.newsroom : [],
-            opinion: Array.isArray(parsed.opinion) ? parsed.opinion : [],
-          };
-        } catch (error) {
-          return { newsroom: [], opinion: [] };
+          const parsed = JSON.parse(localStorage.getItem(boardStorageKey) || "[]");
+          return Array.isArray(parsed) ? parsed : [];
+        } catch {
+          return [];
         }
       };
 
@@ -134,9 +129,9 @@
         const filter = document.getElementById("filter-board").value;
         const list = document.getElementById("admin-list");
         const data = getBoardData();
-        const posts = [...data[filter]].sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
-        );
+        const posts = data
+          .filter((p) => p.board === filter)
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
         if (!posts.length) {
           list.innerHTML =
@@ -168,11 +163,8 @@
 
         document.querySelectorAll(".delete-btn").forEach((button) => {
           button.addEventListener("click", () => {
-            const board = button.dataset.board;
             const id = button.dataset.id;
-            const newData = getBoardData();
-            newData[board] = newData[board].filter((item) => item.id !== id);
-            saveBoardData(newData);
+            saveBoardData(getBoardData().filter((item) => item.id !== id));
             renderAdminList();
           });
         });
@@ -192,8 +184,9 @@
           }
 
           const data = getBoardData();
-          data[board].push({
+          data.push({
             id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+            board,
             title,
             content,
             createdAt: new Date().toISOString(),
