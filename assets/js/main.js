@@ -53,7 +53,7 @@
     if (!t) return;
     e.preventDefault();
     closeMenu();
-    scrollTo(t, { offset: 0 });
+    scrollTo(t, { offset: -(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 56) });
   }));
 
   /* ───────── nav / menu ───────── */
@@ -84,15 +84,6 @@
     if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); }
   }), { threshold: .12, rootMargin: '0px 0px -50px 0px' });
   $$('.reveal').forEach(el => revealObs.observe(el));
-
-  /* ───────── spotlight cards ───────── */
-  document.addEventListener('pointermove', e => {
-    const c = e.target.closest && e.target.closest('.card');
-    if (!c) return;
-    const r = c.getBoundingClientRect();
-    c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-    c.style.setProperty('--my', (e.clientY - r.top) + 'px');
-  }, { passive: true });
 
   /* ───────── custom cursor + magnetic ───────── */
   if (finePointer && !reduce && hasGSAP) {
@@ -166,8 +157,7 @@
       const u = document.createElementNS(NS, 'use'); u.setAttribute('href', '#ldg');
       s.appendChild(u);
       const k = i / (N - 1);
-      const r = Math.round(lerp(255, 59, k)), g = Math.round(lerp(255, 116, k)), b = Math.round(lerp(255, 196, k));
-      s.style.fill = 'rgb(' + r + ',' + g + ',' + b + ')';
+      s.style.fill = '#fff';
       s.style.opacity = (1 - k * .88).toFixed(2);
       s.style.filter = 'blur(' + (k * 5).toFixed(1) + 'px)';
       host.appendChild(s); layers.push(s);
@@ -236,9 +226,8 @@
         const dx = p.x - mx, dy = p.y - my, d2 = dx * dx + dy * dy;
         if (d2 < R * R && d2 > .01) { const d = Math.sqrt(d2), f = (1 - d / R) * 2.2; p.vx += dx / d * f; p.vy += dy / d * f; }
         p.vx *= .9; p.vy *= .9; p.x += p.vx; p.y += p.vy;
-        const k = clamp(p.k, 0, 1);
-        const rr = Math.round(lerp(110, 255, k * k)), gg = Math.round(lerp(163, 190, k)), bb = Math.round(lerp(240, 120, k * k));
-        ctx.fillStyle = 'rgba(' + rr + ',' + gg + ',' + bb + ',' + (.7 + .3 * Math.sin(time * .002 + p.ph)).toFixed(2) + ')';
+                
+        ctx.fillStyle = 'rgba(159,178,247,' + (.7 + .3 * Math.sin(time * .002 + p.ph)).toFixed(2) + ')';
         ctx.fillRect(p.x, p.y, p.s, p.s);
       }
       if (running) raf = requestAnimationFrame(frame);
@@ -255,58 +244,6 @@
   const heroP = $('#heroParticles') && particleLogo($('#heroParticles'), { count: 2600, width: .82, radius: 80 });
   let contactProg = 0;
   if ($('#contactParticles')) particleLogo($('#contactParticles'), { count: 5200, width: .62, maxWidth: 1000, anchor: 'right', radius: 130, scatter: () => 1 - contactProg });
-
-  /* ───────── WebGL aurora background ───────── */
-  (function () {
-    const cv = $('#gl'); if (!cv) return;
-    const gl = cv.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'low-power' });
-    if (!gl) { cv.style.background = 'radial-gradient(60% 50% at 70% 20%,rgba(59,116,196,.22),transparent),var(--color-bg)'; return; }
-    const vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
-    const fs = `precision mediump float;
-uniform vec2 r;uniform float t;uniform vec2 m;uniform float s;
-float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
-return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
-float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
-void main(){
-  vec2 uv=gl_FragCoord.xy/r;vec2 p=uv*vec2(r.x/r.y,1.)*1.5;
-  vec2 q=vec2(fbm(p+t*.04),fbm(p+vec2(5.2,1.3)-t*.035));
-  float f=fbm(p+2.2*q+vec2(0.,s*1.6));
-  vec3 base=vec3(.020,.027,.043);
-  vec3 blue=vec3(.231,.455,.769);
-  vec3 amber=vec3(.88,.56,.23);
-  vec3 c=base;
-  c=mix(c,blue*.40,smoothstep(.42,.98,f));
-  c+=amber*.12*smoothstep(.55,1.,q.x*q.y*2.4);
-  float d=distance(uv,vec2(m.x,1.-m.y));
-  c+=blue*.26*exp(-d*d*9.);
-  float v=smoothstep(1.25,.25,distance(uv,vec2(.5)));
-  c*=mix(.35,1.,v);
-  c*=mix(1.,.5,s);
-  gl_FragColor=vec4(c,1.);
-}`;
-    const mk = (type, src) => { const sh = gl.createShader(type); gl.shaderSource(sh, src); gl.compileShader(sh); return sh; };
-    const pr = gl.createProgram(); gl.attachShader(pr, mk(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, mk(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(pr);
-    if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) { cv.style.background = 'var(--color-bg)'; return; }
-    gl.useProgram(pr);
-    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-    const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-    const U = n => gl.getUniformLocation(pr, n), ur = U('r'), ut = U('t'), um = U('m'), us = U('s');
-    const scale = .5; let mx = .5, my = .5;
-    const size = () => { cv.width = Math.max(2, innerWidth * scale); cv.height = Math.max(2, innerHeight * scale); gl.viewport(0, 0, cv.width, cv.height); };
-    size(); addEventListener('resize', size);
-    const draw = ms => {
-      mx = lerp(mx, mouse.nx, .04); my = lerp(my, mouse.ny, .04);
-      gl.uniform2f(ur, cv.width, cv.height); gl.uniform1f(ut, ms * .001); gl.uniform2f(um, mx, my); gl.uniform1f(us, scrollProg);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
-    };
-    if (reduce) { draw(8000); return; }
-    let on = true;
-    document.addEventListener('visibilitychange', () => { on = !document.hidden; });
-    const loop = t => { if (on) draw(t); requestAnimationFrame(loop); };
-    requestAnimationFrame(loop);
-  })();
 
   /* ───────── marquee (velocity-reactive) ───────── */
   (function () {
@@ -404,8 +341,8 @@ void main(){
   }
   window.selectBoard = function (type) {
     boardType = type; boardPage = 0;
-    $('#btnNewsroom').className = 'btn ' + (type === 'newsroom' ? 'btn-accent' : 'btn-secondary');
-    $('#btnOpinion').className = 'btn ' + (type === 'opinion' ? 'btn-accent' : 'btn-secondary');
+    $('#btnNewsroom').setAttribute('aria-selected', String(type === 'newsroom'));
+    $('#btnOpinion').setAttribute('aria-selected', String(type === 'opinion'));
     renderBoard();
   };
   window.loadMoreBoard = function () { boardPage++; renderBoard(); if (hasGSAP) setTimeout(() => ScrollTrigger.refresh(), 50); };
@@ -422,7 +359,7 @@ void main(){
 
   gsap.set(chars, { yPercent: 70, opacity: 0, rotate: 5 });
   gsap.set('.plate', { opacity: 0, scale: .86, y: 40 });
-  gsap.set(['.hero-copy', '.hero-meta', '.scroll-cue', '#nav'], { opacity: 0 });
+  gsap.set(['.hero-copy', '.hero-meta', '.scroll-cue'], { opacity: 0 });
 
   const paths = $$('.loader-logo path');
   const counter = { v: 0 };
@@ -435,6 +372,6 @@ void main(){
     .add(() => { startSite(); }, 2.4)
     .to(chars, { yPercent: 0, opacity: 1, rotate: 0, duration: 1.1, ease: 'expo.out', stagger: .055 }, 2.5)
     .to('.plate', { opacity: 1, scale: 1, y: 0, duration: 1.3, ease: 'expo.out', stagger: .12 }, 2.7)
-    .to(['.hero-copy', '.hero-meta', '.scroll-cue', '#nav'], { opacity: 1, duration: 1, stagger: .08 }, 3.0)
-    .add(() => { gsap.set(['.hero-copy', '.hero-meta', '.scroll-cue', '#nav', '.plate'], { clearProps: 'opacity' }); }, 4.2);
+    .to(['.hero-copy', '.hero-meta', '.scroll-cue'], { opacity: 1, duration: 1, stagger: .08 }, 3.0)
+    .add(() => { gsap.set(['.hero-copy', '.hero-meta', '.scroll-cue', '.plate'], { clearProps: 'opacity' }); }, 4.2);
 })();
