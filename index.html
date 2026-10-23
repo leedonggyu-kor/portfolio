@@ -5,950 +5,236 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LEE DONGGYU</title>
 <meta name="description" content="이동규 — 도시계획·부동산을 공부하며 저널리즘, 시민사회, 수학 교육 콘텐츠를 만드는 사람의 포트폴리오.">
+<meta name="theme-color" content="#0A1030">
 <link rel="icon" type="image/svg+xml" href="심볼.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6211920629449924" crossorigin="anonymous"></script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-:root{
-  --color-bg:#f7fafc;
-  --color-text-primary:#0d1c2e;
-  --color-text-secondary:#526077;
-  --color-text-muted:#8fa0b8;
-  --color-accent:#3b74c4;
-  --color-highlight:#c97c2a;
-  --color-highlight-muted:rgba(201,124,42,0.28);
-  --color-surface:rgba(255,255,255,0.72);
-  --color-border:rgba(14,28,48,0.08);
-  --color-border-strong:rgba(14,28,48,0.16);
-  --glass-fill:rgba(255,255,255,0.52);
-  --glass-fill-accent:rgba(59,116,196,0.08);
-  --glass-border-strong:rgba(59,116,196,0.22);
-  --blur-sm:blur(6px);
-  --blur-md:blur(14px);
-  --shadow-sm:0 2px 16px rgba(14,28,48,0.07);
-  --shadow-md:0 4px 28px rgba(14,28,48,0.11);
-  --radius-md:10px;
-  --radius-lg:16px;
-  --font-display:'Archivo',sans-serif;
-  --font-body:'IBM Plex Sans KR',sans-serif;
-  --font-mono:'IBM Plex Mono',monospace;
-}
-
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--color-bg);color:var(--color-text-primary);font-family:var(--font-body);overflow-x:hidden;line-height:1.7;}
-::selection{background:var(--color-accent);color:#fff}
-
-/* ── Keyframes ── */
-@keyframes ldgLetterUp{from{transform:translateY(120%) rotate(6deg);opacity:0}to{transform:translateY(0) rotate(0deg);opacity:1}}
-@keyframes ldgDraw{to{stroke-dashoffset:0}}
-@keyframes ldgFill{to{fill-opacity:1;stroke-opacity:0}}
-@keyframes ldgSpinSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes ldgMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes ldgFadeIn{from{opacity:0}to{opacity:1}}
-@keyframes ldgGlow{0%,100%{opacity:0.05;filter:drop-shadow(0 0 30px rgba(59,116,196,0)) saturate(1)}50%{opacity:0.1;filter:drop-shadow(0 0 70px rgba(59,116,196,0.35)) saturate(1.4)}}
-@keyframes ldgScan{0%{transform:scaleY(0);transform-origin:top}48%{transform:scaleY(1);transform-origin:top}52%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-
-/* ── Card ── */
-.card{
-  padding:20px 22px;
-  border-radius:var(--radius-lg);
-  background:var(--color-surface);
-  border:1px solid var(--color-border);
-  backdrop-filter:var(--blur-sm);
-  -webkit-backdrop-filter:var(--blur-sm);
-}
-.card-hover{transition:border-color .3s,transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s;}
-.card-hover:hover{border-color:var(--glass-border-strong);transform:translateY(-3px);box-shadow:var(--shadow-md);}
-
-/* ── Badge ── */
-.badge{
-  display:inline-flex;align-items:center;
-  padding:3px 10px;border-radius:999px;
-  font-size:11px;font-weight:600;letter-spacing:0.06em;
-  font-family:var(--font-mono);
-}
-.badge-accent{background:rgba(59,116,196,0.12);color:var(--color-accent);}
-.badge-brand{background:rgba(59,116,196,0.18);color:var(--color-accent);border:1px solid rgba(59,116,196,0.2);}
-.badge-ongoing{background:rgba(201,124,42,0.12);color:var(--color-highlight);}
-
-/* ── Button ── */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  gap:6px;padding:8px 18px;border-radius:var(--radius-md);
-  font-family:var(--font-body);font-size:13px;font-weight:600;
-  cursor:pointer;border:none;transition:all .22s cubic-bezier(.4,0,.2,1);
-  letter-spacing:0.02em;white-space:nowrap;
-}
-.btn-accent{background:var(--color-accent);color:#fff;}
-.btn-accent:hover{background:#2d5faa;transform:translateY(-1px);}
-.btn-secondary{background:var(--color-surface);color:var(--color-text-secondary);border:1px solid var(--color-border);}
-.btn-secondary:hover{border-color:var(--glass-border-strong);color:var(--color-text-primary);}
-.btn-ghost{background:transparent;color:var(--color-text-secondary);}
-.btn-ghost:hover{color:var(--color-text-primary);background:var(--glass-fill);}
-
-/* ── Reveal ── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1);}
-.reveal.revealed{opacity:1;transform:none;}
-.reveal-scale{opacity:0;transform:scale(0.7) rotate(-8deg);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);}
-.reveal-scale.revealed{opacity:1;transform:none;}
-
-/* ── Practice row hover ── */
-.practice-row{display:grid;grid-template-columns:96px 1fr;gap:0 28px;align-items:start;padding:28px 20px;margin:0 -20px;border-radius:var(--radius-lg);background:transparent;box-shadow:none;transition:background .45s cubic-bezier(.4,0,.2,1),box-shadow .45s cubic-bezier(.4,0,.2,1);}
-.practice-row:hover{background:var(--glass-fill);box-shadow:var(--shadow-sm);}
-.practice-row:hover .practice-title{transform:translateX(10px);color:var(--color-accent);}
-.practice-title{transition:transform .5s cubic-bezier(.4,0,.2,1),color .3s;}
-
-/* ── Timeline ── */
-.timeline-item:hover .timeline-content{transform:translateX(8px);}
-.timeline-content{transition:transform .5s cubic-bezier(.4,0,.2,1);}
-
-/* ── Award row ── */
-.award-title{transition:transform .5s cubic-bezier(.4,0,.2,1);}
-.award-row:hover .award-title{transform:translateX(8px);}
-
-/* ── Press card hover ── */
-.press-card{transition:border-color .3s,transform .3s cubic-bezier(.4,0,.2,1);}
-.press-card:hover{border-color:var(--glass-border-strong);transform:translateY(-4px);}
-
-/* ── Civic list card ── */
-.civic-card{transition:border-color .3s;}
-.civic-card:hover{border-color:var(--glass-border-strong);}
-
-/* ── Board card ── */
-.board-card{transition:border-color .3s,transform .3s cubic-bezier(.4,0,.2,1);}
-.board-card:hover{border-color:var(--glass-border-strong);transform:translateX(6px);}
-
-/* ── Nav link hover ── */
-.nav-link{text-decoration:none;color:inherit;padding:4px 0;position:relative;transition:color .2s;}
-.nav-link:hover{color:var(--color-text-primary);}
-
-/* ── Contact link ── */
-.contact-link{border-bottom:2px solid transparent;transition:border-color .4s cubic-bezier(.4,0,.2,1);}
-.contact-link:hover{border-color:var(--color-accent);}
-.contact-link:hover .contact-arrow{transform:translate(6px,-6px);}
-.contact-arrow{transition:transform .45s cubic-bezier(.4,0,.2,1);}
-
-/* ── Scrollbar hide ── */
-.scrollbar-none{scrollbar-width:none;}
-.scrollbar-none::-webkit-scrollbar{display:none;}
-
-/* ── Section label ── */
-.section-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--color-accent);display:flex;align-items:center;gap:16px;margin-bottom:20px;}
-.section-label-line{height:1px;width:54px;background:var(--color-accent);opacity:.4;display:inline-block;}
-
-/* ── Section heading ── */
-.section-h2{font-family:var(--font-display);font-variation-settings:'wdth' 110;font-weight:850;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.02em;margin:0 0 12px;}
-</style>
 </head>
 <body>
 
-<div style="position:relative;min-height:100vh;background:var(--color-bg);color:var(--color-text-primary);font-family:var(--font-body);overflow-x:hidden;line-height:1.7;">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ldg-word" viewBox="0 0 309.96 34.13"><path d="M48.72,34.11c2.55,0,6.14-1.32,8.48-2.49l-4.69-7.83a12.15,12.15,0,0,1-6.27,1.78h-36V0H0V34.13"/><path d="M23,21.27H33.19V8.64H47.83s8.06.28,8.06,9.05c0,7.36,6,16.44,21.71,16.44H99.15V12.89H77.24l-5.38,7.62H89v5.06H72.9a8.84,8.84,0,0,1-6.78-9C66.12,9,60.22,0,46.76,0H23V21"/><path d="M72.61,0H100.3L93.48,9.18H74.56a6.24,6.24,0,0,0-1.46.18,6.54,6.54,0,0,0-3.41,2.19s-1.57-6.31-5.08-8.42C64.61,3.13,70.6.1,72.61,0Z"/><path d="M112.64,7.79h4.85V22.36h8.88v4H112.64Z"/><path d="M142.47,14.87v4h-9.16v3.5h9.84v4H128.47V7.79h14.45v4h-9.61v3.07Z"/><path d="M159.93,14.87v4h-9.16v3.5h9.84v4H145.92V7.79h14.45v4h-9.6v3.07Z"/><path d="M169.91,7.79h9a8,8,0,0,1,3.4.71,7.42,7.42,0,0,1,2.55,1.95,8.33,8.33,0,0,1,1.59,2.92A11.71,11.71,0,0,1,187,17a11.64,11.64,0,0,1-.59,3.77,8.19,8.19,0,0,1-1.75,2.94,7.91,7.91,0,0,1-2.84,1.93,10.3,10.3,0,0,1-3.91.68h-8Zm4.85,14.57h2.86a4.5,4.5,0,0,0,2-.43A4.21,4.21,0,0,0,181,20.76a5,5,0,0,0,.83-1.71,7.46,7.46,0,0,0,.28-2.08,6,6,0,0,0-.32-2,4.82,4.82,0,0,0-.95-1.65,4.63,4.63,0,0,0-1.52-1.11,5.14,5.14,0,0,0-2.1-.4h-2.49Z"/><path d="M188.62,17a9.68,9.68,0,0,1,.78-3.91A9.43,9.43,0,0,1,191.55,10a9.56,9.56,0,0,1,3.23-2,11.84,11.84,0,0,1,8.13,0,9.66,9.66,0,0,1,3.23,2,8.92,8.92,0,0,1,2.12,3.09A9.84,9.84,0,0,1,209,17a10,10,0,0,1-.76,3.94,9.06,9.06,0,0,1-2.12,3.1,9.68,9.68,0,0,1-3.23,2,11.84,11.84,0,0,1-8.13,0A9.47,9.47,0,0,1,189.4,21,9.79,9.79,0,0,1,188.62,17Zm4.85,0a6.68,6.68,0,0,0,.39,2.34,5.22,5.22,0,0,0,1.08,1.83,4.74,4.74,0,0,0,1.69,1.2,5.4,5.4,0,0,0,2.2.44,5.48,5.48,0,0,0,2.21-.44,4.74,4.74,0,0,0,1.69-1.2,5.54,5.54,0,0,0,1.08-1.83,6.68,6.68,0,0,0,.38-2.34,6.5,6.5,0,0,0-.38-2.28,5.6,5.6,0,0,0-1.08-1.82,5,5,0,0,0-1.69-1.2,5.48,5.48,0,0,0-2.21-.43,5.4,5.4,0,0,0-2.2.43,5,5,0,0,0-1.69,1.2,5.27,5.27,0,0,0-1.08,1.82A6.5,6.5,0,0,0,193.47,17Z"/><path d="M211.81,7.79h4.85l7,11.26V7.79h4.85V26.36h-4.85l-7-11.46V26.36h-4.85Z"/><path d="M240.6,22.82a5.1,5.1,0,0,0,3.05-.86,3.52,3.52,0,0,0,1.43-2.45h-4.92v-4H250v2.59a9.14,9.14,0,0,1-.74,3.78,7.73,7.73,0,0,1-2,2.72,8.83,8.83,0,0,1-3,1.67,11.34,11.34,0,0,1-3.62.57,10.7,10.7,0,0,1-4-.72,9.7,9.7,0,0,1-3.18-2A9.38,9.38,0,0,1,231.36,21a9.76,9.76,0,0,1-.78-3.94,9.74,9.74,0,0,1,.78-3.93A9.25,9.25,0,0,1,233.5,10a9.66,9.66,0,0,1,3.23-2,11,11,0,0,1,4-.72,10,10,0,0,1,5,1.18A11.74,11.74,0,0,1,249.5,12l-3.19,2.68A6.86,6.86,0,0,0,244,12.19a6.13,6.13,0,0,0-3.37-.91,4.88,4.88,0,0,0-2,.42A5.07,5.07,0,0,0,237,12.88a5.8,5.8,0,0,0-1.14,1.82,6.16,6.16,0,0,0-.43,2.36,6.81,6.81,0,0,0,.39,2.37,5.54,5.54,0,0,0,1.1,1.82,4.76,4.76,0,0,0,1.64,1.16A5,5,0,0,0,240.6,22.82Z"/><path d="M262.3,22.82a5.1,5.1,0,0,0,3.05-.86,3.52,3.52,0,0,0,1.43-2.45h-4.92v-4h9.79v2.59a9.14,9.14,0,0,1-.74,3.78,7.85,7.85,0,0,1-2,2.72,8.83,8.83,0,0,1-3,1.67,11.34,11.34,0,0,1-3.62.57,10.7,10.7,0,0,1-3.95-.72,9.7,9.7,0,0,1-3.18-2A9.38,9.38,0,0,1,253.06,21a9.76,9.76,0,0,1-.78-3.94,9.74,9.74,0,0,1,.78-3.93A9.25,9.25,0,0,1,255.2,10a9.66,9.66,0,0,1,3.23-2,11,11,0,0,1,4-.72,10,10,0,0,1,5,1.18A11.74,11.74,0,0,1,271.2,12L268,14.64a6.86,6.86,0,0,0-2.27-2.45,6.15,6.15,0,0,0-3.37-.91,4.88,4.88,0,0,0-2,.42,5.07,5.07,0,0,0-1.67,1.18,5.8,5.8,0,0,0-1.14,1.82,6.16,6.16,0,0,0-.43,2.36,6.81,6.81,0,0,0,.39,2.37,5.54,5.54,0,0,0,1.1,1.82,4.76,4.76,0,0,0,1.64,1.16A5,5,0,0,0,262.3,22.82Z"/><path d="M278.62,7.79l3.63,6.13,3.64-6.13h5.34L284.65,18.6v7.76H279.8V18.53L273.28,7.79Z"/><path d="M301.62,26.83a9.73,9.73,0,0,1-3.23-.53,8.4,8.4,0,0,1-2.64-1.52,7,7,0,0,1-1.8-2.37,7.27,7.27,0,0,1-.65-3.11V7.79h4.85V19.07a4.28,4.28,0,0,0,.23,1.4,3.46,3.46,0,0,0,.68,1.14,3.1,3.1,0,0,0,1.09.78,3.87,3.87,0,0,0,2.94,0,3.38,3.38,0,0,0,1.11-.78,3.3,3.3,0,0,0,.68-1.14,4,4,0,0,0,.24-1.4V7.79H310V19.3a7.08,7.08,0,0,1-2.45,5.48,8.28,8.28,0,0,1-2.66,1.52A9.9,9.9,0,0,1,301.62,26.83Z"/></symbol>
+</svg>
 
-  <!-- ══ fixed atmosphere: giant watermark symbol ══ -->
-  <div style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;">
-    <img id="bgSymbol" src="심볼.svg" alt="" style="position:absolute;width:1100px;max-width:150vw;left:50%;top:50%;transform:translate(-50%,-50%);opacity:0.05;will-change:transform,filter;animation:ldgGlow 9s ease-in-out infinite;">
-  </div>
-
-  <!-- ══ NAV ══ -->
-  <nav id="nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px clamp(20px,4vw,48px);background:rgba(247,250,252,0.78);backdrop-filter:var(--blur-md);-webkit-backdrop-filter:var(--blur-md);border-bottom:1px solid var(--color-border);opacity:0;pointer-events:none;transform:translateY(-10px);transition:opacity .4s cubic-bezier(.4,0,.2,1),transform .4s cubic-bezier(.4,0,.2,1);">
-    <a href="#hero" style="display:flex;align-items:center;line-height:0;flex-shrink:0;">
-      <img src="가로_워드마크.svg" alt="LDG" style="height:20px;width:auto;display:block;">
-    </a>
-    <div class="scrollbar-none" style="display:flex;gap:clamp(14px,2.4vw,28px);overflow-x:auto;white-space:nowrap;font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.02em;color:var(--color-text-secondary);">
-      <a href="#about" class="nav-link">소개</a>
-      <a href="#edu" class="nav-link">교육·학술</a>
-      <a href="#lead" class="nav-link">학생 자치</a>
-      <a href="#press" class="nav-link">저널리즘</a>
-      <a href="#civic" class="nav-link">시민사회</a>
-      <a href="#awards" class="nav-link">수상</a>
-      <a href="#board" class="nav-link">기록</a>
-    </div>
+<header class="nav">
+  <a href="#top" class="nav-logo" aria-label="LEE DONGGYU"><svg viewBox="0 0 309.96 34.13"><use href="#ldg-word"/></svg></a>
+  <nav class="nav-links" aria-label="주 메뉴">
+    <a href="#about">소개</a><a href="#practice">하는 일</a><a href="#edu">교육·학술</a><a href="#lead">학생 자치</a><a href="#press">저널리즘</a><a href="#civic">시민 참여</a><a href="#awards">수상</a><a href="#board">기록</a>
   </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false"><i></i><i></i></button>
+</header>
+<nav class="menu" id="menu" aria-label="모바일 메뉴">
+  <a href="#about">소개</a><a href="#practice">하는 일</a><a href="#edu">교육·학술</a><a href="#lead">학생 자치</a><a href="#press">저널리즘</a><a href="#civic">시민 참여</a><a href="#awards">수상</a><a href="#board">기록</a><a href="#contact">연락</a>
+</nav>
 
-  <!-- ══ HERO ══ -->
-  <header id="hero" style="position:relative;z-index:2;min-height:92svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 20px;gap:28px;">
-    <div style="position:absolute;top:28px;left:24px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;color:var(--color-text-muted);text-align:left;opacity:.8;">37.5566°N — 127.0095°E<br>SEOUL, KR</div>
-    <div style="position:absolute;top:28px;right:24px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;color:var(--color-text-muted);text-align:right;opacity:.8;">EST. 2016<br>PRESS / CIVIC / EDU</div>
+<main id="top">
 
-    <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--color-accent);">Urban Planning × Journalism × Education</div>
+<!-- 첫 화면 -->
+<section class="hero glow">
+  <svg class="hero-mark" viewBox="-1 -1 102.3 36.13" aria-hidden="true"><path pathLength="1" d="M48.72,34.11c2.55,0,6.14-1.32,8.48-2.49l-4.69-7.83a12.15,12.15,0,0,1-6.27,1.78h-36V0H0V34.13"/><path pathLength="1" d="M23,21.27H33.19V8.64H47.83s8.06.28,8.06,9.05c0,7.36,6,16.44,21.71,16.44H99.15V12.89H77.24l-5.38,7.62H89v5.06H72.9a8.84,8.84,0,0,1-6.78-9C66.12,9,60.22,0,46.76,0H23V21"/><path pathLength="1" d="M72.61,0H100.3L93.48,9.18H74.56a6.24,6.24,0,0,0-1.46.18,6.54,6.54,0,0,0-3.41,2.19s-1.57-6.31-5.08-8.42C64.61,3.13,70.6.1,72.61,0Z"/></svg>
+  <div class="wrap">
+    <p class="label">Urban Planning · Journalism · Education</p>
+    <h1 class="hero-title">어떻게 하면 더 많은 사람이 더 나은 세상에서 살 수 있을까?</h1>
+    <p class="hero-lead">이동규. 중앙대학교 도시계획부동산학과에서 공부하며 기사를 쓰고, 시민사회에서 의제를 내고, 수학과 영어 문항을 만듭니다.</p>
+    <div class="hero-actions">
+      <a href="#practice" class="btn btn-primary">하는 일 보기</a>
+      <a href="#contact" class="btn btn-secondary">연락하기</a>
+    </div>
+  </div>
+</section>
 
-    <div style="width:clamp(240px,34vw,480px);">
-      <svg viewBox="0 0 100.3 34.13" role="img" aria-label="LDG 로고" style="display:block;width:100%;height:auto;overflow:visible;">
-        <path pathLength="1" d="M48.72,34.11c2.55,0,6.14-1.32,8.48-2.49l-4.69-7.83a12.15,12.15,0,0,1-6.27,1.78h-36V0H0V34.13" fill="var(--color-accent)" fill-opacity="0" stroke="var(--color-accent)" stroke-width="0.6" stroke-dasharray="1" stroke-dashoffset="1" style="animation:ldgDraw 1.4s cubic-bezier(.65,0,.35,1) .15s forwards,ldgFill .9s ease 1.35s forwards;"></path>
-        <path pathLength="1" d="M23,21.27H33.19V8.64H47.83s8.06.28,8.06,9.05c0,7.36,6,16.44,21.71,16.44H99.15V12.89H77.24l-5.38,7.62H89v5.06H72.9a8.84,8.84,0,0,1-6.78-9C66.12,9,60.22,0,46.76,0H23V21" fill="var(--color-accent)" fill-opacity="0" stroke="var(--color-accent)" stroke-width="0.6" stroke-dasharray="1" stroke-dashoffset="1" style="animation:ldgDraw 1.4s cubic-bezier(.65,0,.35,1) .4s forwards,ldgFill .9s ease 1.6s forwards;"></path>
-        <path pathLength="1" d="M72.61,0H100.3L93.48,9.18H74.56a6.24,6.24,0,0,0-1.46.18,6.54,6.54,0,0,0-3.41,2.19s-1.57-6.31-5.08-8.42C64.61,3.13,70.6.1,72.61,0Z" fill="var(--color-accent)" fill-opacity="0" stroke="var(--color-accent)" stroke-width="0.6" stroke-dasharray="1" stroke-dashoffset="1" style="animation:ldgDraw 1.4s cubic-bezier(.65,0,.35,1) .65s forwards,ldgFill .9s ease 1.85s forwards;"></path>
-      </svg>
+<!-- 소개 -->
+<section class="section" id="about">
+  <div class="wrap">
+    <p class="label">About</p>
+    <h2>소개</h2>
+    <div class="prose">
+      <p><strong>중앙대학교 도시계획부동산학과</strong>에서 공부하고 있습니다.</p>
+      <p>중1 때 처음 기사를 썼습니다. 그 뒤로 10개 넘는 매체에 100편 넘게 글을 실었고, 선거 캠프 새벽에서 정책을 만졌고, 전국 단위 청소년 회의에서 의제를 냈습니다. 지금은 도시계획을 공부하면서, 수능 영어 문항도 검토하고, 수학 클리닉도 맡고 있습니다.</p>
+    </div>
+    <dl class="stats">
+      <div class="stat"><dd>100+</dd><dt>기사 — 2016년부터 지금까지</dt></div>
+      <div class="stat"><dd>9+</dd><dt>저널리즘 활동 매체</dt></div>
+      <div class="stat"><dd>16+</dd><dt>시민사회 활동</dt></div>
+      <div class="stat"><dd>7</dd><dt>수상</dt></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 하는 일 -->
+<section class="section" id="practice">
+  <div class="wrap">
+    <p class="label">Practice</p>
+    <h2>하는 일</h2>
+    <div class="list">
+      <div class="item"><h3>저널리스트</h3><p>중학교 때부터 기사를 써왔습니다. 통일부 어린이기자부터 한국경제신문까지, 10개 넘는 매체에 100편 이상의 기사를 실었습니다. 주로 사회·정책 분야를 다뤘습니다.</p></div>
+      <div class="item"><h3>시민 활동가</h3><p>청소년기후행동, 여성가족부 청소년특별회의, 서울시교육청 학생참여단 — 기후·교육·인권 의제를 중심으로 40개 이상의 단체에서 활동했습니다.</p></div>
+      <div class="item"><h3>학생 자치</h3><p>고명중학교 학생회 차장에서 시작해 대일외고 제40대 학생회장으로 마무리했습니다. 자치 조직을 직접 운영했습니다.</p></div>
+      <div class="item"><h3>교육</h3><p>수능 영어 모의고사 검토, 수학 문항 제작, 클리닉 조교까지. 가르치는 일을 계속하고 있습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 교육·학술 -->
+<section class="section" id="edu">
+  <div class="wrap">
+    <p class="label">Education &amp; Academic</p>
+    <h2>교육·학술</h2>
+    <p class="lede">용돈 벌이로 과외나 조금 하는 사람이 되고 싶진 않습니다. 가장 잘 할 수 있는 것들에 초점을 맞추어 끝없이 연구하고 성공을 만듭니다.</p>
+
+    <h3 class="sub">학력</h3>
+    <div class="cards">
+      <div class="card"><p class="meta">재학</p><p class="card-title">중앙대학교</p><p class="card-body">도시계획부동산학과</p></div>
+      <div class="card"><p class="meta">졸업 · 제40기</p><p class="card-title">대일외국어고등학교</p></div>
+      <div class="card"><p class="meta">2019.04 — 2020.02</p><p class="card-title">서울교육대학교 소프트웨어 영재교육원</p><p class="card-body">기초과정 수료</p></div>
     </div>
 
-    <h1 id="heroName" style="font-family:var(--font-display);font-variation-settings:'wdth' 118;font-weight:900;font-size:clamp(2.6rem,10vw,7.6rem);line-height:.96;letter-spacing:-.02em;text-transform:uppercase;margin:0;display:flex;flex-wrap:wrap;justify-content:center;color:var(--color-text-primary);"></h1>
-
-    <div style="font-family:var(--font-body);font-weight:300;font-size:14px;letter-spacing:.08em;color:var(--color-text-secondary);animation:ldgFadeIn 1s ease 3.9s both;">더 새롭게, 더 강하게.</div>
-
-    <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:.28em;color:var(--color-text-muted);animation:ldgFadeIn 1s ease 4.1s both;">
-      <span>SCROLL</span>
-      <div style="width:1px;height:48px;background:linear-gradient(to bottom,var(--color-accent),transparent);animation:ldgScan 2.4s cubic-bezier(.65,0,.35,1) 2.6s infinite;"></div>
+    <h3 class="sub">교육 콘텐츠 개발 및 학술 TA</h3>
+    <div class="rows">
+      <div class="row"><div class="when">2026 — 현재</div><div><p class="row-title">검토위원 <span class="badge">진행 중</span></p><p class="row-org">대성학력개발연구소</p><p class="row-body">수능 영어 모의고사 검토 및 피드백</p></div></div>
+      <div class="row"><div class="when">2025 — 현재</div><div><p class="row-title">문항 제작 · 클리닉 조교 <span class="badge">진행 중</span></p><p class="row-org">이건호 대일수학 연구팀</p><p class="row-body">공통 과목 및 확률과 통계 문항 제작 / 소수 질의응답 및 학습관리 클리닉</p></div></div>
+      <div class="row"><div class="when">2026</div><div><p class="row-title">진학레터 '잇다' 에디터</p><p class="row-org">진학사</p><p class="row-body">학생부종합전형 분석, 교과·비교과 탐구활동 칼럼 기고</p></div></div>
+      <div class="row"><div class="when">2025 — 2026</div><div><p class="row-title">클리닉 조교</p><p class="row-org">성북학림학원</p><p class="row-body">대일외고 윈터스쿨 수학 질의응답 및 학습관리 클리닉</p></div></div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main style="position:relative;z-index:2;">
-
-    <!-- ══ 01 ABOUT ══ -->
-    <section id="about" style="padding:clamp(64px,10vw,128px) 0;">
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px);">
-        <div class="reveal section-label">01 <span class="section-label-line"></span> About</div>
-        <blockquote class="reveal" style="margin:0 0 32px;font-family:var(--font-display);font-variation-settings:'wdth' 108;font-weight:800;font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.35;letter-spacing:-.015em;max-width:780px;transition-delay:.08s;">"어떻게 하면 더 많은 사람이 더 나은 세상에서 살 수 있을까?"</blockquote>
-        <div class="reveal" style="font-size:16px;font-weight:300;color:var(--color-text-secondary);max-width:640px;line-height:2;margin-bottom:56px;transition-delay:.14s;">
-          <strong style="color:var(--color-text-primary);font-weight:600;">중앙대학교 도시계획부동산학과</strong>에서 공부하고 있습니다.<br><br>
-          중1 때 처음 기사를 썼습니다. 그 뒤로 10개 넘는 매체에 100편 넘게 글을 실었고, 선거 캠프 새벽에서 정책을 만졌고, 전국 단위 청소년 회의에서 의제를 냈습니다. 지금은 도시계획을 공부하면서, 수능 영어 문항도 검토하고, 수학 클리닉도 맡고 있습니다.
-        </div>
-
-        <div id="statsGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;">
-          <div class="card">
-            <div style="font-family:var(--font-display);font-variation-settings:'wdth' 116;font-weight:900;font-size:2.6rem;line-height:1;letter-spacing:-.02em;color:var(--color-text-primary);font-variant-numeric:tabular-nums;"><span class="count" data-target="100">0</span><span style="color:var(--color-accent);font-size:.5em;vertical-align:.6em;margin-left:2px;">+</span></div>
-            <div style="margin-top:10px;font-size:13px;color:var(--color-text-secondary);letter-spacing:.02em;">기사 — 2016년부터 지금까지</div>
-          </div>
-          <div class="card">
-            <div style="font-family:var(--font-display);font-variation-settings:'wdth' 116;font-weight:900;font-size:2.6rem;line-height:1;letter-spacing:-.02em;color:var(--color-text-primary);font-variant-numeric:tabular-nums;"><span class="count" data-target="9">0</span><span style="color:var(--color-accent);font-size:.5em;vertical-align:.6em;margin-left:2px;">+</span></div>
-            <div style="margin-top:10px;font-size:13px;color:var(--color-text-secondary);letter-spacing:.02em;">저널리즘 활동 매체</div>
-          </div>
-          <div class="card">
-            <div style="font-family:var(--font-display);font-variation-settings:'wdth' 116;font-weight:900;font-size:2.6rem;line-height:1;letter-spacing:-.02em;color:var(--color-text-primary);font-variant-numeric:tabular-nums;"><span class="count" data-target="16">0</span><span style="color:var(--color-accent);font-size:.5em;vertical-align:.6em;margin-left:2px;">+</span></div>
-            <div style="margin-top:10px;font-size:13px;color:var(--color-text-secondary);letter-spacing:.02em;">시민사회 활동</div>
-          </div>
-          <div class="card">
-            <div style="font-family:var(--font-display);font-variation-settings:'wdth' 116;font-weight:900;font-size:2.6rem;line-height:1;letter-spacing:-.02em;color:var(--color-text-primary);font-variant-numeric:tabular-nums;"><span class="count" data-target="7">0</span></div>
-            <div style="margin-top:10px;font-size:13px;color:var(--color-text-secondary);letter-spacing:.02em;">수상</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- divider -->
-    <div class="reveal-scale" style="position:relative;height:120px;display:flex;align-items:center;justify-content:center;">
-      <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--color-border);"></div>
-      <img src="심볼.svg" alt="" style="position:relative;width:70px;opacity:.16;background:var(--color-bg);padding:0 20px;">
+<!-- 학생 자치 -->
+<section class="section" id="lead">
+  <div class="wrap">
+    <p class="label">Leadership</p>
+    <h2>학생 자치</h2>
+    <p class="lede">제대로 '일' 하려고 했습니다. 끝없이 바꾸고, 끝없이 성장시켰습니다.</p>
+    <div class="rows">
+      <div class="row"><div class="when">2024 — 2025</div><div><p class="row-title">제40대 학생회장</p><p class="row-org">대일외국어고등학교</p><p class="row-body">학생 자치 기구 총괄 및 학생 권익 증진 활동 주도</p></div></div>
+      <div class="row"><div class="when">2024 — 2025</div><div><p class="row-title">학생회 안전관리부 부장</p><p class="row-org">대일외국어고등학교</p><p class="row-body">학생대의원회의 진행 및 학생 안전 정책 수립</p></div></div>
+      <div class="row"><div class="when">2023 — 2024</div><div><p class="row-title">학생회 안전관리부 차장</p><p class="row-org">대일외국어고등학교</p><p class="row-body">학생대의원회의 진행 및 학생 안전 정책 수립</p></div></div>
+      <div class="row"><div class="when">2022</div><div><p class="row-title">학생회 생활교육부장</p><p class="row-org">고명중학교</p><p class="row-body">학생 생활 지도 및 건전한 학교 문화 조성</p></div></div>
+      <div class="row"><div class="when">2021</div><div><p class="row-title">학생회 차장</p><p class="row-org">고명중학교</p></div></div>
     </div>
+  </div>
+</section>
 
-    <!-- ══ 02 PRACTICE ══ -->
-    <section id="practice" style="padding:clamp(48px,8vw,96px) 0;">
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px);">
-        <div class="reveal section-label">02 <span class="section-label-line"></span> Practice</div>
-        <h2 class="section-h2" style="margin-bottom:36px;">하는 일</h2>
+<!-- 저널리즘 -->
+<section class="section" id="press">
+  <div class="wrap">
+    <p class="label">Journalism &amp; Media</p>
+    <h2>저널리즘</h2>
+    <p class="lede">2016년부터 활동했습니다. 10개 이상의 매체, 100편 이상의 기사.</p>
+    <div class="key">
+      <p class="meta">대표 활동 · 2020 — 2024</p>
+      <p class="key-title">청소년 언론 '청라온' 선임기자</p>
+      <p class="key-body">사회 이슈 및 정책 분석 기사 집필</p>
+    </div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>매체</th><th>역할</th><th class="num">기간</th></tr></thead>
+        <tbody>
+          <tr><td>한국경제신문 주니어 생글생글</td><td>기자</td><td class="num">2022 — 2024</td></tr>
+          <tr><td>에듀뉴스</td><td>학생기자</td><td class="num">2022 — 2024</td></tr>
+          <tr><td>수완뉴스</td><td>청소년 기자</td><td class="num">2020 — 2022</td></tr>
+          <tr><td>저작거리 감성매거진 '글로밥상'</td><td>필진</td><td class="num">2020 — 2022</td></tr>
+          <tr><td>통일부</td><td>제8기 어린이 기자</td><td class="num">2019 — 2020</td></tr>
+          <tr><td>서울특별시 내친구서울</td><td>어린이 기자</td><td class="num">2016 — 2017</td></tr>
+          <tr><td>금융소비자연맹</td><td>청소년소비자기자</td><td class="num">2022</td></tr>
+          <tr><td>STEMATIX</td><td>한국지부 저널리스트</td><td class="num">2021</td></tr>
+          <tr><td>아이엠뉴스</td><td>시민기자</td><td class="num">2021</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-        <div style="display:flex;flex-direction:column;">
-          <div class="reveal" style="border-top:1px solid var(--color-border);">
-            <div class="practice-row">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;color:var(--color-accent);padding-top:6px;">PR-01</div>
-              <div>
-                <h3 class="practice-title" style="font-family:var(--font-display);font-variation-settings:'wdth' 110;font-weight:800;font-size:clamp(1.2rem,2.8vw,1.7rem);letter-spacing:-.015em;margin:0 0 8px;">저널리스트</h3>
-                <p style="font-size:14.5px;font-weight:300;color:var(--color-text-secondary);max-width:640px;margin:0;">중학교 때부터 기사를 써왔습니다. 통일부 어린이기자부터 한국경제신문까지, 10개 넘는 매체에 100편 이상의 기사를 실었습니다. 주로 사회·정책 분야를 다뤘습니다.</p>
-              </div>
-            </div>
-          </div>
-          <div class="reveal" style="border-top:1px solid var(--color-border);">
-            <div class="practice-row">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;color:var(--color-accent);padding-top:6px;">PR-02</div>
-              <div>
-                <h3 class="practice-title" style="font-family:var(--font-display);font-variation-settings:'wdth' 110;font-weight:800;font-size:clamp(1.2rem,2.8vw,1.7rem);letter-spacing:-.015em;margin:0 0 8px;">시민 활동가</h3>
-                <p style="font-size:14.5px;font-weight:300;color:var(--color-text-secondary);max-width:640px;margin:0;">청소년기후행동, 여성가족부 청소년특별회의, 서울시교육청 학생참여단 — 기후·교육·인권 의제를 중심으로 40개 이상의 단체에서 활동했습니다.</p>
-              </div>
-            </div>
-          </div>
-          <div class="reveal" style="border-top:1px solid var(--color-border);">
-            <div class="practice-row">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;color:var(--color-accent);padding-top:6px;">PR-03</div>
-              <div>
-                <h3 class="practice-title" style="font-family:var(--font-display);font-variation-settings:'wdth' 110;font-weight:800;font-size:clamp(1.2rem,2.8vw,1.7rem);letter-spacing:-.015em;margin:0 0 8px;">학생 자치</h3>
-                <p style="font-size:14.5px;font-weight:300;color:var(--color-text-secondary);max-width:640px;margin:0;">고명중학교 학생회 차장에서 시작해 대일외고 제40대 학생회장으로 마무리했습니다. 자치 조직을 직접 운영했습니다.</p>
-              </div>
-            </div>
-          </div>
-          <div class="reveal" style="border-top:1px solid var(--color-border);">
-            <div class="practice-row">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;color:var(--color-accent);padding-top:6px;">PR-04</div>
-              <div>
-                <h3 class="practice-title" style="font-family:var(--font-display);font-variation-settings:'wdth' 110;font-weight:800;font-size:clamp(1.2rem,2.8vw,1.7rem);letter-spacing:-.015em;margin:0 0 8px;">교육</h3>
-                <p style="font-size:14.5px;font-weight:300;color:var(--color-text-secondary);max-width:640px;margin:0;">수능 영어 모의고사 검토, 수학 문항 제작, 클리닉 조교까지. 가르치는 일을 계속하고 있습니다.</p>
-              </div>
-            </div>
-          </div>
-          <div style="border-top:1px solid var(--color-border);"></div>
-        </div>
-      </div>
-    </section>
-
-    <div class="reveal-scale" style="position:relative;height:120px;display:flex;align-items:center;justify-content:center;--rot:6deg;">
-      <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--color-border);"></div>
-      <img src="심볼.svg" alt="" style="position:relative;width:70px;opacity:.16;background:var(--color-bg);padding:0 20px;">
+<!-- 시민 참여 -->
+<section class="section" id="civic">
+  <div class="wrap">
+    <p class="label">Civic &amp; Social</p>
+    <h2>시민 참여</h2>
+    <p class="lede">기후, 교육, 인권, 외교 분야 40개 이상의 단체에서 활동했습니다.</p>
+    <div class="cards">
+      <div class="card"><p class="meta">2020 — 2022</p><p class="card-title">청소년 단체 '유니엄' 대표이사</p><p class="card-body">청소년 참여·활동 사업 프로젝트 총괄</p></div>
+      <div class="card"><p class="meta">정부 · 2020 — 2021</p><p class="card-title">여성가족부 제16회 청소년특별회의 선발직 위원</p><p class="card-body">온라인소통팀장 / 청소년 정책 의제 발굴</p></div>
+      <div class="card"><p class="meta">교육 · 2022 — 2025</p><p class="card-title">서울특별시교육청 학생참여단</p><p class="card-body">제11기 · 제12기 · 제13기 위원</p></div>
+      <div class="card"><p class="meta">정부 · 2026</p><p class="card-title">성평등가족부 청년 공존·공감위원회</p><p class="card-body">제1기 참여위원</p></div>
     </div>
 
-    <!-- ══ 03 EDUCATION ══ -->
-    <section id="edu" style="padding:clamp(48px,8vw,96px) 0;">
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px);">
-        <div class="reveal section-label">03 <span class="section-label-line"></span> Education &amp; Academic</div>
-        <h2 class="section-h2">교육·학술</h2>
-        <p class="reveal" style="font-size:16px;font-weight:300;color:var(--color-text-secondary);margin:0 0 44px;">용돈 벌이로 과외나 조금 하는 사람이 되고 싶진 않습니다. 가장 잘 할 수 있는 것들에 초점을 맞추어 끝없이 연구하고 성공을 만듭니다.</p>
-
-        <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:18px;display:flex;align-items:center;gap:10px;"><span style="width:7px;height:7px;background:var(--color-accent);flex-shrink:0;"></span>학력</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:52px;">
-          <div class="card card-hover">
-            <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.02em;color:var(--color-accent);margin-bottom:10px;">재학</div>
-            <div style="font-size:16px;font-weight:600;margin-bottom:4px;">중앙대학교</div>
-            <div style="font-size:13px;color:var(--color-text-secondary);">도시계획부동산학과</div>
-          </div>
-          <div class="card card-hover">
-            <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.02em;color:var(--color-accent);margin-bottom:10px;">졸업 · 제40기</div>
-            <div style="font-size:16px;font-weight:600;margin-bottom:4px;">대일외국어고등학교</div>
-          </div>
-          <div class="card card-hover">
-            <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.02em;color:var(--color-accent);margin-bottom:10px;">2019.04 — 2020.02</div>
-            <div style="font-size:16px;font-weight:600;margin-bottom:4px;">서울교육대학교 소프트웨어 영재교육원</div>
-            <div style="font-size:13px;color:var(--color-text-secondary);">기초과정 수료</div>
-          </div>
-        </div>
-
-        <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:18px;display:flex;align-items:center;gap:10px;"><span style="width:7px;height:7px;background:var(--color-accent);flex-shrink:0;"></span>교육 콘텐츠 개발 및 학술 TA</div>
-        <div style="display:flex;flex-direction:column;">
-
-          <div class="reveal timeline-item" style="display:grid;grid-template-columns:88px 14px 1fr;gap:0 18px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);text-align:right;padding-top:3px;white-space:pre-line;">2026&#10;NOW</div>
-            <div style="display:flex;flex-direction:column;align-items:center;">
-              <div style="width:9px;height:9px;border-radius:50%;background:var(--color-highlight);margin-top:5px;flex-shrink:0;box-shadow:0 0 10px var(--color-highlight-muted);"></div>
-              <div style="width:1px;flex:1;min-height:24px;background:linear-gradient(to bottom,var(--color-border-strong),var(--color-border));"></div>
-            </div>
-            <div class="timeline-content" style="padding-bottom:34px;">
-              <span style="display:inline-block;margin-bottom:8px;"><span class="badge badge-ongoing">ONGOING</span></span>
-              <div style="font-weight:700;font-size:16.5px;letter-spacing:-.01em;margin-bottom:4px;">검토위원</div>
-              <div style="font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.01em;color:var(--color-accent);margin-bottom:6px;">대성학력개발연구소</div>
-              <div style="font-size:13.5px;font-weight:300;color:var(--color-text-secondary);">수능 영어 모의고사 검토 및 피드백</div>
-            </div>
-          </div>
-
-          <div class="reveal timeline-item" style="display:grid;grid-template-columns:88px 14px 1fr;gap:0 18px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);text-align:right;padding-top:3px;white-space:pre-line;">2025&#10;NOW</div>
-            <div style="display:flex;flex-direction:column;align-items:center;">
-              <div style="width:9px;height:9px;border-radius:50%;background:var(--color-highlight);margin-top:5px;flex-shrink:0;box-shadow:0 0 10px var(--color-highlight-muted);"></div>
-              <div style="width:1px;flex:1;min-height:24px;background:linear-gradient(to bottom,var(--color-border-strong),var(--color-border));"></div>
-            </div>
-            <div class="timeline-content" style="padding-bottom:34px;">
-              <span style="display:inline-block;margin-bottom:8px;"><span class="badge badge-ongoing">ONGOING</span></span>
-              <div style="font-weight:700;font-size:16.5px;letter-spacing:-.01em;margin-bottom:4px;">문항 제작 · 클리닉 조교</div>
-              <div style="font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.01em;color:var(--color-accent);margin-bottom:6px;">이건호 대일수학 연구팀</div>
-              <div style="font-size:13.5px;font-weight:300;color:var(--color-text-secondary);">공통 과목 및 확률과 통계 문항 제작 / 소수 질의응답 및 학습관리 클리닉</div>
-            </div>
-          </div>
-
-          <div class="reveal timeline-item" style="display:grid;grid-template-columns:88px 14px 1fr;gap:0 18px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);text-align:right;padding-top:3px;white-space:pre-line;">2026</div>
-            <div style="display:flex;flex-direction:column;align-items:center;">
-              <div style="width:9px;height:9px;border-radius:50%;background:var(--color-highlight);margin-top:5px;flex-shrink:0;box-shadow:0 0 10px var(--color-highlight-muted);"></div>
-              <div style="width:1px;flex:1;min-height:24px;background:linear-gradient(to bottom,var(--color-border-strong),var(--color-border));"></div>
-            </div>
-            <div class="timeline-content" style="padding-bottom:34px;">
-              <div style="font-weight:700;font-size:16.5px;letter-spacing:-.01em;margin-bottom:4px;">진학레터 '잇다' 에디터</div>
-              <div style="font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.01em;color:var(--color-accent);margin-bottom:6px;">진학사</div>
-              <div style="font-size:13.5px;font-weight:300;color:var(--color-text-secondary);">학생부종합전형 분석, 교과·비교과 탐구활동 칼럼 기고</div>
-            </div>
-          </div>
-
-          <div class="reveal timeline-item" style="display:grid;grid-template-columns:88px 14px 1fr;gap:0 18px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);text-align:right;padding-top:3px;white-space:pre-line;">2025&#10;2026</div>
-            <div style="display:flex;flex-direction:column;align-items:center;">
-              <div style="width:9px;height:9px;border-radius:50%;background:var(--color-highlight);margin-top:5px;flex-shrink:0;box-shadow:0 0 10px var(--color-highlight-muted);"></div>
-              <div style="width:1px;flex:1;min-height:24px;background:linear-gradient(to bottom,var(--color-border-strong),var(--color-border));"></div>
-            </div>
-            <div class="timeline-content" style="padding-bottom:34px;">
-              <div style="font-weight:700;font-size:16.5px;letter-spacing:-.01em;margin-bottom:4px;">클리닉 조교</div>
-              <div style="font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.01em;color:var(--color-accent);margin-bottom:6px;">성북학림학원</div>
-              <div style="font-size:13.5px;font-weight:300;color:var(--color-text-secondary);">대일외고 윈터스쿨 수학 질의응답 및 학습관리 클리닉</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <div class="reveal-scale" style="position:relative;height:120px;display:flex;align-items:center;justify-content:center;">
-      <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--color-border);"></div>
-      <img src="심볼.svg" alt="" style="position:relative;width:70px;opacity:.16;background:var(--color-bg);padding:0 20px;">
+    <h3 class="sub">주요 활동</h3>
+    <div class="rows compact">
+      <div class="row"><div class="when">2021 — 2022</div><div><p class="row-title">청소년기후행동 기후정치크루</p></div></div>
+      <div class="row"><div class="when">2022 — 2025</div><div><p class="row-title">국민권익위원회 국민생각함 국민패널</p></div></div>
+      <div class="row"><div class="when">2022</div><div><p class="row-title">사이버외교사절단 반크 청년공공외교대사 9기</p></div></div>
+      <div class="row"><div class="when">2021</div><div><p class="row-title">대통령 직속 국가교육회의 국민참여단</p></div></div>
+      <div class="row"><div class="when">2021</div><div><p class="row-title">성북구 혁신교육 추진단원</p></div></div>
     </div>
-
-    <!-- ══ 04 LEADERSHIP ══ -->
-    <section id="lead" style="padding:clamp(48px,8vw,96px) 0;">
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px);">
-        <div class="reveal section-label">04 <span class="section-label-line"></span> Leadership</div>
-        <h2 class="section-h2">학생 자치</h2>
-        <p class="reveal" style="font-size:16px;font-weight:300;color:var(--color-text-secondary);max-width:560px;margin:0 0 44px;">제대로 '일' 하려고 했습니다. 끝없이 바꾸고, 끝없이 성장시켰습니다.</p>
-
-        <div style="display:flex;flex-direction:column;">
-
-          <div class="reveal timeline-item" style="display:grid;grid-template-columns:88px 14px 1fr;gap:0 18px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);text-align:right;padding-top:3px;white-space:pre-line;">2024&#10;2025</div>
-            <div style="display:flex;flex-direction:column;align-items:center;">
-              <div style="width:9px;height:9px;border-radius:50%;background:var(--color-highlight);margin-top:5px;flex-shrink:0;box-shadow:0 0 10px var(--color-highlight-muted);"></div>
-              <div style="width:1px;flex:1;min-height:24px;background:linear-gradient(to bottom,var(--color-border-strong),var(--color-border));"></div>
-            </div>
-            <div class="timeline-content" style="padding-bottom:34px;">
-              <div style="font-weight:700;font-size:19px;letter-spacing:-.01em;margin-bottom:4px;">제40대 학생회장</div>
-              <div style="font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.01em;color:var(--color-accent);margin-bottom:6px;">대일외국어고등학교</div>
-              <div style="font-size:13.5px;font-weight:300;color:var(--color-text-secondary);">학생 자치 기구 총괄 및 학생 권익 증진 활동 주도</div>
-            </div>
-          </div>
-
-          <div class="reveal timeline-item" style="display:grid;grid-template-columns:88px 14px 1fr;gap:0 18px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);text-align:right;padding-top:3px;white-space:pre-line;">2024&#10;2025</div>
-            <div style="display:flex;flex-direction:column;align-items:center;">
-              <div style="width:9px;height:9px;border-radius:50%;background:var(--color-highlight);margin-top:5px;flex-shrink:0;box-shadow:0 0 10px var(--color-highlight-muted);"></div>
-              <div style="width:1px;flex:1;min-height:24px;background:linear-gradient(to bottom,var(--color-border-strong),var(--color-border));"></div>
-            </div>
-            <div class="timeline-content" style="padding-bottom:34px;">
-              <div style="font-weight:700;font-size:16.5px;letter-spacing:-.01em;margin-bottom:4px;">학생회 안전관리부 부장</div>
-              <div style="font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.01em;color:var(--color-accent);margin-bottom:6px;">대일외국어고등학교</div>
-              <div style="font-size:13.5px;font-weight:300;color:var(--color-text-secondary);">학생대의원회의 진행 및 학생 안전 정책 수립</div>
-            </div>
-          </div>
-
-          <div class="reveal timeline-item" style="display:grid;grid-template-columns:88px 14px 1fr;gap:0 18px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);text-align:right;padding-top:3px;white-space:pre-line;">2023&#10;2024</div>
-            <div style="display:flex;flex-direction:column;align-items:center;">
-              <div style="width:9px;height:9px;border-radius:50%;background:var(--color-highlight);margin-top:5px;flex-shrink:0;box-shadow:0 0 10px var(--color-highlight-muted);"></div>
-              <div style="width:1px;flex:1;min-height:24px;background:linear-gradient(to bottom,var(--color-border-strong),var(--color-border));"></div>
-            </div>
-            <div class="timeline-content" style="padding-bottom:34px;">
-              <div style="font-weight:700;font-size:16.5px;letter-spacing:-.01em;margin-bottom:4px;">학생회 안전관리부 차장</div>
-              <div style="font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.01em;color:var(--color-accent);margin-bottom:6px;">대일외국어고등학교</div>
-              <div style="font-size:13.5px;font-weight:300;color:var(--color-text-secondary);">학생대의원회의 진행 및 학생 안전 정책 수립</div>
-            </div>
-          </div>
-
-          <div class="reveal timeline-item" style="display:grid;grid-template-columns:88px 14px 1fr;gap:0 18px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);text-align:right;padding-top:3px;white-space:pre-line;">2022</div>
-            <div style="display:flex;flex-direction:column;align-items:center;">
-              <div style="width:9px;height:9px;border-radius:50%;background:var(--color-highlight);margin-top:5px;flex-shrink:0;box-shadow:0 0 10px var(--color-highlight-muted);"></div>
-              <div style="width:1px;flex:1;min-height:24px;background:linear-gradient(to bottom,var(--color-border-strong),var(--color-border));"></div>
-            </div>
-            <div class="timeline-content" style="padding-bottom:34px;">
-              <div style="font-weight:700;font-size:16.5px;letter-spacing:-.01em;margin-bottom:4px;">학생회 생활교육부장</div>
-              <div style="font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.01em;color:var(--color-accent);margin-bottom:6px;">고명중학교</div>
-              <div style="font-size:13.5px;font-weight:300;color:var(--color-text-secondary);">학생 생활 지도 및 건전한 학교 문화 조성</div>
-            </div>
-          </div>
-
-          <div class="reveal timeline-item" style="display:grid;grid-template-columns:88px 14px 1fr;gap:0 18px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);text-align:right;padding-top:3px;white-space:pre-line;">2021</div>
-            <div style="display:flex;flex-direction:column;align-items:center;">
-              <div style="width:9px;height:9px;border-radius:50%;background:var(--color-highlight);margin-top:5px;flex-shrink:0;box-shadow:0 0 10px var(--color-highlight-muted);"></div>
-              <div style="width:1px;flex:1;min-height:24px;background:linear-gradient(to bottom,var(--color-border-strong),var(--color-border));"></div>
-            </div>
-            <div class="timeline-content" style="padding-bottom:34px;">
-              <div style="font-weight:700;font-size:16.5px;letter-spacing:-.01em;margin-bottom:4px;">학생회 차장</div>
-              <div style="font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.01em;color:var(--color-accent);margin-bottom:6px;">고명중학교</div>
-            </div>
-          </div>
-
-        </div>
+    <div id="civicMore" class="civic-more">
+      <div class="rows compact">
+        <div class="row"><div class="when">2018 — 2019</div><div><p class="row-title">키자니아 서울 제9대 어린이 의원</p></div></div>
+        <div class="row"><div class="when">2018</div><div><p class="row-title">한국청소년상담복지개발원 솔리언 또래상담 수료</p></div></div>
+        <div class="row"><div class="when">2020 — 2021</div><div><p class="row-title">한국미래청년청소년정책연구회 대외소통국장</p></div></div>
+        <div class="row"><div class="when">2021</div><div><p class="row-title">청소년사회교육혁명포럼 '청춘희망소' 창립준비위 홍보소통팀장</p></div></div>
+        <div class="row"><div class="when">2021</div><div><p class="row-title">청소년 인권 단체 '아수나로' 회원</p></div></div>
+        <div class="row"><div class="when">2021</div><div><p class="row-title">청소년인권모임 청소년 활동가</p></div></div>
+        <div class="row"><div class="when">2022 — 2023</div><div><p class="row-title">청년너울 청소년위원회 위원</p></div></div>
+        <div class="row"><div class="when">2022</div><div><p class="row-title">전국학생협회 '새싹' 대외협력실장 · 인사위원장</p></div></div>
+        <div class="row"><div class="when">2022</div><div><p class="row-title">그린피스 자원봉사자</p></div></div>
       </div>
-    </section>
-
-    <div class="reveal-scale" style="position:relative;height:120px;display:flex;align-items:center;justify-content:center;">
-      <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--color-border);"></div>
-      <img src="심볼.svg" alt="" style="position:relative;width:70px;opacity:.16;background:var(--color-bg);padding:0 20px;">
     </div>
+    <button id="civicToggle" class="btn btn-secondary" type="button" aria-expanded="false">더보기</button>
+  </div>
+</section>
 
-    <!-- ══ 05 PRESS ══ -->
-    <section id="press" style="padding:clamp(48px,8vw,96px) 0;">
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px);">
-        <div class="reveal section-label">05 <span class="section-label-line"></span> Journalism &amp; Media</div>
-        <h2 class="section-h2">저널리즘</h2>
-        <p class="reveal" style="font-size:16px;font-weight:300;color:var(--color-text-secondary);max-width:560px;margin:0 0 36px;">2016년부터 활동했습니다. 10개 이상의 매체, 100편 이상의 기사.</p>
-      </div>
-
-      <div style="overflow:hidden;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);padding:10px 0;margin-bottom:44px;background:var(--glass-fill);">
-        <div style="display:flex;width:max-content;animation:ldgMarquee 26s linear infinite;font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-muted);">
-          <span style="padding:0 20px;">PRESS · JOURNALISM · 기록 · 정책 · 사회 · PRESS · JOURNALISM · 기록 · 정책 · 사회 ·</span>
-          <span style="padding:0 20px;">PRESS · JOURNALISM · 기록 · 정책 · 사회 · PRESS · JOURNALISM · 기록 · 정책 · 사회 ·</span>
-        </div>
-      </div>
-
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px);">
-        <div class="reveal" style="position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--glass-border-strong);background:linear-gradient(130deg,rgba(59,116,196,0.14),rgba(59,116,196,0.02) 65%);backdrop-filter:var(--blur-md);-webkit-backdrop-filter:var(--blur-md);padding:32px 30px;margin-bottom:36px;box-shadow:var(--shadow-sm);">
-          <span style="display:inline-block;margin-bottom:12px;"><span class="badge badge-brand">FLAGSHIP · 2020—2024</span></span>
-          <div style="font-family:var(--font-body);font-weight:700;font-size:clamp(1.2rem,2.6vw,1.7rem);letter-spacing:-.02em;margin-bottom:6px;">청소년 언론 '청라온' 선임기자</div>
-          <div style="font-size:14px;font-weight:300;color:var(--color-text-secondary);">사회 이슈 및 정책 분석 기사 집필</div>
-        </div>
-
-        <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:16px;">참여 매체 — 드래그하여 탐색</div>
-        <div id="pressRail" class="scrollbar-none" style="display:flex;gap:12px;overflow-x:auto;padding:4px 2px 16px;cursor:grab;user-select:none;">
-
-          <!-- press cards × 2 for infinite loop -->
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>한국경제신문</div><div>주니어 생글생글</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2022—2024</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>에듀뉴스</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">학생기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2022—2024</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>수완뉴스</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">청소년 기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2020—2022</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>저작거리 감성매거진</div><div>'글로밥상'</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">필진</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2020—2022</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>통일부</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">제8기 어린이 기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2019—2020</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>서울특별시</div><div>내친구서울</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">어린이 기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2016—2017</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>금융소비자연맹</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">청소년소비자기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2022</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>STEMATIX</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">한국지부 저널리스트</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2021</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>아이엠뉴스</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">시민기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2021</div>
-          </div>
-          <!-- duplicate for seamless loop -->
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>한국경제신문</div><div>주니어 생글생글</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2022—2024</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>에듀뉴스</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">학생기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2022—2024</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>수완뉴스</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">청소년 기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2020—2022</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>저작거리 감성매거진</div><div>'글로밥상'</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">필진</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2020—2022</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>통일부</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">제8기 어린이 기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2019—2020</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>서울특별시</div><div>내친구서울</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">어린이 기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2016—2017</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>금융소비자연맹</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">청소년소비자기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2022</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>STEMATIX</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">한국지부 저널리스트</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2021</div>
-          </div>
-          <div class="press-card" style="flex-shrink:0;width:180px;border-radius:var(--radius-md);padding:18px 16px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:8px;"><div>아이엠뉴스</div></div>
-            <div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--color-accent);">시민기자</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);margin-top:4px;">2021</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="reveal-scale" style="position:relative;height:120px;display:flex;align-items:center;justify-content:center;">
-      <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--color-border);"></div>
-      <img src="심볼.svg" alt="" style="position:relative;width:70px;opacity:.16;background:var(--color-bg);padding:0 20px;">
+<!-- 수상 -->
+<section class="section" id="awards">
+  <div class="wrap">
+    <p class="label">Awards &amp; Honors</p>
+    <h2>수상</h2>
+    <p class="lede">2022년엔 7개 정도를 출품했습니다. 6개가 수상했습니다.</p>
+    <div class="rows">
+      <div class="row"><div class="when">2022.11.07</div><div><p class="award-k">대상 · 통일부장관상</p><p class="row-title">제19회 전국장애인과 함께하는 문예글짓기 대회</p><p class="row-org">사단법인 한국장애인유권자연맹</p></div></div>
+      <div class="row"><div class="when">2022.09.30</div><div><p class="award-k">금상 · 서울지방국세청장상</p><p class="row-title">2022 청소년 세금작품공모전 글짓기 부문</p><p class="row-org">국세청</p></div></div>
+      <div class="row"><div class="when">2020.12.17</div><div><p class="award-k">최우수상 · 아동권리보장원장상</p><p class="row-title">아동정책영향평가 공모전 슬로건 부문</p><p class="row-org">아동권리보장원</p></div></div>
+      <div class="row"><div class="when">2022.11.12</div><div><p class="award-k">서울시립청소년미디어센터관장상</p><p class="row-title">제9회 대한민국청소년기자대상 글 기사 부문</p><p class="row-org">서울시립청소년미디어센터</p></div></div>
+      <div class="row"><div class="when">2022.12.27</div><div><p class="award-k">장려상 · 금융소비자연맹회장상</p><p class="row-title">2022 청소년 소비자 기사·포스터 공모전 기사 부문</p><p class="row-org">금융소비자연맹</p></div></div>
+      <div class="row"><div class="when">2022.11.22</div><div><p class="award-k">장려상 · 초록우산 어린이재단회장상</p><p class="row-title">제7회 전국 감사편지 공모전</p><p class="row-org">초록우산 어린이재단</p></div></div>
+      <div class="row"><div class="when">2022.09.16</div><div><p class="award-k">입선 · 이사장상</p><p class="row-title">제8회 극지·해양 도서 독후감 및 콘텐츠 감상문 공모전</p><p class="row-org">사단법인 극지해양미래포럼</p></div></div>
     </div>
+    <h3 class="sub" style="margin-top:40px">자격증</h3>
+    <div class="card"><p class="card-title">DIAT 디지털정보활용능력</p><p class="card-body">프리젠테이션(PPT) 과목 · 고급 등급</p><p class="meta">2017.03.17 · 한국정보통신진흥협회</p></div>
+  </div>
+</section>
 
-    <!-- ══ 06 CIVIC ══ -->
-    <section id="civic" style="padding:clamp(48px,8vw,96px) 0;">
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px);">
-        <div class="reveal section-label">06 <span class="section-label-line"></span> Civic &amp; Social</div>
-        <h2 class="section-h2">시민 참여</h2>
-        <p class="reveal" style="font-size:16px;font-weight:300;color:var(--color-text-secondary);max-width:600px;margin:0 0 36px;">기후, 교육, 인권, 외교 분야 40개 이상의 단체에서 활동했습니다.</p>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:44px;">
-          <div class="card card-hover">
-            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-accent);margin-bottom:10px;">2020 — 2022</div>
-            <div style="font-size:15.5px;font-weight:600;margin-bottom:6px;line-height:1.4;">청소년 단체 '유니엄' 대표이사</div>
-            <div style="font-size:13px;color:var(--color-text-secondary);">청소년 참여·활동 사업 프로젝트 총괄</div>
-          </div>
-          <div class="card card-hover">
-            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-accent);margin-bottom:10px;">GOVERNMENT · 2020 — 2021</div>
-            <div style="font-size:15.5px;font-weight:600;margin-bottom:6px;line-height:1.4;">여성가족부 제16회 청소년특별회의 선발직 위원</div>
-            <div style="font-size:13px;color:var(--color-text-secondary);">온라인소통팀장 / 청소년 정책 의제 발굴</div>
-          </div>
-          <div class="card card-hover">
-            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-accent);margin-bottom:10px;">EDUCATION · 2022 — 2025</div>
-            <div style="font-size:15.5px;font-weight:600;margin-bottom:6px;line-height:1.4;">서울특별시교육청 학생참여단</div>
-            <div style="font-size:13px;color:var(--color-text-secondary);">제11기 · 제12기 · 제13기 위원</div>
-          </div>
-          <div class="card card-hover">
-            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--color-accent);margin-bottom:10px;">GOVERNMENT · 2026</div>
-            <div style="font-size:15.5px;font-weight:600;margin-bottom:6px;line-height:1.4;">성평등가족부 청년 공존·공감위원회</div>
-            <div style="font-size:13px;color:var(--color-text-secondary);">제1기 참여위원</div>
-          </div>
-        </div>
-
-        <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:16px;display:flex;align-items:center;gap:10px;"><span style="width:7px;height:7px;background:var(--color-accent);flex-shrink:0;"></span>주요 활동</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:24px;">
-          <div class="civic-card" style="padding:14px 16px;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-size:13.5px;font-weight:500;margin-bottom:4px;">청소년기후행동 기후정치크루</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);">2021 — 2022</div>
-          </div>
-          <div class="civic-card" style="padding:14px 16px;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-size:13.5px;font-weight:500;margin-bottom:4px;">국민권익위원회 국민생각함 국민패널</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);">2022 — 2025</div>
-          </div>
-          <div class="civic-card" style="padding:14px 16px;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-size:13.5px;font-weight:500;margin-bottom:4px;">사이버외교사절단 반크 청년공공외교대사 9기</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);">2022</div>
-          </div>
-          <div class="civic-card" style="padding:14px 16px;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-size:13.5px;font-weight:500;margin-bottom:4px;">대통령 직속 국가교육회의 국민참여단</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);">2021</div>
-          </div>
-          <div class="civic-card" style="padding:14px 16px;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-            <div style="font-size:13.5px;font-weight:500;margin-bottom:4px;">성북구 혁신교육 추진단원</div>
-            <div style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);">2021</div>
-          </div>
-        </div>
-
-        <button id="civicToggle" class="btn btn-secondary" onclick="toggleCivic()">더보기 ↓</button>
-
-        <div id="civicMore" style="overflow:hidden;max-height:0;transition:max-height .6s cubic-bezier(.4,0,.2,1);margin-top:20px;">
-          <div style="display:flex;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:13.5px;font-weight:300;color:var(--color-text-secondary);"><span style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);flex-shrink:0;width:56px;">2018–19</span>키자니아 서울 제9대 어린이 의원</div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:13.5px;font-weight:300;color:var(--color-text-secondary);"><span style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);flex-shrink:0;width:56px;">2018</span>한국청소년상담복지개발원 솔리언 또래상담 수료</div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:13.5px;font-weight:300;color:var(--color-text-secondary);"><span style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);flex-shrink:0;width:56px;">2020–21</span>한국미래청년청소년정책연구회 대외소통국장</div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:13.5px;font-weight:300;color:var(--color-text-secondary);"><span style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);flex-shrink:0;width:56px;">2021</span>청소년사회교육혁명포럼 '청춘희망소' 창립준비위 홍보소통팀장</div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:13.5px;font-weight:300;color:var(--color-text-secondary);"><span style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);flex-shrink:0;width:56px;">2021</span>청소년 인권 단체 '아수나로' 회원</div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:13.5px;font-weight:300;color:var(--color-text-secondary);"><span style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);flex-shrink:0;width:56px;">2021</span>청소년인권모임 청소년 활동가</div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:13.5px;font-weight:300;color:var(--color-text-secondary);"><span style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);flex-shrink:0;width:56px;">2022–23</span>청년너울 청소년위원회 위원</div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:13.5px;font-weight:300;color:var(--color-text-secondary);"><span style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);flex-shrink:0;width:56px;">2022</span>전국학생협회 '새싹' 대외협력실장 · 인사위원장</div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:13.5px;font-weight:300;color:var(--color-text-secondary);"><span style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);flex-shrink:0;width:56px;">2022</span>그린피스 자원봉사자</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="reveal-scale" style="position:relative;height:120px;display:flex;align-items:center;justify-content:center;">
-      <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--color-border);"></div>
-      <img src="심볼.svg" alt="" style="position:relative;width:70px;opacity:.16;background:var(--color-bg);padding:0 20px;">
+<!-- 기록 -->
+<section class="section" id="board">
+  <div class="wrap">
+    <p class="label">Board</p>
+    <h2>기록 보드</h2>
+    <p class="lede">Newsroom과 Opinion을 전환해 최신 글을 확인할 수 있습니다.</p>
+    <div class="tabs" role="tablist">
+      <button id="btnNewsroom" class="tab" role="tab" aria-selected="true" onclick="selectBoard('newsroom')">My Newsroom</button>
+      <button id="btnOpinion" class="tab" role="tab" aria-selected="false" onclick="selectBoard('opinion')">My Opinion</button>
     </div>
+    <div id="boardList"></div>
+    <div id="boardMore" style="margin-top:16px;display:none"><button class="btn btn-ghost" onclick="loadMoreBoard()">더보기</button></div>
+  </div>
+</section>
 
-    <!-- ══ 07 AWARDS ══ -->
-    <section id="awards" style="padding:clamp(48px,8vw,96px) 0;">
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px);">
-        <div class="reveal section-label">07 <span class="section-label-line"></span> Awards &amp; Honors</div>
-        <h2 class="section-h2">수상</h2>
-        <p class="reveal" style="font-size:16px;font-weight:300;color:var(--color-text-secondary);max-width:560px;margin:0 0 40px;">2022년엔 7개 정도를 출품했습니다. 6개가 수상했습니다.</p>
+<!-- 연락 -->
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <p class="label">Contact</p>
+    <h2>연락은 언제든 환영합니다</h2>
+    <a href="mailto:ldg@ldgk.kr" class="contact-mail">ldg@ldgk.kr</a>
+  </div>
+</section>
+</main>
 
-        <div style="display:flex;flex-direction:column;">
+<footer class="footer">
+  <div class="wrap footer-in">
+    <svg class="footer-mark" viewBox="0 0 309.96 34.13" role="img" aria-label="LEE DONGGYU"><use href="#ldg-word"/></svg>
+    <span>© 2026 LEE DONGGYU</span>
+  </div>
+</footer>
 
-          <div class="reveal award-row" style="display:grid;grid-template-columns:44px 1fr auto;gap:0 20px;align-items:start;padding:22px 0;border-top:1px solid var(--color-border);border-left:2px solid var(--color-highlight);padding-left:16px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);padding-top:4px;">01</div>
-            <div>
-              <div style="font-family:var(--font-body);font-weight:600;font-size:11.5px;letter-spacing:.03em;color:var(--color-highlight);margin-bottom:6px;">GRAND PRIZE · 통일부장관상 (대상)</div>
-              <div class="award-title" style="font-weight:700;font-size:15.5px;letter-spacing:-.01em;margin-bottom:4px;">제19회 전국장애인과 함께하는 문예글짓기 대회</div>
-              <div style="font-size:13px;font-weight:300;color:var(--color-text-secondary);">사단법인 한국장애인유권자연맹</div>
-            </div>
-            <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--color-text-muted);padding-top:4px;text-align:right;white-space:nowrap;">2022.11.07</div>
-          </div>
-
-          <div class="reveal award-row" style="display:grid;grid-template-columns:44px 1fr auto;gap:0 20px;align-items:start;padding:22px 0;border-top:1px solid var(--color-border);border-left:2px solid var(--color-highlight);padding-left:16px;">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);padding-top:4px;">02</div>
-            <div>
-              <div style="font-family:var(--font-body);font-weight:600;font-size:11.5px;letter-spacing:.03em;color:var(--color-highlight);margin-bottom:6px;">GOLD PRIZE · 서울지방국세청장상 (금상)</div>
-              <div class="award-title" style="font-weight:700;font-size:15.5px;letter-spacing:-.01em;margin-bottom:4px;">2022 청소년 세금작품공모전 글짓기 부문</div>
-              <div style="font-size:13px;font-weight:300;color:var(--color-text-secondary);">국세청</div>
-            </div>
-            <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--color-text-muted);padding-top:4px;text-align:right;white-space:nowrap;">2022.09.30</div>
-          </div>
-
-          <div class="reveal award-row" style="display:grid;grid-template-columns:44px 1fr auto;gap:0 20px;align-items:start;padding:22px 0;border-top:1px solid var(--color-border);">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);padding-top:4px;">03</div>
-            <div>
-              <div style="font-family:var(--font-body);font-weight:600;font-size:11.5px;letter-spacing:.03em;color:var(--color-accent);margin-bottom:6px;">1ST PRIZE · 아동권리보장원장상 (최우수상)</div>
-              <div class="award-title" style="font-weight:700;font-size:15.5px;letter-spacing:-.01em;margin-bottom:4px;">아동정책영향평가 공모전 슬로건 부문</div>
-              <div style="font-size:13px;font-weight:300;color:var(--color-text-secondary);">아동권리보장원</div>
-            </div>
-            <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--color-text-muted);padding-top:4px;text-align:right;white-space:nowrap;">2020.12.17</div>
-          </div>
-
-          <div class="reveal award-row" style="display:grid;grid-template-columns:44px 1fr auto;gap:0 20px;align-items:start;padding:22px 0;border-top:1px solid var(--color-border);">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);padding-top:4px;">04</div>
-            <div>
-              <div style="font-family:var(--font-body);font-weight:600;font-size:11.5px;letter-spacing:.03em;color:var(--color-accent);margin-bottom:6px;">SPECIAL · 서울시립청소년미디어센터관장상</div>
-              <div class="award-title" style="font-weight:700;font-size:15.5px;letter-spacing:-.01em;margin-bottom:4px;">제9회 대한민국청소년기자대상 글 기사 부문</div>
-              <div style="font-size:13px;font-weight:300;color:var(--color-text-secondary);">서울시립청소년미디어센터</div>
-            </div>
-            <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--color-text-muted);padding-top:4px;text-align:right;white-space:nowrap;">2022.11.12</div>
-          </div>
-
-          <div class="reveal award-row" style="display:grid;grid-template-columns:44px 1fr auto;gap:0 20px;align-items:start;padding:22px 0;border-top:1px solid var(--color-border);">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);padding-top:4px;">05</div>
-            <div>
-              <div style="font-family:var(--font-body);font-weight:600;font-size:11.5px;letter-spacing:.03em;color:var(--color-accent);margin-bottom:6px;">장려상 · 금융소비자연맹회장상</div>
-              <div class="award-title" style="font-weight:700;font-size:15.5px;letter-spacing:-.01em;margin-bottom:4px;">2022 청소년 소비자 기사·포스터 공모전 기사 부문</div>
-              <div style="font-size:13px;font-weight:300;color:var(--color-text-secondary);">금융소비자연맹</div>
-            </div>
-            <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--color-text-muted);padding-top:4px;text-align:right;white-space:nowrap;">2022.12.27</div>
-          </div>
-
-          <div class="reveal award-row" style="display:grid;grid-template-columns:44px 1fr auto;gap:0 20px;align-items:start;padding:22px 0;border-top:1px solid var(--color-border);">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);padding-top:4px;">06</div>
-            <div>
-              <div style="font-family:var(--font-body);font-weight:600;font-size:11.5px;letter-spacing:.03em;color:var(--color-accent);margin-bottom:6px;">장려상 · 초록우산 어린이재단회장상</div>
-              <div class="award-title" style="font-weight:700;font-size:15.5px;letter-spacing:-.01em;margin-bottom:4px;">제7회 전국 감사편지 공모전</div>
-              <div style="font-size:13px;font-weight:300;color:var(--color-text-secondary);">초록우산 어린이재단</div>
-            </div>
-            <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--color-text-muted);padding-top:4px;text-align:right;white-space:nowrap;">2022.11.22</div>
-          </div>
-
-          <div class="reveal award-row" style="display:grid;grid-template-columns:44px 1fr auto;gap:0 20px;align-items:start;padding:22px 0;border-top:1px solid var(--color-border);">
-            <div style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-muted);padding-top:4px;">07</div>
-            <div>
-              <div style="font-family:var(--font-body);font-weight:600;font-size:11.5px;letter-spacing:.03em;color:var(--color-accent);margin-bottom:6px;">입선 · 이사장상</div>
-              <div class="award-title" style="font-weight:700;font-size:15.5px;letter-spacing:-.01em;margin-bottom:4px;">제8회 극지·해양 도서 독후감 및 콘텐츠 감상문 공모전</div>
-              <div style="font-size:13px;font-weight:300;color:var(--color-text-secondary);">사단법인 극지해양미래포럼</div>
-            </div>
-            <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--color-text-muted);padding-top:4px;text-align:right;white-space:nowrap;">2022.09.16</div>
-          </div>
-
-          <div style="border-top:1px solid var(--color-border);"></div>
-        </div>
-
-        <div class="reveal" style="display:flex;gap:18px;align-items:baseline;margin-top:28px;padding:20px 22px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-md);flex-wrap:wrap;">
-          <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;color:var(--color-accent);flex-shrink:0;">CERTIFICATE</div>
-          <div>
-            <div style="font-weight:700;font-size:14.5px;margin-bottom:4px;">DIAT 디지털정보활용능력</div>
-            <div style="font-size:13px;font-weight:300;color:var(--color-text-secondary);">프리젠테이션(PPT) 과목 · 고급 등급</div>
-            <div style="font-family:var(--font-body);font-weight:400;font-size:12px;color:var(--color-text-muted);margin-top:6px;">2017.03.17 · 한국정보통신진흥협회</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="reveal-scale" style="position:relative;height:120px;display:flex;align-items:center;justify-content:center;">
-      <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--color-border);"></div>
-      <img src="심볼.svg" alt="" style="position:relative;width:70px;opacity:.16;background:var(--color-bg);padding:0 20px;">
-    </div>
-
-    <!-- ══ 08 BOARD ══ -->
-    <section id="board" style="padding:clamp(48px,8vw,96px) 0;">
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px);">
-        <div class="reveal section-label">08 <span class="section-label-line"></span> Board</div>
-        <h2 class="section-h2">기록 보드</h2>
-        <p style="font-size:16px;font-weight:300;color:var(--color-text-secondary);max-width:560px;margin:0 0 32px;">Newsroom과 Opinion을 전환해 최신 글을 확인할 수 있습니다.</p>
-
-        <div style="display:flex;gap:10px;margin-bottom:24px;">
-          <button id="btnNewsroom" class="btn btn-accent" onclick="selectBoard('newsroom')">My Newsroom</button>
-          <button id="btnOpinion" class="btn btn-secondary" onclick="selectBoard('opinion')">My Opinion</button>
-        </div>
-
-        <div id="boardList"></div>
-        <div id="boardMore" style="margin-top:18px;display:none;">
-          <button class="btn btn-ghost" onclick="loadMoreBoard()">더보기 ↓</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ 09 CONTACT ══ -->
-    <section id="contact" style="position:relative;padding:clamp(64px,10vw,120px) 0;overflow:hidden;">
-      <img src="심볼.svg" alt="" style="position:absolute;right:-40px;bottom:-40px;width:280px;opacity:.05;pointer-events:none;">
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px);position:relative;">
-        <div class="section-label">09 <span class="section-label-line"></span> Contact</div>
-        <h2 style="font-family:var(--font-display);font-variation-settings:'wdth' 110;font-weight:850;font-size:clamp(1.8rem,4.6vw,3rem);letter-spacing:-.02em;margin:0 0 28px;">연락은 언제든 환영합니다</h2>
-        <a href="mailto:ldg@ldgk.kr" class="contact-link" style="display:inline-flex;align-items:baseline;gap:14px;font-family:var(--font-display);font-variation-settings:'wdth' 108;font-weight:800;font-size:clamp(1.5rem,4.4vw,2.6rem);letter-spacing:-.02em;color:var(--color-text-primary);text-decoration:none;padding-bottom:6px;">
-          ldg@ldgk.kr
-          <span class="contact-arrow" style="font-family:var(--font-mono);font-weight:400;font-size:.5em;color:var(--color-accent);display:inline-block;">↗</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <!-- ══ FOOTER ══ -->
-  <footer style="position:relative;z-index:2;padding:56px 20px 40px;text-align:center;border-top:1px solid var(--color-border);display:flex;flex-direction:column;align-items:center;gap:16px;">
-    <img src="가로_워드마크.svg" alt="LEE DONGGYU" style="width:min(240px,60vw);height:auto;opacity:.85;">
-    <a href="mailto:ldg@ldgk.kr" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;color:var(--color-text-secondary);text-decoration:none;">ldg@ldgk.kr</a>
-    <span style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-muted);letter-spacing:.08em;">© 2026 LEE DONGGYU · ALL RIGHTS RESERVED</span>
-  </footer>
-
-</div>
-
-<script>
-/* ── Hero letter animation ── */
-(function(){
-  const name = 'LEE DONGGYU';
-  const h1 = document.getElementById('heroName');
-  name.split('').forEach((ch, i) => {
-    const wrap = document.createElement('span');
-    wrap.style.cssText = 'display:inline-block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em;';
-    const inner = document.createElement('i');
-    inner.style.cssText = `display:inline-block;font-style:normal;animation:ldgLetterUp .9s cubic-bezier(.16,1,.3,1) both;animation-delay:${2900 + i * 65}ms;`;
-    inner.textContent = ch;
-    wrap.appendChild(inner);
-    h1.appendChild(wrap);
-  });
-})();
-
-/* ── Scroll: nav + bgSymbol parallax ── */
-const nav = document.getElementById('nav');
-const bgSym = document.getElementById('bgSymbol');
-const heroEl = document.getElementById('hero');
-
-window.addEventListener('scroll', function(){
-  const y = window.scrollY || window.pageYOffset || 0;
-  const heroH = (heroEl && heroEl.offsetHeight) || window.innerHeight * 0.9;
-  if (nav) {
-    const past = y > heroH * 0.75;
-    nav.style.opacity = past ? '1' : '0';
-    nav.style.pointerEvents = past ? 'auto' : 'none';
-    nav.style.transform = past ? 'translateY(0)' : 'translateY(-10px)';
-  }
-  if (bgSym) {
-    const docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    const prog = Math.min(1, Math.max(0, y / docH));
-    const drift = (prog - 0.5) * 110;
-    const rot = prog * 130;
-    const sc = 1 + prog * 0.22;
-    bgSym.style.transform = `translate(-50%,-50%) translateY(${drift.toFixed(1)}px) rotate(${rot.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
-  }
-}, { passive: true });
-
-/* ── Reveal on scroll ── */
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObs.observe(el));
-
-/* ── Stats counter ── */
-const statsObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    statsObs.disconnect();
-    const els = document.querySelectorAll('.count');
-    const dur = 1400;
-    const start = performance.now();
-    const ease = t => 1 - Math.pow(1 - t, 3);
-    const step = now => {
-      const t = Math.min(1, (now - start) / dur);
-      const ev = ease(t);
-      els.forEach(el => {
-        el.textContent = Math.round(+el.dataset.target * ev);
-      });
-      if (t < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  });
-}, { threshold: 0.3 });
-const statsGrid = document.getElementById('statsGrid');
-if (statsGrid) statsObs.observe(statsGrid);
-
-/* ── Press rail: auto-scroll + drag ── */
-(function(){
-  const rail = document.getElementById('pressRail');
-  if (!rail) return;
-  let dragging = false, startX = 0, startScroll = 0, hover = false, lastTs = null, raf;
-  const speed = 0.035;
-  function tick(ts) {
-    if (lastTs == null) lastTs = ts;
-    const dt = ts - lastTs; lastTs = ts;
-    if (!dragging && !hover) {
-      const half = rail.scrollWidth / 2;
-      if (half > 0) {
-        let next = rail.scrollLeft + dt * speed;
-        if (next >= half) next -= half;
-        rail.scrollLeft = next;
-      }
-    }
-    raf = requestAnimationFrame(tick);
-  }
-  raf = requestAnimationFrame(tick);
-  rail.addEventListener('mousedown', e => { dragging=true; startX=e.clientX; startScroll=rail.scrollLeft; rail.style.cursor='grabbing'; });
-  rail.addEventListener('mousemove', e => { if(!dragging) return; e.preventDefault(); rail.scrollLeft = startScroll - (e.clientX - startX); });
-  rail.addEventListener('mouseenter', () => { hover=true; });
-  rail.addEventListener('mouseup', () => { dragging=false; hover=false; rail.style.cursor='grab'; });
-  rail.addEventListener('mouseleave', () => { dragging=false; hover=false; rail.style.cursor='grab'; });
-})();
-
-/* ── Civic toggle ── */
-let civicOpen = false;
-function toggleCivic() {
-  civicOpen = !civicOpen;
-  document.getElementById('civicMore').style.maxHeight = civicOpen ? '2000px' : '0';
-  document.getElementById('civicToggle').textContent = civicOpen ? '접기 ↑' : '더보기 ↓';
-}
-
-/* ── Board (localStorage) ── */
-const BOARD_PAGE_SIZE = 5;
-let boardType = 'newsroom';
-let boardPage = 0;
-
-function getBoardItems() {
-  try { return JSON.parse(localStorage.getItem('portfolioBoards') || '[]'); } catch(e) { return []; }
-}
-function formatDate(iso) {
-  try {
-    const d = new Date(iso);
-    const p = n => String(n).padStart(2,'0');
-    return `${d.getFullYear()}.${p(d.getMonth()+1)}.${p(d.getDate())}`;
-  } catch(e) { return ''; }
-}
-function renderBoard() {
-  const all = getBoardItems();
-  const filtered = all.filter(p => p.board === boardType)
-    .sort((a,b) => new Date(b.createdAt||0) - new Date(a.createdAt||0));
-  const visible = filtered.slice(0, (boardPage+1)*BOARD_PAGE_SIZE);
-  const list = document.getElementById('boardList');
-  const more = document.getElementById('boardMore');
-  if (!visible.length) {
-    list.innerHTML = '<div style="padding:52px 0;text-align:center;color:var(--color-text-muted);font-size:14px;font-weight:300;border:1px dashed var(--color-border);border-radius:var(--radius-lg);">아직 등록된 글이 없습니다.</div>';
-    more.style.display = 'none';
-    return;
-  }
-  list.innerHTML = '<div style="display:flex;flex-direction:column;gap:10px;">' +
-    visible.map(b => `<div class="board-card" style="border-radius:var(--radius-md);padding:18px 20px;background:var(--color-surface);border:1px solid var(--color-border);backdrop-filter:var(--blur-sm);">
-      <div style="font-weight:700;font-size:15px;margin-bottom:6px;">${b.title||''}</div>
-      <div style="font-size:13px;font-weight:300;color:var(--color-text-secondary);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${b.content||''}</div>
-      <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-muted);margin-top:10px;">${formatDate(b.createdAt)}</div>
-    </div>`).join('') + '</div>';
-  more.style.display = filtered.length > visible.length ? 'block' : 'none';
-}
-function selectBoard(type) {
-  boardType = type; boardPage = 0;
-  document.getElementById('btnNewsroom').className = 'btn ' + (type==='newsroom'?'btn-accent':'btn-secondary');
-  document.getElementById('btnOpinion').className = 'btn ' + (type==='opinion'?'btn-accent':'btn-secondary');
-  renderBoard();
-}
-function loadMoreBoard() { boardPage++; renderBoard(); }
-renderBoard();
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
