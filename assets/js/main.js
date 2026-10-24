@@ -4,6 +4,7 @@
    ═══════════════════════════════════════════════ */
 (function () {
   'use strict';
+  window.__ldgReady = true;
 
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
