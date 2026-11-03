@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════
-   LDG NOIR — motion & graphics
-   gsap · ScrollTrigger · Lenis (MIT/free) + custom WebGL / Canvas
+   LDG NOIR — landing
+   gsap (free) + custom WebGL / Canvas
    ═══════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -10,7 +10,7 @@
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const hasGSAP = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+  const hasGSAP = typeof gsap !== 'undefined';
   const lerp = (a, b, t) => a + (b - a) * t;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
@@ -30,70 +30,11 @@
 
   let scrollVel = 0, scrollProg = 0;
 
-  /* ───────── Lenis smooth scroll ───────── */
-  let lenis = null;
-  if (!reduce && typeof Lenis !== 'undefined') {
-    lenis = new Lenis({ lerp: .09, wheelMultiplier: .95 });
-    if (hasGSAP) {
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(t => lenis.raf(t * 1000));
-      gsap.ticker.lagSmoothing(0);
-    } else {
-      const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
-      requestAnimationFrame(raf);
-    }
-    lenis.stop();
-  }
-  const scrollTo = (target, opts) => {
-    if (lenis) lenis.scrollTo(target, Object.assign({ duration: 1.4, easing: t => 1 - Math.pow(1 - t, 4) }, opts));
-    else (typeof target === 'number' ? window.scrollTo({ top: target, behavior: 'smooth' }) : target.scrollIntoView({ behavior: 'smooth' }));
-  };
-  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-    const id = a.getAttribute('href');
-    const t = id.length > 1 && $(id);
-    if (!t) return;
-    e.preventDefault();
-    closeMenu();
-    scrollTo(t, { offset: 0 });
-  }));
-
-  /* ───────── nav / menu ───────── */
-  const navToggle = $('#navToggle');
-  function closeMenu() { document.body.classList.remove('nav-open'); navToggle.setAttribute('aria-expanded', 'false'); }
-  navToggle.addEventListener('click', () => {
-    const open = document.body.classList.toggle('nav-open');
-    navToggle.setAttribute('aria-expanded', String(open));
+  /* ───────── scroll velocity (drives the echo trail) ───────── */
+  let lenis = null, lastY = scrollY;
+  (hasGSAP ? (f => gsap.ticker.add(f)) : (f => { const r = () => { f(); requestAnimationFrame(r); }; r(); }))(() => {
+    scrollVel = lerp(scrollVel, scrollY - lastY, .2); lastY = scrollY;
   });
-
-  /* ───────── scroll state: progress bar + velocity ───────── */
-  const progressEl = $('#progress');
-  let lastY = scrollY;
-  function onScrollFrame() {
-    const y = scrollY;
-    const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
-    scrollProg = clamp(y / max, 0, 1);
-    progressEl.style.transform = 'scaleX(' + scrollProg.toFixed(4) + ')';
-    scrollVel = lerp(scrollVel, y - lastY, .2);
-    lastY = y;
-  }
-  (hasGSAP ? (f => gsap.ticker.add(f)) : (f => { const r = () => { f(); requestAnimationFrame(r); }; r(); }))(onScrollFrame);
-
-  /* ───────── reveal on scroll (+ sibling stagger) ───────── */
-  $$('.grid-cards, .mini-grid, .bento, .practice').forEach(g =>
-    Array.from(g.children).forEach((c, i) => { c.style.transitionDelay = (i % 4) * 90 + 'ms'; }));
-  const revealObs = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); }
-  }), { threshold: .12, rootMargin: '0px 0px -50px 0px' });
-  $$('.reveal').forEach(el => revealObs.observe(el));
-
-  /* ───────── spotlight cards ───────── */
-  document.addEventListener('pointermove', e => {
-    const c = e.target.closest && e.target.closest('.card');
-    if (!c) return;
-    const r = c.getBoundingClientRect();
-    c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-    c.style.setProperty('--my', (e.clientY - r.top) + 'px');
-  }, { passive: true });
 
   /* ───────── custom cursor + magnetic ───────── */
   if (finePointer && !reduce && hasGSAP) {
@@ -254,8 +195,6 @@
     return { rebuild: build, setScatter: v => { scatter = v; } };
   }
   const heroP = $('#heroParticles') && particleLogo($('#heroParticles'), { count: 2600, width: .82, radius: 80 });
-  let contactProg = 0;
-  if ($('#contactParticles')) particleLogo($('#contactParticles'), { count: 5200, width: .62, maxWidth: 1000, anchor: 'right', radius: 130, scatter: () => 1 - contactProg });
 
   /* ───────── WebGL aurora background ───────── */
   (function () {
@@ -308,109 +247,6 @@ void main(){
     const loop = t => { if (on) draw(t); requestAnimationFrame(loop); };
     requestAnimationFrame(loop);
   })();
-
-  /* ───────── marquee (velocity-reactive) ───────── */
-  (function () {
-    const track = $('#marqueeTrack'); if (!track || reduce || !hasGSAP) return;
-    let x = 0, dir = 1;
-    gsap.ticker.add(() => {
-      const half = track.scrollWidth / 2;
-      const v = -.7 - Math.abs(scrollVel) * .5;
-      dir = scrollVel < -.2 ? -1 : 1;
-      x += v * dir;
-      if (x <= -half) x += half; if (x > 0) x -= half;
-      track.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0) skewX(' + clamp(-scrollVel * .35, -9, 9).toFixed(2) + 'deg)';
-    });
-  })();
-
-  /* ───────── about: scroll-lit quote ───────── */
-  const quote = $('#aboutQuote');
-  if (quote) {
-    const words = quote.textContent.trim().split(/\s+/);
-    quote.textContent = '';
-    const spans = words.map((w, i) => { const s = document.createElement('span'); s.className = 'w'; s.textContent = w; quote.appendChild(s); if (i < words.length - 1) quote.appendChild(document.createTextNode(' ')); return s; });
-    if (hasGSAP && !reduce) {
-      ScrollTrigger.create({ trigger: quote, start: 'top 82%', end: 'bottom 48%', onUpdate: s => spans.forEach((w, i) => w.classList.toggle('on', i / spans.length < s.progress * 1.02)) });
-    } else spans.forEach(s => s.classList.add('on'));
-  }
-
-  /* ───────── stats counter ───────── */
-  const statsGrid = $('#statsGrid');
-  if (statsGrid) {
-    const io = new IntersectionObserver(es => es.forEach(e => {
-      if (!e.isIntersecting) return;
-      io.disconnect();
-      const els = $$('.count'), dur = 1600, st = performance.now();
-      const step = now => {
-        const t = Math.min(1, (now - st) / dur), ev = 1 - Math.pow(1 - t, 4);
-        els.forEach(el => { el.textContent = Math.round(+el.dataset.target * ev); });
-        if (t < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    }), { threshold: .3 });
-    io.observe(statsGrid);
-  }
-
-  /* ───────── ScrollTrigger scenes ───────── */
-  if (hasGSAP) {
-    gsap.registerPlugin(ScrollTrigger);
-    if (!reduce) {
-      // timeline progress lines
-      $$('.tl').forEach(tl => gsap.to($('.tl-line i', tl), { scaleY: 1, ease: 'none', scrollTrigger: { trigger: tl, start: 'top 70%', end: 'bottom 65%', scrub: .4 } }));
-      // hero title parallax-out
-      gsap.to('#heroTitle', { yPercent: -14, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
-      gsap.to('.hero-copy', { yPercent: -30, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
-      // footer mark
-      gsap.fromTo('.footer-mark', { yPercent: 35, opacity: .2 }, { yPercent: 0, opacity: .92, ease: 'none', scrollTrigger: { trigger: '.footer', start: 'top 100%', end: 'bottom bottom', scrub: true } });
-      // contact particle assemble
-      ScrollTrigger.create({ trigger: '#contact', start: 'top 85%', end: 'top 15%', scrub: true, onUpdate: s => { contactProg = s.progress; } });
-    } else contactProg = 1;
-
-    // pinned horizontal press rail (desktop)
-    const mm = gsap.matchMedia();
-    mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
-      const rail = $('#pressRail'), pin = $('#pressPin');
-      const dist = () => Math.max(0, rail.scrollWidth - innerWidth);
-      const tween = gsap.to(rail, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: pin, start: 'top 12%', end: () => '+=' + dist(), pin: true, scrub: .6, invalidateOnRefresh: true, anticipatePin: 1 } });
-      gsap.from('.press-card', { opacity: .15, y: 40, stagger: .06, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: pin, start: 'top 80%' } });
-      return () => { tween.kill(); gsap.set(rail, { clearProps: 'all' }); };
-    });
-    addEventListener('load', () => ScrollTrigger.refresh());
-    document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
-  } else contactProg = 1;
-
-  /* ───────── civic toggle ───────── */
-  let civicOpen = false;
-  window.toggleCivic = function () {
-    civicOpen = !civicOpen;
-    const m = $('#civicMore');
-    m.style.maxHeight = civicOpen ? m.scrollHeight + 'px' : '0';
-    $('#civicToggle').textContent = civicOpen ? '접기 ↑' : '더보기 ↓';
-    setTimeout(() => hasGSAP && ScrollTrigger.refresh(), 750);
-  };
-
-  /* ───────── board (localStorage) ───────── */
-  const BOARD_PAGE_SIZE = 5;
-  let boardType = 'newsroom', boardPage = 0;
-  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const getBoardItems = () => { try { return JSON.parse(localStorage.getItem('portfolioBoards') || '[]'); } catch (e) { return []; } };
-  const formatDate = iso => { try { const d = new Date(iso), p = n => String(n).padStart(2, '0'); return d.getFullYear() + '.' + p(d.getMonth() + 1) + '.' + p(d.getDate()); } catch (e) { return ''; } };
-  function renderBoard() {
-    const filtered = getBoardItems().filter(p => p.board === boardType).sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
-    const visible = filtered.slice(0, (boardPage + 1) * BOARD_PAGE_SIZE);
-    const list = $('#boardList'), more = $('#boardMore');
-    if (!visible.length) { list.innerHTML = '<div class="board-empty">아직 등록된 글이 없습니다.</div>'; more.style.display = 'none'; return; }
-    list.innerHTML = visible.map(b => '<div class="board-card"><h4>' + esc(b.title) + '</h4><p>' + esc(b.content) + '</p><time>' + formatDate(b.createdAt) + '</time></div>').join('');
-    more.style.display = filtered.length > visible.length ? 'block' : 'none';
-  }
-  window.selectBoard = function (type) {
-    boardType = type; boardPage = 0;
-    $('#btnNewsroom').className = 'btn ' + (type === 'newsroom' ? 'btn-accent' : 'btn-secondary');
-    $('#btnOpinion').className = 'btn ' + (type === 'opinion' ? 'btn-accent' : 'btn-secondary');
-    renderBoard();
-  };
-  window.loadMoreBoard = function () { boardPage++; renderBoard(); if (hasGSAP) setTimeout(() => ScrollTrigger.refresh(), 50); };
-  renderBoard();
 
   /* ───────── preloader → hero intro ───────── */
   const loader = $('#loader');
