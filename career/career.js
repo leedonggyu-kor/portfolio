@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  /* 경력 데이터 — 스토리는 story 칸에 쓰면 해당 활동이 큰 카드로 나온다 */
+  /* 경력 데이터 — f:true 는 큰 카드, story 칸에 글을 쓰면 카드 안에 그대로 나온다 */
   const CAREER = [
  {
   "y": 2016,
@@ -9,7 +9,7 @@
   "period": "2016 — 2017",
   "tag": "저널리즘",
   "desc": "",
-  "story": "서울시 어린이 기자로 활동한 2016년이 이 연표의 첫 줄이다. 통일부, 한국경제신문으로 이어지는 기자 이력은 여기서 시작됐다.",
+  "story": "",
   "f": true
  },
  {
@@ -49,7 +49,7 @@
   "period": "2019 — 2020",
   "tag": "저널리즘",
   "desc": "",
-  "story": "제8기 어린이 기자. 2019년부터 1년간 통일부 소속으로 취재했다. 서울시를 넘어 중앙부처 단위로 무대가 넓어진 첫 활동이다.",
+  "story": "",
   "f": true
  },
  {
@@ -69,7 +69,7 @@
   "period": "2020 — 2024",
   "tag": "저널리즘",
   "desc": "주요 사회 현안 심층 취재 및 교육·청년 정책 비평 기사 집필",
-  "story": "2020년부터 2024년까지 4년간 청소년 언론 '청라온'에서 선임기자로 기사를 썼다. 사회 이슈와 정책의 이면을 분석하는 글이 주 종목이었다. 이 기간 안에 수완뉴스, 한국경제신문, 에듀뉴스 활동이 겹쳐 있다.",
+  "story": "",
   "f": true
  },
  {
@@ -79,7 +79,7 @@
   "period": "2020 — 2022",
   "tag": "시민 참여",
   "desc": "조직 운영 총괄 및 청소년 사회참여 프로젝트 기획·실행",
-  "story": "2020년부터 2022년까지 청소년 단체 '유니엄'의 대표이사를 맡았다. 청소년 참여·활동 사업을 기획하고 실행하는 일을 총괄했다. 같은 해 시작한 여성가족부 청소년특별회의 활동과 나란히 이어졌다.",
+  "story": "",
   "f": true
  },
  {
@@ -89,7 +89,7 @@
   "period": "2020 — 2021",
   "tag": "시민 참여",
   "desc": "국가 청소년 정책 의제 발굴 및 대정부 제안",
-  "story": "제16회 청소년특별회의 본회의 위원으로 선발돼 온라인소통팀장을 맡았다. 국가 청소년 정책 의제를 발굴해 정부에 제안하는 자리였고, 2021년까지 이어졌다.",
+  "story": "",
   "f": true
  },
  {
@@ -229,7 +229,7 @@
   "period": "2022 — 2024",
   "tag": "저널리즘",
   "desc": "",
-  "story": "2022년부터 2024년까지 한국경제신문 주니어 생글생글 기자로 기사를 썼다. '청라온' 선임기자, 에듀뉴스 학생기자와 같은 시기다.",
+  "story": "",
   "f": true
  },
  {
@@ -239,7 +239,7 @@
   "period": "2022 — 2025",
   "tag": "시민 참여",
   "desc": "서울 교육 정책 자문 및 학생 인권 의제화",
-  "story": "제11기, 제12기, 제13기에 걸쳐 연임하며 2022년부터 2025년까지 활동했다. 서울 교육 정책에 의견을 내고 학생 인권을 의제로 올렸다. 같은 기간 대일외고에서는 안전관리부와 학생회장직을 맡았다.",
+  "story": "",
   "f": true
  },
  {
@@ -249,7 +249,7 @@
   "period": "2022.11.07",
   "tag": "수상",
   "desc": "사단법인 한국장애인유권자연맹",
-  "story": "2022년 제19회 전국장애인과 함께하는 문예글짓기 대회에서 대상(통일부장관상)을 받았다. 그 해 일곱 편을 출품해 여섯 편이 수상했다.",
+  "story": "",
   "f": true
  },
  {
@@ -399,7 +399,7 @@
   "period": "2024 — 2025",
   "tag": "학생 자치",
   "desc": "학생 자치 기구 총괄, 학내 거버넌스 개편 및 학생 권익 증진 사업 주도",
-  "story": "고명중학교 학생회 차장에서 출발해 생활교육부장, 대일외국어고등학교 안전관리부 차장과 부장을 거쳐 제40대 총학생회장에 올랐다. 학내 거버넌스 개편과 학생 권익 증진 사업을 이끌었다. 임기는 2024년부터 2025년까지다.",
+  "story": "",
   "f": true
  },
  {
@@ -419,7 +419,7 @@
   "period": "2025 — 현재",
   "tag": "교육",
   "desc": "고등 수학(공통·확률과 통계) 자체 문항 개발 및 소수 정예 밀착 클리닉",
-  "story": "2025년부터 문항 출제와 클리닉을 함께 맡고 있다. 공통 과목과 확률과 통계 문항을 직접 개발하고, 소수 정예 클리닉에서 질의응답과 학습 관리를 한다. 지금도 이어지는 활동이다.",
+  "story": "",
   "f": true
  },
  {
@@ -439,7 +439,7 @@
   "period": "2026 — 현재",
   "tag": "교육",
   "desc": "전국연합 모의고사 수능 영어 영역 문항 정합성 검토 및 출제 피드백",
-  "story": "2026년부터 전국연합 모의고사 수능 영어 영역 문항의 정합성을 검토하고 출제 피드백을 준다. 수학 문항을 만드는 일과 영어 문항을 검토하는 일이 한 사람의 이력에 같이 올라 있다.",
+  "story": "",
   "f": true
  },
  {
@@ -470,20 +470,35 @@
   const lerp = (a, b, t) => a + (b - a) * t;
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-  /* ── render ── */
-  const years = [...new Set(CAREER.map(e => e.y))].sort((a, b) => a - b);
+  /* ── render: 여러 해에 걸친 활동은 걸친 해마다 각각 나온다 ── */
+  const endYear = e => { if (/현재/.test(e.period)) return 2026; const m = e.period.match(/\d{4}/g); return +m[m.length - 1]; };
+  const ongoing = e => /현재/.test(e.period);   // 지금까지 이어지는 활동은 NOW 에만 둔다
+  const all = CAREER.filter(e => !ongoing(e)).map(e => Object.assign({ end: endYear(e) }, e));
+  const years = [];
+  for (let y = Math.min(...all.map(e => e.y)); y <= 2026; y++) if (all.some(e => e.y <= y && e.end >= y)) years.push(y);
   const html = years.map(y => {
-    const items = CAREER.filter(e => e.y === y).sort((a, b) => (b.f ? 1 : 0) - (a.f ? 1 : 0));
-    return '<section class="yr" id="y' + y + '"><div class="yr-n">' + y + '</div><div class="yr-list">' + items.map(e => {
-      if (e.story) {
+    const started = all.filter(e => e.y === y).sort((a, b) => (b.f ? 1 : 0) - (a.f ? 1 : 0));
+    const going = all.filter(e => e.y < y && e.end >= y).sort((a, b) => a.y - b.y);
+    return '<section class="yr" id="y' + y + '"><div class="yr-n">' + y + '</div><div class="yr-list">' + started.concat(going).map(e => {
+      if (e.y < y) {
+        return '<article class="ent c cont"><div><span class="org">' + esc(e.org) + '</span>' + (e.role ? ' <span class="role">· ' + esc(e.role) + '</span>' : '') + '</div>' +
+          '<span class="per">' + esc(e.period) + ' · <b>' + (y - e.y + 1) + '년째</b></span></article>';
+      }
+      if (e.f || e.story) {
         return '<article class="ent f"><div class="meta"><span class="tag">' + esc(e.tag) + '</span><span class="per">' + esc(e.period) + '</span></div>' +
           '<span class="org">' + esc(e.org) + '</span>' + (e.role ? '<p class="role">' + esc(e.role) + '</p>' : '') +
-          (e.desc ? '<p class="desc">' + esc(e.desc) + '</p>' : '') + '<p class="story">' + esc(e.story) + '</p></article>';
+          (e.desc ? '<p class="desc">' + esc(e.desc) + '</p>' : '') + (e.story ? '<p class="story">' + esc(e.story) + '</p>' : '') + '</article>';
       }
       return '<article class="ent c"><div><span class="org">' + esc(e.org) + '</span>' + (e.role ? ' <span class="role">· ' + esc(e.role) + '</span>' : '') + '</div>' +
         '<span class="per">' + esc(e.period) + '</span>' + (e.desc ? '<p class="desc">' + esc(e.desc) + '</p>' : '') + '</article>';
     }).join('') + '</div></section>';
   }).join('');
+  const nowItems = [{ org: '중앙대학교 도시계획부동산학과', role: '재학', period: '현재', tag: '학력', desc: '', story: '', f: true }]
+    .concat(CAREER.filter(ongoing).map(e => Object.assign({}, e, { f: true })));
+  $('#nowList').innerHTML = nowItems.map(e =>
+    '<article class="ent f"><div class="meta"><span class="tag">' + esc(e.tag) + '</span><span class="per">' + esc(e.period) + '</span></div>' +
+    '<span class="org">' + esc(e.org) + '</span>' + (e.role ? '<p class="role">' + esc(e.role) + '</p>' : '') +
+    (e.desc ? '<p class="desc">' + esc(e.desc) + '</p>' : '') + (e.story ? '<p class="story">' + esc(e.story) + '</p>' : '') + '</article>').join('');
   $('#career').innerHTML = html;
   $('#rail').innerHTML = years.map(y => '<a href="#y' + y + '">' + y + '</a>').join('');
 
