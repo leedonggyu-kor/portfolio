@@ -201,3 +201,5 @@ img,svg{display:block;max-width:100%}
 .ring-text{transform-origin:100px 100px;animation:ldgSpinSlow 28s linear infinite}
 @media (prefers-reduced-motion:reduce){.ring-text{animation:none}}
 @keyframes ldgSpinSlow{to{transform:rotate(360deg)}}
+
+.nav-right{display:flex;align-items:center;gap:26px}
