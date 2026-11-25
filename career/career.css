@@ -70,3 +70,5 @@ body{background:var(--color-bg)}
 
 .ent.cont .org{color:var(--color-text-secondary);font-weight:500}
 .ent.cont .per b{color:var(--color-accent-bright);font-weight:500}
+
+.c-creds h2{font-size:clamp(1.9rem,8.2vw,7.4rem)}
