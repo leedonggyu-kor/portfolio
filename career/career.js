@@ -9,8 +9,9 @@
   "period": "2016 — 2017",
   "tag": "저널리즘",
   "desc": "",
-  "story": "",
-  "f": true
+  "story": "사회 이슈에 관심이 많았던 저는 서울특별시 어린이 신문 기자로 활동하게 되었습니다. 어린 나이였지만 서울 시내 다양한 명소와 서울시청의 어린이 정책 소식들을 취재하며 다양한 경험을 할 수 있었습니다.",
+  "f": true,
+  "sep": false
  },
  {
   "y": 2017,
@@ -20,7 +21,8 @@
   "tag": "자격",
   "desc": "한국정보통신진흥협회",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": true
  },
  {
   "y": 2018,
@@ -29,8 +31,9 @@
   "period": "2018 — 2019",
   "tag": "시민 참여",
   "desc": "",
-  "story": "",
-  "f": false
+  "story": "직업체험 어린이 테마파크 키자니아 서울에서 테마파크 체험 시설에 대한 주소비자층인 어린이들의 의견을 수렴하고 전달하는 역할을 했습니다. 홍보영상 및 프로모션에도 다수 출연했습니다.",
+  "f": true,
+  "sep": false
  },
  {
   "y": 2018,
@@ -40,7 +43,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2019,
@@ -49,8 +53,9 @@
   "period": "2019 — 2020",
   "tag": "저널리즘",
   "desc": "",
-  "story": "",
-  "f": true
+  "story": "2018년 남북정상회담을 계기로 남북관계에 관심이 많아진 저는 통일부 어린이 기자로서 통일부의 정책을 전하고, 어린이의 시선에서 남북관계와 통일정책을 담는 기사를 썼습니다. 판문점을 직접 취재하기도 했습니다.",
+  "f": true,
+  "sep": false
  },
  {
   "y": 2019,
@@ -60,17 +65,19 @@
   "tag": "학력",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": true
  },
  {
   "y": 2020,
   "org": "청소년 언론 '청라온'",
-  "role": "선임기자",
+  "role": "제1기 청소년 기자단 단장 · 선임기자",
   "period": "2020 — 2024",
   "tag": "저널리즘",
   "desc": "주요 사회 현안 심층 취재 및 교육·청년 정책 비평 기사 집필",
-  "story": "",
-  "f": true
+  "story": "청소년의 시선에서 청소년 정책과 사회 이슈를 바라보며 청소년만의 이야기를 담았습니다. 청소년을 대상으로 하는 기업들과 인터뷰를 진행하기도 했습니다.",
+  "f": true,
+  "sep": false
  },
  {
   "y": 2020,
@@ -79,8 +86,9 @@
   "period": "2020 — 2022",
   "tag": "시민 참여",
   "desc": "조직 운영 총괄 및 청소년 사회참여 프로젝트 기획·실행",
-  "story": "",
-  "f": true
+  "story": "청소년을 위한 참여 활동을 기획했습니다. 그 첫번째 프로젝트가 청소년 언론 '청라온'이었고, 그외에도 청소년 프로그래밍팀 운영, 청소년 정책 연구소 기획 등 활동에 참여했습니다.",
+  "f": true,
+  "sep": false
  },
  {
   "y": 2020,
@@ -90,7 +98,8 @@
   "tag": "시민 참여",
   "desc": "국가 청소년 정책 의제 발굴 및 대정부 제안",
   "story": "",
-  "f": true
+  "f": false,
+  "sep": false
  },
  {
   "y": 2020,
@@ -100,7 +109,8 @@
   "tag": "저널리즘",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2020,
@@ -110,7 +120,8 @@
   "tag": "저널리즘",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2020,
@@ -120,7 +131,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2020,
@@ -130,7 +142,8 @@
   "tag": "수상",
   "desc": "아동권리보장원",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2021,
@@ -140,7 +153,8 @@
   "tag": "학생 자치",
   "desc": "학생 자치 행사 기획 및 부서 간 실무 조율",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2021,
@@ -150,7 +164,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2021,
@@ -160,7 +175,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2021,
@@ -170,7 +186,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2021,
@@ -180,7 +197,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2021,
@@ -190,7 +208,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2021,
@@ -200,7 +219,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2021,
@@ -210,7 +230,8 @@
   "tag": "저널리즘",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2021,
@@ -220,7 +241,8 @@
   "tag": "저널리즘",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -230,7 +252,8 @@
   "tag": "저널리즘",
   "desc": "",
   "story": "",
-  "f": true
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -240,7 +263,8 @@
   "tag": "시민 참여",
   "desc": "서울 교육 정책 자문 및 학생 인권 의제화",
   "story": "",
-  "f": true
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -250,7 +274,8 @@
   "tag": "수상",
   "desc": "사단법인 한국장애인유권자연맹",
   "story": "",
-  "f": true
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -260,7 +285,8 @@
   "tag": "학생 자치",
   "desc": "자율적 학생 생활 규범 확립 및 교내 문화 개선 캠페인 총괄",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -270,7 +296,8 @@
   "tag": "저널리즘",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -280,7 +307,8 @@
   "tag": "저널리즘",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -290,7 +318,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -300,7 +329,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -310,7 +340,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -320,7 +351,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -330,7 +362,8 @@
   "tag": "시민 참여",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -340,7 +373,8 @@
   "tag": "수상",
   "desc": "국세청",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -350,7 +384,8 @@
   "tag": "수상",
   "desc": "서울시립청소년미디어센터",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -360,7 +395,8 @@
   "tag": "수상",
   "desc": "금융소비자연맹",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -370,7 +406,8 @@
   "tag": "수상",
   "desc": "초록우산 어린이재단",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2022,
@@ -380,7 +417,8 @@
   "tag": "수상",
   "desc": "사단법인 극지해양미래포럼",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2023,
@@ -390,7 +428,8 @@
   "tag": "학생 자치",
   "desc": "학생대의원회의 운영 기획 및 교내 안전 정책 수립",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2024,
@@ -400,7 +439,8 @@
   "tag": "학생 자치",
   "desc": "학생 자치 기구 총괄, 학내 거버넌스 개편 및 학생 권익 증진 사업 주도",
   "story": "",
-  "f": true
+  "f": false,
+  "sep": false
  },
  {
   "y": 2024,
@@ -410,7 +450,8 @@
   "tag": "학생 자치",
   "desc": "학생대의원회의 의장단 실무 및 학내 안전·생활 규범 정비",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2025,
@@ -420,7 +461,8 @@
   "tag": "교육",
   "desc": "고등 수학(공통·확률과 통계) 자체 문항 개발 및 소수 정예 밀착 클리닉",
   "story": "",
-  "f": true
+  "f": false,
+  "sep": false
  },
  {
   "y": 2025,
@@ -430,7 +472,8 @@
   "tag": "교육",
   "desc": "대일외고 윈터스쿨 과정 수학 질의응답 및 개인별 취약점 진단·관리",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2026,
@@ -440,7 +483,8 @@
   "tag": "교육",
   "desc": "전국연합 모의고사 수능 영어 영역 문항 정합성 검토 및 출제 피드백",
   "story": "",
-  "f": true
+  "f": false,
+  "sep": false
  },
  {
   "y": 2026,
@@ -450,7 +494,8 @@
   "tag": "교육",
   "desc": "학생부종합전형 평가 요소 분석 및 심화 탐구 전략 칼럼 집필",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2026,
@@ -460,7 +505,8 @@
   "tag": "시민 참여",
   "desc": "청년 세대 갈등 해소 및 정책 대안 도출",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  },
  {
   "y": 2026,
@@ -470,7 +516,8 @@
   "tag": "학력",
   "desc": "",
   "story": "",
-  "f": false
+  "f": false,
+  "sep": false
  }
 ];
 
@@ -480,35 +527,23 @@
   const lerp = (a, b, t) => a + (b - a) * t;
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-  /* ── render: 여러 해에 걸친 활동은 걸친 해마다 각각 나온다 ── */
-  const endYear = e => { if (/현재/.test(e.period)) return 2026; const m = e.period.match(/\d{4}/g); return +m[m.length - 1]; };
-  const ongoing = e => /현재/.test(e.period);   // 지금까지 이어지는 활동은 NOW 에만 둔다
-  const all = CAREER.filter(e => !ongoing(e)).map(e => Object.assign({ end: endYear(e) }, e));
-  const years = [];
-  for (let y = Math.min(...all.map(e => e.y)); y <= 2026; y++) if (all.some(e => e.y <= y && e.end >= y)) years.push(y);
-  const html = years.map(y => {
-    const started = all.filter(e => e.y === y).sort((a, b) => (b.f ? 1 : 0) - (a.f ? 1 : 0));
-    const going = all.filter(e => e.y < y && e.end >= y).sort((a, b) => a.y - b.y);
-    return '<section class="yr" id="y' + y + '"><div class="yr-n">' + y + '</div><div class="yr-list">' + started.concat(going).map(e => {
-      if (e.y < y) {
-        return '<article class="ent c cont"><div><span class="org">' + esc(e.org) + '</span>' + (e.role ? ' <span class="role">· ' + esc(e.role) + '</span>' : '') + '</div>' +
-          '<span class="per">' + esc(e.period) + ' · <b>' + (y - e.y + 1) + '년째</b></span></article>';
-      }
-      if (e.f || e.story) {
-        return '<article class="ent f"><div class="meta"><span class="tag">' + esc(e.tag) + '</span><span class="per">' + esc(e.period) + '</span></div>' +
-          '<span class="org">' + esc(e.org) + '</span>' + (e.role ? '<p class="role">' + esc(e.role) + '</p>' : '') +
-          (e.desc ? '<p class="desc">' + esc(e.desc) + '</p>' : '') + (e.story ? '<p class="story">' + esc(e.story) + '</p>' : '') + '</article>';
-      }
-      return '<article class="ent c"><div><span class="org">' + esc(e.org) + '</span>' + (e.role ? ' <span class="role">· ' + esc(e.role) + '</span>' : '') + '</div>' +
-        '<span class="per">' + esc(e.period) + '</span>' + (e.desc ? '<p class="desc">' + esc(e.desc) + '</p>' : '') + '</article>';
-    }).join('') + '</div></section>';
-  }).join('');
-  const nowItems = [{ org: '중앙대학교 도시계획부동산학과', role: '재학', period: '현재', tag: '학력', desc: '', story: '', f: true }]
-    .concat(CAREER.filter(ongoing).map(e => Object.assign({}, e, { f: true })));
-  $('#nowList').innerHTML = nowItems.map(e =>
-    '<article class="ent f"><div class="meta"><span class="tag">' + esc(e.tag) + '</span><span class="per">' + esc(e.period) + '</span></div>' +
+  /* ── render: 한 활동은 시작한 해에 한 번만. 1년 이상이면 기간을 제목 밑에 쓴다 ── */
+  const ongoing = e => /현재/.test(e.period);          // 지금까지 이어지는 활동은 NOW 에만
+  const timeline = CAREER.filter(e => !ongoing(e) && !e.sep);
+  const years = [...new Set(timeline.map(e => e.y))].sort((a, b) => a - b);
+  const big = e => '<article class="ent f"><span class="tag">' + esc(e.tag) + '</span>' +
     '<span class="org">' + esc(e.org) + '</span>' + (e.role ? '<p class="role">' + esc(e.role) + '</p>' : '') +
-    (e.desc ? '<p class="desc">' + esc(e.desc) + '</p>' : '') + (e.story ? '<p class="story">' + esc(e.story) + '</p>' : '') + '</article>').join('');
+    (e.period ? '<p class="per">' + esc(e.period) + '</p>' : '') + (e.story ? '<p class="story">' + esc(e.story) + '</p>' : (e.desc ? '<p class="desc">' + esc(e.desc) + '</p>' : '')) + '</article>';
+  const small = e => '<article class="ent c"><div><span class="org">' + esc(e.org) + '</span>' + (e.role ? ' <span class="role">· ' + esc(e.role) + '</span>' : '') + '</div>' +
+    '<span class="per">' + esc(e.period) + '</span>' + (e.desc ? '<p class="desc">' + esc(e.desc) + '</p>' : '') + '</article>';
+  const html = years.map(y => {
+    const items = timeline.filter(e => e.y === y).sort((a, b) => (b.f ? 1 : 0) - (a.f ? 1 : 0));
+    return '<section class="yr" id="y' + y + '"><div class="yr-n">' + y + '</div><div class="yr-list">' + items.map(e => e.f ? big(e) : small(e)).join('') + '</div></section>';
+  }).join('');
+  $('#credList').innerHTML = CAREER.filter(e => e.sep).sort((a, b) => a.y - b.y).map(e => e.f ? big(e) : small(e)).join('');
+  const nowItems = [{ org: '중앙대학교 도시계획부동산학과', role: '재학', period: '', tag: '학력', desc: '', story: '', f: true }]
+    .concat(CAREER.filter(ongoing).map(e => Object.assign({}, e, { f: true })));
+  $('#nowList').innerHTML = nowItems.map(big).join('');
   $('#career').innerHTML = html;
   $('#rail').innerHTML = years.map(y => '<a href="#y' + y + '">' + y + '</a>').join('');
 
@@ -528,7 +563,7 @@
   $$('.yr').forEach(s => yo.observe(s));
 
   const rail = $('#rail'), firstYr = $('.yr');
-  const now = $('.c-now');
+  const now = $('.c-creds');
   const showRail = () => rail.classList.toggle('show', firstYr.getBoundingClientRect().top < innerHeight * .6 && now.getBoundingClientRect().top > innerHeight * .45);
   addEventListener('scroll', showRail, { passive: true }); showRail();
 
